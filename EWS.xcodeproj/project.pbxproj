@@ -16,6 +16,7 @@
 		E1550FF0225C17BC003B554B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FEF225C17BC003B554B /* Views.swift */; };
 		E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF1225C1EAA003B554B /* SignupVC.swift */; };
 		E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF3225C1FC0003B554B /* Controllers.swift */; };
+		E1550FF6225C3617003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1550FF5225C3617003B554B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E1550FEF225C17BC003B554B /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		E1550FF1225C1EAA003B554B /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		E1550FF3225C1FC0003B554B /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
+		E1550FF5225C3617003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				E1550FEE225C178F003B554B /* Extensions */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
+				E1550FF5225C3617003B554B /* GoogleService-Info.plist */,
 			);
 			path = EWS;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1550FE5225C0963003B554B /* LaunchScreen.storyboard in Resources */,
+				E1550FF6225C3617003B554B /* GoogleService-Info.plist in Resources */,
 				E1550FE2225C0963003B554B /* Assets.xcassets in Resources */,
 				E1550FE0225C0962003B554B /* Main.storyboard in Resources */,
 			);
