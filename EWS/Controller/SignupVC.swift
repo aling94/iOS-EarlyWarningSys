@@ -170,16 +170,9 @@ class SignupVC: FormViewController {
     }
     
     func registerToDB() {
-        Auth.auth().createUser(withEmail: email!, password: passw!) { (result, error) in
-            if error == nil {
-                guard let user = result?.user else { return }
-                let dict = self.fieldsAsDict
-                self.ref.child("User").child(user.uid).setValue(dict)
-            } else {
-                print((error?.localizedDescription)!)
-                DispatchQueue.main.async {
-                    self.showAlert(title: "Oops", msg: (error?.localizedDescription)!)
-                }
+        FirebaseManager.shared.registerUser(email: email, passw: passw, info: fieldsAsDict) { (result, error) in
+            if let error = error {
+                self.showAlert(title: "Oops!", msg: error.localizedDescription)
             }
         }
     }

@@ -74,10 +74,11 @@ class LoginVC: FormViewController {
     }
 
     @IBAction func resetPass(_ sender: Any) {
+        let title = "Forgot your password?"
         let msg = "Please enter the associated email."
-        promptInput(title: "Forgot your password?", msg: msg, placeHolder: "Email") { (email) in
+        promptInput(title: title, msg: msg, placeHolder: "Email") { (email) in
             guard !email.isEmpty else { return }
-            Auth.auth().sendPasswordReset(withEmail: email)
+            FirebaseManager.shared.resetPassword(email: email)
         }
     }
     
