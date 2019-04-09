@@ -182,10 +182,10 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YPh-NU-vfy">
-                                <rect key="frame" x="25" y="243" width="364" height="250"/>
+                                <rect key="frame" x="25" y="218" width="364" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="OM9-PI-b1y"/>
+                                    <constraint firstAttribute="height" constant="300" id="OM9-PI-b1y"/>
                                 </constraints>
                             </tableView>
                         </subviews>
