@@ -7,14 +7,13 @@ target 'EWS' do
 
   pod 'Eureka'
   pod 'SVProgressHUD', '~> 2.2'
-
+  pod 'AlamofireObjectMapper', '~> 5.2'
+  
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  
-  # Pods for EWS
 
 end

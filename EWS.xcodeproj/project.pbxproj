@@ -12,6 +12,9 @@
 		E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F46225D0D9800ED365E /* CustomValidations.swift */; };
 		E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F49225D2DB700ED365E /* FirebaseManager.swift */; };
 		E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F4C225D339800ED365E /* ClosureAliases.swift */; };
+		E1354F50225D421F00ED365E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F4F225D421F00ED365E /* UserInfo.swift */; };
+		E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F54225D48FF00ED365E /* APIHandler.swift */; };
+		E1354F57225D494600ED365E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F56225D494600ED365E /* Weather.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
 		E1550FE0225C0962003B554B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1550FDE225C0962003B554B /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 		E1354F46225D0D9800ED365E /* CustomValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValidations.swift; sourceTree = "<group>"; };
 		E1354F49225D2DB700ED365E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		E1354F4C225D339800ED365E /* ClosureAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureAliases.swift; sourceTree = "<group>"; };
+		E1354F4F225D421F00ED365E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		E1354F54225D48FF00ED365E /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		E1354F56225D494600ED365E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1550FDC225C0962003B554B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -97,6 +103,23 @@
 			path = Typealiases;
 			sourceTree = "<group>";
 		};
+		E1354F4E225D420100ED365E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1354F4F225D421F00ED365E /* UserInfo.swift */,
+				E1354F56225D494600ED365E /* Weather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1354F53225D48EC00ED365E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E1354F54225D48FF00ED365E /* APIHandler.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		E1550FCE225C0962003B554B = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +144,12 @@
 				E1550FDA225C0962003B554B /* AppDelegate.swift */,
 				E1550FED225C0AF9003B554B /* Storyboard */,
 				E1550FEC225C0AED003B554B /* Controller */,
+				E1354F4E225D420100ED365E /* Model */,
 				E1354F4B225D335C00ED365E /* Typealiases */,
 				E1550FEE225C178F003B554B /* Extensions */,
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1354F48225D2D5B00ED365E /* Firebase */,
+				E1354F53225D48EC00ED365E /* API */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
 				E1354F44225D083C00ED365E /* GoogleService-Info.plist */,
@@ -261,9 +286,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EWS/Pods-EWS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -272,9 +300,12 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -335,10 +366,13 @@
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
 				E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */,
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
+				E1354F57225D494600ED365E /* Weather.swift in Sources */,
 				E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */,
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
+				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
+				E1354F50225D421F00ED365E /* UserInfo.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
