@@ -51,6 +51,7 @@ class SignupVC: FormViewController {
         }
         
         <<< spacer
+        // Phone field
         <<< PhoneFloatLabelRow() {
             $0.title = "PHONE NO."
             $0.cell.height = { cellHeight }
@@ -60,12 +61,30 @@ class SignupVC: FormViewController {
         }
         
         <<< spacer
-        <<< TextFloatLabelRow() {
-            $0.title = "DOB"
-            $0.cell.height = { cellHeight }
+        // DOB field
+        <<< DateRow() {
+            $0.title = "DATE OF BIRTH"
         }
-        .cellUpdate { cell, row in
-            self.dob = cell.textField.text
+        .cellSetup { cell, row in
+            cell.height = { cellHeight }
+            cell.backgroundColor = .clear
+            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.cornerRadius = 5
+            cell.layer.borderWidth = 2
+            cell.layer.masksToBounds = true
+            cell.textLabel?.textColor = .white
+            cell.detailTextLabel?.textColor = .white
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 18)
+            cell.detailTextLabel?.text = ""
+        }
+        .cellUpdate { (cell, row) in
+            
+            cell.textLabel?.textColor = .white
+            if let date = row.value {
+                cell.textLabel?.text = row.dateFormatter?.string(from: date)
+            }
+            cell.detailTextLabel?.text = ""
+            self.dob = cell.detailTextLabel?.text
         }
             
         <<< spacer
@@ -87,6 +106,7 @@ class SignupVC: FormViewController {
         .cellUpdate { (cell, row) in
             self.cpassw = cell.textField.text
         }
+        
         
     }
 
