@@ -170,6 +170,13 @@ class SignupVC: FormViewController {
     }
     
     func registerToDB() {
-        FirebaseManager.shared.registerUser(email: email, passw: passw, info: fieldsAsDict, errorHandler: alertError)
+        FirebaseManager.shared.registerUser(email: email, passw: passw, info: fieldsAsDict) { (result, error) in
+            guard let user = result?.user else {
+                self.alertError(error)
+                return
+            }
+            
+            
+        }
     }
 }

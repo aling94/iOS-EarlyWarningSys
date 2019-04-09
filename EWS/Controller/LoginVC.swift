@@ -78,7 +78,7 @@ class LoginVC: FormViewController {
         let msg = "Please enter the associated email."
         promptInput(title: title, msg: msg, placeHolder: "Email") { (email) in
             guard !email.isEmpty else { return }
-            FirebaseManager.shared.resetPassword(email: email, errorHandler: alertError
+            FirebaseManager.shared.resetPassword(email: email, errorHandler: self.alertError)
         }
     }
     
