@@ -62,9 +62,9 @@ class SignupVC: FormViewController {
             $0.cell.backgroundColor = .clear
         }
         
-        // Password field
+        // Confirm Password field
         <<< PasswordFloatLabelRow {
-            $0.title = "PASSWORD"
+            $0.title = "CONFIRM PASSWORD"
             $0.cell.height = { cellHeight }
         }
         .cellUpdate { (cell, row) in
