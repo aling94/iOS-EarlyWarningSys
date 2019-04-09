@@ -9,15 +9,29 @@
 import UIKit
 import Eureka
 import CoreLocation
+import FirebaseAuth
+import FirebaseDatabase
 class SignupVC: FormViewController {
 
-    var email, passw, cpassw: String?
-    var name, phone, dob: String?
+    var ref: DatabaseReference!
+    
+    var email, passw, cpassw: String!
+    var fname, lname, phone, dob: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "JOIN"
+        ref = Database.database().reference()
         setupForm()
+    }
+    
+    var spacer: SpaceCellRow {
+        let cellGap: CGFloat = 10
+        return SpaceCellRow {
+            $0.cell.spaceHeight = cellGap
+            $0.cell.backgroundColor = .clear
+        }
     }
     
     func setupForm() {
@@ -27,11 +41,6 @@ class SignupVC: FormViewController {
         
         // Form config
         let cellHeight: CGFloat = 48
-        let cellGap: CGFloat = 10
-        let spacer = SpaceCellRow() {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
         
         // Create form
         form
@@ -51,6 +60,52 @@ class SignupVC: FormViewController {
         }
         
         <<< spacer
+        // Password field
+        <<< PasswordFloatLabelRow {
+            $0.title = "PASSWORD"
+            $0.cell.height = { cellHeight }
+            
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleMinLength(minLength: 6))
+            $0.add(rule: RuleMaxLength(maxLength: 30))
+            }
+            .cellUpdate { (cell, row) in
+                self.passw = cell.textField.text
+        }
+        
+        <<< spacer
+        // Confirm Password field
+        <<< PasswordFloatLabelRow {
+            $0.title = "CONFIRM PASSWORD"
+            $0.cell.height = { cellHeight }
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleMinLength(minLength: 6))
+            $0.add(rule: RuleMaxLength(maxLength: 30))
+            }
+            .cellUpdate { (cell, row) in
+                self.cpassw = cell.textField.text
+        }
+        <<< spacer
+            
+        <<< TextFloatLabelRow() {
+            $0.title = "FIRST NAME"
+            $0.cell.height = { cellHeight }
+        }
+        .cellUpdate { cell, row in
+            self.fname = cell.textField.text
+        }
+        
+        <<< spacer
+        
+        <<< TextFloatLabelRow() {
+            $0.title = "LAST NAME"
+            $0.cell.height = { cellHeight }
+        }
+        .cellUpdate { cell, row in
+            self.lname = cell.textField.text
+        }
+            
+        <<< spacer
         // Phone field
         <<< PhoneFloatLabelRow() {
             $0.title = "PHONE NO."
@@ -66,6 +121,7 @@ class SignupVC: FormViewController {
             $0.title = "DATE OF BIRTH"
         }
         .cellSetup { cell, row in
+            row.maximumDate = Date()
             cell.height = { cellHeight }
             cell.backgroundColor = .clear
             cell.layer.borderColor = UIColor.white.cgColor
@@ -75,7 +131,6 @@ class SignupVC: FormViewController {
             cell.textLabel?.textColor = .white
             cell.detailTextLabel?.textColor = .white
             cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 18)
-            cell.detailTextLabel?.text = ""
         }
         .cellUpdate { (cell, row) in
             
@@ -84,41 +139,43 @@ class SignupVC: FormViewController {
                 cell.textLabel?.text = row.dateFormatter?.string(from: date)
             }
             cell.detailTextLabel?.text = ""
-            self.dob = cell.detailTextLabel?.text
+            self.dob = cell.textLabel?.text
         }
             
-        <<< spacer
-        // Password field
-        <<< PasswordFloatLabelRow {
-            $0.title = "PASSWORD"
-            $0.cell.height = { cellHeight }
-            
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
-        }
-        .cellUpdate { (cell, row) in
-            self.passw = cell.textField.text
-        }
         
-        <<< spacer
-        // Confirm Password field
-        <<< PasswordFloatLabelRow {
-            $0.title = "CONFIRM PASSWORD"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
-        }
-        .cellUpdate { (cell, row) in
-            self.cpassw = cell.textField.text
-        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if allRowsValid { return true }
+        showAlert(title: "Oops", msg: "Some inputs are invalid!")
+        return false
     }
     
     @IBAction func submitBtn(_ sender: Any) {
-        print(allRowsValid)
-        let app = UIApplication.shared.delegate as! AppDelegate
-        print(app.currentLocation)
 
+    }
+    
+    var fieldsAsDict: [String: String] {
+        return [
+            "email": email,
+            "phone": phone,
+            "dob": dob,
+        ]
+    }
+    
+    func registerToDB() {
+        Auth.auth().createUser(withEmail: email!, password: passw!) { (result, error) in
+            if error == nil {
+                guard let user = result?.user else { return }
+                let dict = self.fieldsAsDict
+                self.ref.child("User").child(user.uid).setValue(dict)
+            } else {
+                print((error?.localizedDescription)!)
+                DispatchQueue.main.async {
+                    self.showAlert(title: "Oops", msg: (error?.localizedDescription)!)
+                }
+            }
+        }
     }
 }
