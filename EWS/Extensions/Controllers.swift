@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Eureka
 
 extension UIViewController {
     
@@ -30,5 +31,12 @@ extension UIViewController {
         alert.addAction(okAction)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension FormViewController {
+    var allRowsValid: Bool {
+        return form.rows.reduce(true
+            , { $0 && $1.isValid })
     }
 }

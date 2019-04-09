@@ -8,11 +8,11 @@
 
 import UIKit
 import Eureka
-
+import CoreLocation
 class SignupVC: FormViewController {
 
     var email, passw, cpassw: String?
-    var phone, dob: String?
+    var name, phone, dob: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class SignupVC: FormViewController {
         // Form config
         let cellHeight: CGFloat = 48
         let cellGap: CGFloat = 10
-        let spacer = SpaceCellRow {
+        let spacer = SpaceCellRow() {
             $0.cell.spaceHeight = cellGap
             $0.cell.backgroundColor = .clear
         }
@@ -92,9 +92,13 @@ class SignupVC: FormViewController {
         <<< PasswordFloatLabelRow {
             $0.title = "PASSWORD"
             $0.cell.height = { cellHeight }
-            }
-            .cellUpdate { (cell, row) in
-                self.passw = cell.textField.text
+            
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleMinLength(minLength: 6))
+            $0.add(rule: RuleMaxLength(maxLength: 30))
+        }
+        .cellUpdate { (cell, row) in
+            self.passw = cell.textField.text
         }
         
         <<< spacer
@@ -102,12 +106,19 @@ class SignupVC: FormViewController {
         <<< PasswordFloatLabelRow {
             $0.title = "CONFIRM PASSWORD"
             $0.cell.height = { cellHeight }
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleMinLength(minLength: 6))
+            $0.add(rule: RuleMaxLength(maxLength: 30))
         }
         .cellUpdate { (cell, row) in
             self.cpassw = cell.textField.text
         }
-        
-        
     }
+    
+    @IBAction func submitBtn(_ sender: Any) {
+        print(allRowsValid)
+        let app = UIApplication.shared.delegate as! AppDelegate
+        print(app.currentLocation)
 
+    }
 }
