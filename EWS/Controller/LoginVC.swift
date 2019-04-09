@@ -63,6 +63,9 @@ class LoginVC: FormViewController {
         <<< PasswordFloatLabelRow {
             $0.title = "PASSWORD"
             $0.cell.height = { cellHeight }
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleMinLength(minLength: 6))
+            $0.add(rule: RuleMaxLength(maxLength: 30))
         }
         .cellUpdate { (cell, row) in
             self.passw = cell.textField.text
