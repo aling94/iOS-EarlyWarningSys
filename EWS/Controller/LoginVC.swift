@@ -12,10 +12,12 @@ import FirebaseAuth
 
 class LoginVC: FormViewController {
 
+    var email, passw: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
+        setupForm()
     }
     
     func setupUI() {
@@ -26,6 +28,35 @@ class LoginVC: FormViewController {
     }
     
     func setupForm() {
+        // Table config
+        tableView.isScrollEnabled = false
+        tableView.tableFooterView = UIView()
+        
+        // Form config
+        form
+        +++ Section()
+        // Email field
+        <<< EmailFloatLabelRow {
+            $0.title = "Email"
+            
+            $0.cell.height = { 50 }
+            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleEmail())
+        }
+        .cellUpdate { cell, row in
+            if !row.isValid {
+                cell.floatLabelTextField.titleTextColour = UIColor.red
+            }
+            self.email = cell.textField.text
+        }
+        // Password field
+        <<< PasswordFloatLabelRow {
+            $0.title = "Password"
+            $0.cell.height = { 48 }
+        }
+        .cellUpdate { (cell, row) in
+            self.passw = cell.textField.text
+        }
         
     }
 

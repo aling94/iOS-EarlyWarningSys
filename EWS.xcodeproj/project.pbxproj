@@ -16,9 +16,9 @@
 		E1550FF0225C17BC003B554B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FEF225C17BC003B554B /* Views.swift */; };
 		E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF1225C1EAA003B554B /* SignupVC.swift */; };
 		E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF3225C1FC0003B554B /* Controllers.swift */; };
-		E1550FFC225C3975003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1550FFB225C3975003B554B /* GoogleService-Info.plist */; };
 		E1551000225C3ECA003B554B /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFE225C3ECA003B554B /* CustomCells.swift */; };
 		E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */; };
+		E1551004225C564F003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1551003225C564E003B554B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +35,9 @@
 		E1550FEF225C17BC003B554B /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
 		E1550FF1225C1EAA003B554B /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		E1550FF3225C1FC0003B554B /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
-		E1550FFB225C3975003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1550FFE225C3ECA003B554B /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
+		E1551003225C564E003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
-				E1550FFB225C3975003B554B /* GoogleService-Info.plist */,
+				E1551003225C564E003B554B /* GoogleService-Info.plist */,
 			);
 			path = EWS;
 			sourceTree = "<group>";
@@ -150,6 +150,7 @@
 				E1550FD4225C0962003B554B /* Frameworks */,
 				E1550FD5225C0962003B554B /* Resources */,
 				8156D17CBDCD4F73B2C316D8 /* [CP] Embed Pods Frameworks */,
+				E1551002225C544B003B554B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -199,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1550FE5225C0963003B554B /* LaunchScreen.storyboard in Resources */,
-				E1550FFC225C3975003B554B /* GoogleService-Info.plist in Resources */,
+				E1551004225C564F003B554B /* GoogleService-Info.plist in Resources */,
 				E1550FE2225C0963003B554B /* Assets.xcassets in Resources */,
 				E1550FE0225C0962003B554B /* Main.storyboard in Resources */,
 			);
@@ -261,6 +262,24 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E1551002225C544B003B554B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
