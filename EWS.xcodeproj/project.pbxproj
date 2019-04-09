@@ -17,6 +17,8 @@
 		E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF1225C1EAA003B554B /* SignupVC.swift */; };
 		E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF3225C1FC0003B554B /* Controllers.swift */; };
 		E1550FFC225C3975003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1550FFB225C3975003B554B /* GoogleService-Info.plist */; };
+		E1551000225C3ECA003B554B /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFE225C3ECA003B554B /* CustomCells.swift */; };
+		E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E1550FF1225C1EAA003B554B /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		E1550FF3225C1FC0003B554B /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 		E1550FFB225C3975003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1550FFE225C3ECA003B554B /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				E1550FED225C0AF9003B554B /* Storyboard */,
 				E1550FEC225C0AED003B554B /* Controller */,
 				E1550FEE225C178F003B554B /* Extensions */,
+				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
 				E1550FFB225C3975003B554B /* GoogleService-Info.plist */,
@@ -122,6 +127,15 @@
 				E1550FF3225C1FC0003B554B /* Controllers.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E1550FFD225C3E49003B554B /* EurekaAddons */ = {
+			isa = PBXGroup;
+			children = (
+				E1550FFE225C3ECA003B554B /* CustomCells.swift */,
+				E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */,
+			);
+			path = EurekaAddons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */,
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
+				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
