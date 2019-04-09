@@ -33,13 +33,15 @@ class LoginVC: FormViewController {
         tableView.tableFooterView = UIView()
         
         // Form config
+        let cellHeight: CGFloat = 50
+        let cellGap: CGFloat = 15
+        
         form
         +++ Section()
         // Email field
         <<< EmailFloatLabelRow {
-            $0.title = "Email"
-            
-            $0.cell.height = { 50 }
+            $0.title = "EMAIL"
+            $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
             $0.add(rule: RuleEmail())
         }
@@ -49,10 +51,16 @@ class LoginVC: FormViewController {
             }
             self.email = cell.textField.text
         }
+            
+        <<< SpaceCellRow() {
+            $0.cell.spaceHeight = cellGap
+            $0.cell.backgroundColor = .clear
+        }
+            
         // Password field
         <<< PasswordFloatLabelRow {
-            $0.title = "Password"
-            $0.cell.height = { 48 }
+            $0.title = "PASSWORD"
+            $0.cell.height = { cellHeight }
         }
         .cellUpdate { (cell, row) in
             self.passw = cell.textField.text

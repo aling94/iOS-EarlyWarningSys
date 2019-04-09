@@ -18,7 +18,10 @@
 		E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF3225C1FC0003B554B /* Controllers.swift */; };
 		E1551000225C3ECA003B554B /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFE225C3ECA003B554B /* CustomCells.swift */; };
 		E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */; };
-		E1551004225C564F003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1551003225C564E003B554B /* GoogleService-Info.plist */; };
+		E1551006225C59FB003B554B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1551005225C59FB003B554B /* GoogleService-Info.plist */; };
+		E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */; };
+		E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */; };
+		E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155100A225C5B1F003B554B /* SpaceCellRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +40,10 @@
 		E1550FF3225C1FC0003B554B /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 		E1550FFE225C3ECA003B554B /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
-		E1551003225C564E003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1551005225C59FB003B554B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
+		E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
+		E155100A225C5B1F003B554B /* SpaceCellRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +103,7 @@
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
-				E1551003225C564E003B554B /* GoogleService-Info.plist */,
+				E1551005225C59FB003B554B /* GoogleService-Info.plist */,
 			);
 			path = EWS;
 			sourceTree = "<group>";
@@ -132,10 +138,21 @@
 		E1550FFD225C3E49003B554B /* EurekaAddons */ = {
 			isa = PBXGroup;
 			children = (
+				E1551007225C5B0E003B554B /* SpaceRows */,
 				E1550FFE225C3ECA003B554B /* CustomCells.swift */,
 				E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */,
 			);
 			path = EurekaAddons;
+			sourceTree = "<group>";
+		};
+		E1551007225C5B0E003B554B /* SpaceRows */ = {
+			isa = PBXGroup;
+			children = (
+				E155100A225C5B1F003B554B /* SpaceCellRow.swift */,
+				E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */,
+				E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */,
+			);
+			path = SpaceRows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1550FE5225C0963003B554B /* LaunchScreen.storyboard in Resources */,
-				E1551004225C564F003B554B /* GoogleService-Info.plist in Resources */,
+				E1551006225C59FB003B554B /* GoogleService-Info.plist in Resources */,
 				E1550FE2225C0963003B554B /* Assets.xcassets in Resources */,
 				E1550FE0225C0962003B554B /* Main.storyboard in Resources */,
+				E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +308,8 @@
 			files = (
 				E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */,
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
+				E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */,
+				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
@@ -450,7 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSPlayground.EWS.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iOSPlayground.EWS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -470,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iOSPlayground.EWS.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iOSPlayground.EWS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
