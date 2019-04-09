@@ -24,12 +24,16 @@ class LoginVC: FormViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
     }
+    
+    func setupForm() {
+        
+    }
 
     @IBAction func resetPass(_ sender: Any) {
-        let msg = "Forgot your password? Please enter the associated email."
-        promptInput(title: "Reset password", msg: msg, placeHolder: "Email") { (input) in
-            guard !input.isEmpty else { return }
-            Auth.auth().sendPasswordReset(withEmail: input)
+        let msg = "Please enter the associated email."
+        promptInput(title: "Forgot your password?", msg: msg, placeHolder: "Email") { (email) in
+            guard !email.isEmpty else { return }
+            Auth.auth().sendPasswordReset(withEmail: email)
         }
     }
     
