@@ -462,7 +462,7 @@ open class FloatFieldRow<Cell: CellType>: FormatteableRow<Cell> where Cell: Base
         cell.backgroundColor = UIColor.clear
         cell.layer.cornerRadius = 5.0
         cell.layer.borderColor = UIColor.white.cgColor
-        cell.layer.borderWidth = 1
+        cell.layer.borderWidth = 2
         cell.textField.textColor = UIColor.white
     }
 }
