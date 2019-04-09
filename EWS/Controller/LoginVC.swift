@@ -21,7 +21,7 @@ class LoginVC: FormViewController {
     }
     
     func setupUI() {
-        title = "SIGN IN"
+        title = "LOGIN"
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
@@ -35,7 +35,12 @@ class LoginVC: FormViewController {
         // Form config
         let cellHeight: CGFloat = 50
         let cellGap: CGFloat = 15
+        let spacer = SpaceCellRow {
+            $0.cell.spaceHeight = cellGap
+            $0.cell.backgroundColor = .clear
+        }
         
+        // Create form
         form
         +++ Section()
         // Email field
@@ -52,10 +57,7 @@ class LoginVC: FormViewController {
             self.email = cell.textField.text
         }
             
-        <<< SpaceCellRow() {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
+        <<< spacer
             
         // Password field
         <<< PasswordFloatLabelRow {

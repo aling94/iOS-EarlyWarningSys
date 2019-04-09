@@ -15,6 +15,7 @@ class SignupVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "JOIN"
         setupForm()
     }
     
@@ -26,7 +27,12 @@ class SignupVC: FormViewController {
         // Form config
         let cellHeight: CGFloat = 50
         let cellGap: CGFloat = 15
+        let spacer = SpaceCellRow {
+            $0.cell.spaceHeight = cellGap
+            $0.cell.backgroundColor = .clear
+        }
         
+        // Create form
         form
         +++ Section()
         // Email field
@@ -43,10 +49,7 @@ class SignupVC: FormViewController {
             self.email = cell.textField.text
         }
         
-        <<< SpaceCellRow() {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
+        <<< spacer
         
         // Password field
         <<< PasswordFloatLabelRow {
@@ -57,10 +60,7 @@ class SignupVC: FormViewController {
                 self.passw = cell.textField.text
         }
         
-        <<< SpaceCellRow() {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
+        <<< spacer
         
         // Confirm Password field
         <<< PasswordFloatLabelRow {
