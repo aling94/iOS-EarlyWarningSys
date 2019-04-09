@@ -35,7 +35,8 @@ extension UIViewController {
     
     var alertError: ErrorHandler {
         let handler: ErrorHandler = { error in
-            if let error = error {
+            guard let error = error else  { return }
+            DispatchQueue.main.async {
                 self.showAlert(title: "Oops!", msg: error.localizedDescription)
             }
         }
