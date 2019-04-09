@@ -141,7 +141,12 @@ class SignupVC: FormViewController {
             cell.detailTextLabel?.text = ""
             self.dob = cell.textLabel?.text
         }
-            
+        
+//        <<< spacer
+//        
+//        <<< StepperRow {
+//            $0.title = "MALE"
+//        }
         
     }
     
