@@ -11,6 +11,7 @@
 		E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1354F44225D083C00ED365E /* GoogleService-Info.plist */; };
 		E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F46225D0D9800ED365E /* CustomValidations.swift */; };
 		E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F49225D2DB700ED365E /* FirebaseManager.swift */; };
+		E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F4C225D339800ED365E /* ClosureAliases.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
 		E1550FE0225C0962003B554B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1550FDE225C0962003B554B /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		E1354F44225D083C00ED365E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1354F46225D0D9800ED365E /* CustomValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValidations.swift; sourceTree = "<group>"; };
 		E1354F49225D2DB700ED365E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		E1354F4C225D339800ED365E /* ClosureAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureAliases.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1550FDC225C0962003B554B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		E1354F4B225D335C00ED365E /* Typealiases */ = {
+			isa = PBXGroup;
+			children = (
+				E1354F4C225D339800ED365E /* ClosureAliases.swift */,
+			);
+			path = Typealiases;
+			sourceTree = "<group>";
+		};
 		E1550FCE225C0962003B554B = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 				E1550FDA225C0962003B554B /* AppDelegate.swift */,
 				E1550FED225C0AF9003B554B /* Storyboard */,
 				E1550FEC225C0AED003B554B /* Controller */,
+				E1354F4B225D335C00ED365E /* Typealiases */,
 				E1550FEE225C178F003B554B /* Extensions */,
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1354F48225D2D5B00ED365E /* Firebase */,
@@ -326,6 +337,7 @@
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
 				E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */,
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
+				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,

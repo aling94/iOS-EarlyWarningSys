@@ -32,6 +32,15 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    var alertError: ErrorHandler {
+        let handler: ErrorHandler = { error in
+            if let error = error {
+                self.showAlert(title: "Oops!", msg: error.localizedDescription)
+            }
+        }
+        return handler
+    }
 }
 
 extension FormViewController {

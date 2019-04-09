@@ -7,7 +7,6 @@
 //
 
 import Firebase
-
 import FirebaseAuth
 import FirebaseDatabase
 
@@ -17,14 +16,22 @@ class FirebaseManager {
     
     let ref = Database.database().reference()
     
-    func registerUser(email: String, passw: String, info: [String: String], completion: @escaping (AuthDataResult?, Error?) -> Void) {
+    func loginUser(email: String, passw: String, errorHandler: ErrorHandler? = nil) {
+        Auth.auth().signIn(withEmail: email, password: passw) { (result, error) in
+            if let error = error {
+                errorHandler?(error)
+            }
+        }
+    }
+    
+    func registerUser(email: String, passw: String, info: [String: String], errorHandler: ErrorHandler? = nil) {
         Auth.auth().createUser(withEmail: email, password: passw) { (result, error) in
             if error == nil {
                 guard let user = result?.user else { return }
                 self.updateUserInfo(uid: user.uid, info: info)
-                completion(result, nil)
+                errorHandler?(nil)
             } else {
-                completion(nil, error)
+                errorHandler?(error)
             }
         }
     }
@@ -33,8 +40,10 @@ class FirebaseManager {
         self.ref.child("User").child(uid).setValue(info)
     }
     
-    func resetPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email, completion: nil)
+    func resetPassword(email: String, errorHandler: ErrorHandler? = nil) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            errorHandler?(error)
+        }
     }
 }
 
