@@ -12,6 +12,7 @@ import Eureka
 class SignupVC: FormViewController {
 
     var email, passw, cpassw: String?
+    var phone, dob: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,8 @@ class SignupVC: FormViewController {
         tableView.tableFooterView = UIView()
         
         // Form config
-        let cellHeight: CGFloat = 50
-        let cellGap: CGFloat = 15
+        let cellHeight: CGFloat = 48
+        let cellGap: CGFloat = 10
         let spacer = SpaceCellRow {
             $0.cell.spaceHeight = cellGap
             $0.cell.backgroundColor = .clear
@@ -50,7 +51,24 @@ class SignupVC: FormViewController {
         }
         
         <<< spacer
+        <<< PhoneFloatLabelRow() {
+            $0.title = "PHONE NO."
+            $0.cell.height = { cellHeight }
+        }
+        .cellUpdate { cell, row in
+            self.phone = cell.textField.text
+        }
         
+        <<< spacer
+        <<< TextFloatLabelRow() {
+            $0.title = "DOB"
+            $0.cell.height = { cellHeight }
+        }
+        .cellUpdate { cell, row in
+            self.dob = cell.textField.text
+        }
+            
+        <<< spacer
         // Password field
         <<< PasswordFloatLabelRow {
             $0.title = "PASSWORD"
@@ -61,7 +79,6 @@ class SignupVC: FormViewController {
         }
         
         <<< spacer
-        
         // Confirm Password field
         <<< PasswordFloatLabelRow {
             $0.title = "CONFIRM PASSWORD"
