@@ -13,7 +13,8 @@ target 'EWS' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-
+  pod 'Firebase/Storage'
+  
   # Pods for EWS
 
 end
