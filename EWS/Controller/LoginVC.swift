@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import FirebaseAuth
 
 class LoginVC: FormViewController {
 
@@ -24,6 +25,13 @@ class LoginVC: FormViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
 
-
+    @IBAction func resetPass(_ sender: Any) {
+        let msg = "Forgot your password? Please enter the associated email."
+        promptInput(title: "Reset password", msg: msg, placeHolder: "Email") { (input) in
+            guard !input.isEmpty else { return }
+            Auth.auth().sendPasswordReset(withEmail: input)
+        }
+    }
+    
 }
 
