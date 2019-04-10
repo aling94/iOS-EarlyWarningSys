@@ -10,14 +10,15 @@ import Foundation
 
 struct UserInfo {
     var fname, lname, email, dob, phone, gender : String
-    var uid: String?
+    var uid: String
     
-    init(info: [String: String]) {
+    init(_ uid: String, info: [String: String]) {
         fname = info["fname"]!
         lname = info["lname"]!
         email = info["email"]!
         dob = info["dob"]!
         phone = info["phone"]!
         gender = info["gender"]!
+        self.uid = uid
     }
 }
