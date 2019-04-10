@@ -20,14 +20,17 @@ class FirebaseManager {
     var currentUser: User? {
         return Auth.auth().currentUser
     }
-    
+}
+
+// MARK: - Authentication
+extension FirebaseManager {
     func loginUser(email: String, passw: String, errorHandler: ErrorHandler? = nil) {
         Auth.auth().signIn(withEmail: email, password: passw) { (result, error) in
             errorHandler?(error)
         }
     }
     
-    func registerUser(email: String, passw: String, info: [String: String], completion: AuthHandler? = nil) {
+    func registerUser(email: String, passw: String, info: [String: Any], completion: AuthHandler? = nil) {
         Auth.auth().createUser(withEmail: email, password: passw) { (result, error) in
             if error == nil {
                 guard let user = result?.user else { return }
@@ -39,10 +42,6 @@ class FirebaseManager {
         }
     }
     
-    func updateUserInfo(uid: String, info: [String: String]) {
-        self.ref.child("User").child(uid).setValue(info)
-    }
-    
     func signoutUser() {
         try? Auth.auth().signOut()
     }
@@ -52,20 +51,28 @@ class FirebaseManager {
             errorHandler?(error)
         }
     }
+}
+
+// MARK: - Database
+extension FirebaseManager {
+    func updateUserInfo(uid: String, info: [String: Any]) {
+        self.ref.child("User").child(uid).setValue(info)
+    }
     
     func getUsers(completion: (([UserInfo]) -> Void)? = nil  ) {
         ref.child("User").observe(.value) { (snapshot) in
-            guard let userObj = snapshot.value as? [String: Any] else { return }
-            let users: [UserInfo] = userObj.map { (uid, data) in
+            guard let usersDict = snapshot.value as? [String: Any] else { return }
+            let users: [UserInfo] = usersDict.map { (uid, data) in
                 let info = data as! [String: String]
-                var user = UserInfo(info: info)
-                user.uid = uid
-                return user
+                return UserInfo(uid, info: info)
             }
             completion?(users)
         }
     }
-    
+}
+
+// MARK: - Storage
+extension FirebaseManager {
     func saveUserImage(_ image: UIImage) {
         guard let user = currentUser else { return }
         let imgData = image.jpegData(compressionQuality: 0 )
@@ -92,8 +99,6 @@ class FirebaseManager {
             } else {
                 completion(nil, error)
             }
-            
         }
-        
     }
 }
