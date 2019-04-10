@@ -11,6 +11,18 @@ import Eureka
 
 extension UIViewController {
     
+    func getVC(identifier: String) -> UIViewController? {
+        return storyboard?.instantiateViewController(withIdentifier: identifier)
+    }
+    
+    func goToVC(_ vc: UIViewController) {
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func gotoVC(identifier: String) {
+        goToVC(getVC(identifier: identifier)!)
+    }
+    
     func showAlert(title: String, msg: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -45,8 +57,5 @@ extension UIViewController {
 }
 
 extension FormViewController {
-    var allRowsValid: Bool {
-        return form.rows.reduce(true
-            , { $0 && $1.isValid })
-    }
+    
 }
