@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var clManager: CLLocationManager!
     var currentLocation: CLLocation!
+    var locationName: String?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -62,10 +63,21 @@ extension AppDelegate: CLLocationManagerDelegate {
             manager.startUpdatingLocation()
         }
     }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = locations.first else { return }
+        print("-- Your Location: \(loc) --")
         currentLocation = loc
         manager.stopUpdatingLocation()
+        
+        let gc = CLGeocoder()
+        gc.reverseGeocodeLocation(loc) { (placemarks, error) in
+            guard let place = placemarks?.last?.locality else { return }
+            self.locationName = place
+            print("-- Your Location: \(place) --")
+        }
+        
     }
+    
 }
 
