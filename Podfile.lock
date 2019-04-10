@@ -1,4 +1,8 @@
 PODS:
+  - Alamofire (4.8.1)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Eureka (4.3.1)
@@ -78,9 +82,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ObjectMapper (3.4.2)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - AlamofireObjectMapper (~> 5.2)
   - Crashlytics (~> 3.12.0)
   - Eureka
   - Fabric (~> 1.9.0)
@@ -92,6 +98,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
     - Crashlytics
     - Eureka
     - Fabric
@@ -108,9 +116,12 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - ObjectMapper
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Eureka: 28ea296f06710f6745266b71f17862048941a32d
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -127,8 +138,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 3220ba987971f0d1507ce8245fa42fcb79742f77
+PODFILE CHECKSUM: 7ec5da05f5570de505d3b53ef41d73e787a800f1
 
 COCOAPODS: 1.6.1

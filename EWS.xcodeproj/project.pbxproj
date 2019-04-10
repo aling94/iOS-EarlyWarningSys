@@ -15,6 +15,7 @@
 		E1354F50225D421F00ED365E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F4F225D421F00ED365E /* UserInfo.swift */; };
 		E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F54225D48FF00ED365E /* APIHandler.swift */; };
 		E1354F57225D494600ED365E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F56225D494600ED365E /* Weather.swift */; };
+		E1354F59225D75F400ED365E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F58225D75F400ED365E /* HomeVC.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
 		E1550FE0225C0962003B554B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1550FDE225C0962003B554B /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		E1354F4F225D421F00ED365E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E1354F54225D48FF00ED365E /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		E1354F56225D494600ED365E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		E1354F58225D75F400ED365E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1550FDC225C0962003B554B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				E1550FDC225C0962003B554B /* LoginVC.swift */,
 				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
+				E1354F58225D75F400ED365E /* HomeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
 				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
+				E1354F59225D75F400ED365E /* HomeVC.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1354F50225D421F00ED365E /* UserInfo.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
