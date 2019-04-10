@@ -23,9 +23,7 @@ class FirebaseManager {
     
     func loginUser(email: String, passw: String, errorHandler: ErrorHandler? = nil) {
         Auth.auth().signIn(withEmail: email, password: passw) { (result, error) in
-            if let error = error {
-                errorHandler?(error)
-            }
+            errorHandler?(error)
         }
     }
     

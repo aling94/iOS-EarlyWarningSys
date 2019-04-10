@@ -12,7 +12,7 @@ import FirebaseAuth
 
 class LoginVC: FormViewController {
 
-    var email, passw: String?
+    var email, passw: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +73,21 @@ class LoginVC: FormViewController {
         
     }
 
+    @IBAction func loginBtn(_ sender: Any) {
+        guard form.validate().isEmpty else {
+            showAlert(title: "Oops", msg: "Some fields are invalid.")
+            return
+        }
+        FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
+            if error == nil {
+                DispatchQueue.main.async {
+                    let vc = self.getVC(identifier: "Tabs")
+                    self.goToVC(vc!)
+                }
+            } else { self.alertError(error) }
+        }
+    }
+    
     @IBAction func resetPass(_ sender: Any) {
         let title = "Forgot your password?"
         let msg = "Please enter the associated email."

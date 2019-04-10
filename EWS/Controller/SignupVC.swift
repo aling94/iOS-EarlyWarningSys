@@ -16,7 +16,7 @@ class SignupVC: FormViewController {
     var ref: DatabaseReference!
     
     var email, passw, cpassw: String!
-    var fname, lname, phone, dob: String!
+    var fname, lname, phone, dob, gender: String!
     
     
     override func viewDidLoad() {
@@ -38,6 +38,7 @@ class SignupVC: FormViewController {
         // Table config
         tableView.isScrollEnabled = false
         tableView.tableFooterView = UIView()
+        tableView.separatorColor = .clear
         
         // Form config
         let cellHeight: CGFloat = 48
@@ -51,8 +52,7 @@ class SignupVC: FormViewController {
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
             $0.add(rule: RuleEmail())
-        }
-        .cellUpdate { cell, row in
+        }.cellUpdate { cell, row in
             if !row.isValid {
                 cell.floatLabelTextField.titleTextColour = UIColor.red
             }
@@ -68,9 +68,8 @@ class SignupVC: FormViewController {
             $0.add(rule: RuleRequired())
             $0.add(rule: RuleMinLength(minLength: 6))
             $0.add(rule: RuleMaxLength(maxLength: 30))
-            }
-            .cellUpdate { (cell, row) in
-                self.passw = cell.textField.text
+        }.cellUpdate { (cell, row) in
+            self.passw = cell.textField.text
         }
         
         <<< spacer
@@ -81,17 +80,16 @@ class SignupVC: FormViewController {
             $0.add(rule: RuleRequired())
             $0.add(rule: RuleMinLength(minLength: 6))
             $0.add(rule: RuleMaxLength(maxLength: 30))
-            }
-            .cellUpdate { (cell, row) in
-                self.cpassw = cell.textField.text
+        }.cellUpdate { (cell, row) in
+            self.cpassw = cell.textField.text
         }
         <<< spacer
             
         <<< TextFloatLabelRow() {
             $0.title = "FIRST NAME"
             $0.cell.height = { cellHeight }
-        }
-        .cellUpdate { cell, row in
+            $0.add(rule: RuleRequired())
+        }.cellUpdate { cell, row in
             self.fname = cell.textField.text
         }
         
@@ -100,8 +98,8 @@ class SignupVC: FormViewController {
         <<< TextFloatLabelRow() {
             $0.title = "LAST NAME"
             $0.cell.height = { cellHeight }
-        }
-        .cellUpdate { cell, row in
+            $0.add(rule: RuleRequired())
+        }.cellUpdate { cell, row in
             self.lname = cell.textField.text
         }
             
@@ -110,8 +108,8 @@ class SignupVC: FormViewController {
         <<< PhoneFloatLabelRow() {
             $0.title = "PHONE NO."
             $0.cell.height = { cellHeight }
-        }
-        .cellUpdate { cell, row in
+            $0.add(rule: RuleRequired())
+        }.cellUpdate { cell, row in
             self.phone = cell.textField.text
         }
         
@@ -119,8 +117,8 @@ class SignupVC: FormViewController {
         // DOB field
         <<< DateRow() {
             $0.title = "DATE OF BIRTH"
-        }
-        .cellSetup { cell, row in
+            $0.add(rule: RuleRequired())
+        }.cellSetup { cell, row in
             row.maximumDate = Date()
             cell.height = { cellHeight }
             cell.backgroundColor = .clear
@@ -129,54 +127,78 @@ class SignupVC: FormViewController {
             cell.layer.borderWidth = 2
             cell.layer.masksToBounds = true
             cell.textLabel?.textColor = .white
-            cell.detailTextLabel?.textColor = .white
-            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 18)
-        }
-        .cellUpdate { (cell, row) in
-            
+            cell.detailTextLabel?.isHidden = true
+        }.onChange { row in
+            if let date = row.value {
+                row.cell.textLabel?.text = row.dateFormatter?.string(from: date)
+                self.dob = row.cell.textLabel?.text
+            }
+        }.cellUpdate { (cell, row) in
             cell.textLabel?.textColor = .white
             if let date = row.value {
                 cell.textLabel?.text = row.dateFormatter?.string(from: date)
+                self.dob = row.cell.textLabel?.text
             }
-            cell.detailTextLabel?.text = ""
-            self.dob = cell.textLabel?.text
         }
         
-//        <<< spacer
-//        
-//        <<< StepperRow {
-//            $0.title = "MALE"
-//        }
-        
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        if allRowsValid { return true }
-        showAlert(title: "Oops", msg: "Some inputs are invalid!")
-        return false
+ 
+        <<< SegmentedRow<String> {
+            $0.title = "GENDER"
+            $0.options = ["MALE", "FEMALE"]
+            $0.value = ($0.options?.first)!
+            gender = $0.value
+            
+            $0.cell.height = { cellHeight }
+            $0.cell.segmentedControl.backgroundColor = .clear
+            $0.cell.layer.masksToBounds = true
+            $0.cell.segmentedControl.tintColor = .white
+            $0.cell.textLabel?.textColor = .white
+            $0.cell.backgroundColor = .clear
+            $0.add(rule: RuleRequired())
+        }.cellUpdate { cell, row in
+            cell.textLabel?.textColor = .white
+        }.onChange { row in
+            self.gender = row.value
+        }
     }
     
     @IBAction func submitBtn(_ sender: Any) {
-
+        let valid = form.validate().isEmpty && (passw == cpassw)
+        if valid { registerToDB() }
+        else {
+            showAlert(title: "Ooops", msg: "You've got some errors.")
+        }
     }
     
     var fieldsAsDict: [String: String] {
         return [
             "email": email,
+            "fname": fname,
+            "lname": lname,
             "phone": phone,
             "dob": dob,
+            "gender": gender
         ]
     }
     
     func registerToDB() {
         FirebaseManager.shared.registerUser(email: email, passw: passw, info: fieldsAsDict) { (result, error) in
-            guard let user = result?.user else {
+            if let _ = result?.user {
+                self.loginUser()
+            } else {
                 self.alertError(error)
-                return
             }
-            
-            
+        }
+    }
+    
+    func loginUser() {
+        FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
+            if error == nil {
+                DispatchQueue.main.async {
+                    let vc = self.getVC(identifier: "Tabs")
+                    self.goToVC(vc!)
+                }
+            } else { self.alertError(error) }
         }
     }
 }
