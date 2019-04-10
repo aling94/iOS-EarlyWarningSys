@@ -60,10 +60,10 @@ extension FirebaseManager {
     }
     
     func getUsers(completion: (([UserInfo]) -> Void)? = nil  ) {
-        ref.child("User").observe(.value) { (snapshot) in
+        ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else { return }
             let users: [UserInfo] = usersDict.map { (uid, data) in
-                let info = data as! [String: String]
+                let info = data as! [String: Any]
                 return UserInfo(uid, info: info)
             }
             completion?(users)
