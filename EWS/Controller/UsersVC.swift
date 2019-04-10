@@ -11,6 +11,7 @@ import UIKit
 class UsersVC: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var users: [UserInfo] = [] {
         didSet {
@@ -22,8 +23,15 @@ class UsersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSeachBar()
         
-        // Do any additional setup after loading the view.
+    }
+    
+    func setupSeachBar() {
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            textfield.backgroundColor = UIColor.white
+        }
     }
     
     func getUsers() {
