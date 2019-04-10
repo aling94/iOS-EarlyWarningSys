@@ -9,7 +9,7 @@
 import ObjectMapper
 import Foundation
 
-class DarkSkyResponse : Mappable {
+class WeatherResponse : Mappable {
     
     var latitude, longitude : Double?
     var currentTemp, high, low : Double?
