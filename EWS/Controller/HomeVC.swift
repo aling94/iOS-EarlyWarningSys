@@ -25,8 +25,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchWeatherData()
-        
-        
+        setupUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +42,10 @@ class HomeVC: UIViewController {
             self.weatherData = data
         }
     }
+    
+    func setupUserData() {
+        emailLabel.text = FirebaseManager.shared.currentUser?.email
+    }
 }
 
 extension HomeVC: UICollectionViewDataSource {
@@ -58,8 +61,9 @@ extension HomeVC: UICollectionViewDataSource {
     
     func setCell(_ cell: WeatherCell, indexPath: IndexPath) {
         let data = (weatherData?.daily?[indexPath.item])!
-        cell.highLabel.text = "H: \(data.high!) F"
-        cell.lowLabel.text = "L: \(data.low!) F"
-        cell.locLabel.text = (UIApplication.shared.delegate as! AppDelegate).locationName
+        cell.icon.image = UIImage(named: data.icon!)
+        cell.highLabel.text = "\(data.high!) °F"
+        cell.lowLabel.text = "\(data.low!) °F"
+        cell.dateLabel.text = data.day
     }
 }

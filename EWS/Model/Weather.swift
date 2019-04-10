@@ -32,7 +32,11 @@ class DarkSkyResponse : Mappable {
     
     var date : String? {
         let time = (currently?.time)!
-        //        return formatDate(time: time, format: "MMMM dd, yyyy")
+        return formatDate(time: time, format: "MMMM dd, yyyy")
+    }
+    
+    var day : String? {
+        let time = (currently?.time)!
         return formatWeekday(time: time)
     }
 }
@@ -73,6 +77,10 @@ class DailyForecast : Mappable {
     var date : String? {
         return formatDate(time: time!, format: "MMMM dd, yyyy")
     }
+    
+    var day : String? {
+        return formatWeekday(time: time!)
+    }
 }
 
 func formatDate(time : UInt64, format : String) -> String? {
@@ -87,6 +95,7 @@ func formatWeekday(time : UInt64) -> String? {
     let formatter = DateFormatter()
     let interval = TimeInterval(exactly: time)!
     let date = Date.init(timeIntervalSince1970: interval)
-    let weekday = formatter.weekdaySymbols[Calendar.current.component(.weekday, from: date)]
+    let dayIndex = Calendar.current.component(.weekday, from: date) - 1
+    let weekday = formatter.weekdaySymbols[dayIndex]
     return weekday.capitalized
 }
