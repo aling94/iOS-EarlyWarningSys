@@ -11,6 +11,8 @@ import Eureka
 import CoreLocation
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
+
 class SignupVC: FormViewController {
 
     var ref: DatabaseReference!
@@ -24,6 +26,11 @@ class SignupVC: FormViewController {
         title = "JOIN"
         ref = Database.database().reference()
         setupForm()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SVProgressHUD.dismiss()
     }
     
     var spacer: SpaceCellRow {
@@ -163,6 +170,12 @@ class SignupVC: FormViewController {
     }
     
     @IBAction func submitBtn(_ sender: Any) {
+        guard app.hasAllowedCoreLocation else {
+            showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
+            app.requestLocation()
+            return
+        }
+        
         let valid = form.validate().isEmpty && (passw == cpassw)
         if valid { registerToDB() }
         else {
@@ -170,22 +183,33 @@ class SignupVC: FormViewController {
         }
     }
     
-    var fieldsAsDict: [String: String] {
+    var fieldsAsDict: [String: Any] {
         return [
-            "email": email,
-            "fname": fname,
-            "lname": lname,
-            "phone": phone,
-            "dob": dob,
-            "gender": gender
+            "email": email!,
+            "fname": fname!,
+            "lname": lname!,
+            "phone": phone!,
+            "dob": dob!,
+            "gender": gender!,
         ]
     }
     
     func registerToDB() {
-        FirebaseManager.shared.registerUser(email: email, passw: passw, info: fieldsAsDict) { (result, error) in
+        guard let coords = app.currentLocation?.coordinate, let locName = app.locationName else {
+            showAlert(title: "Ooops", msg: "Error in retrieving location. Please restart the app.")
+            return
+        }
+        var info = fieldsAsDict
+        info["latitude"] = coords.latitude
+        info["longitude"] = coords.longitude
+        info["location"] = locName
+        
+        SVProgressHUD.show()
+        FirebaseManager.shared.registerUser(email: email, passw: passw, info: info) { (result, error) in
             if let _ = result?.user {
                 self.loginUser()
             } else {
+                SVProgressHUD.dismiss()
                 self.alertError(error)
             }
         }
@@ -198,7 +222,10 @@ class SignupVC: FormViewController {
                     let vc = self.getVC(identifier: "Tabs")
                     self.goToVC(vc!)
                 }
-            } else { self.alertError(error) }
+            } else {
+                SVProgressHUD.dismiss()
+                self.alertError(error)
+            }
         }
     }
 }

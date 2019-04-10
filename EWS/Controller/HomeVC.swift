@@ -20,7 +20,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var lowLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
-    var weatherData: DarkSkyResponse? {
+    var weatherData: WeatherResponse? {
         didSet {
             DispatchQueue.main.async {
                 self.collection.reloadData()
@@ -42,7 +42,7 @@ class HomeVC: UIViewController {
     
     func fetchWeatherData() {
         let app = UIApplication.shared.delegate as! AppDelegate
-        let loc = app.currentLocation.coordinate
+        guard let loc = app.currentLocation?.coordinate else { return }
         
         APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
             guard let data = response else { return }
@@ -54,13 +54,13 @@ class HomeVC: UIViewController {
     }
     
     func setWeatherInfo() {
-        guard let data = weatherData else { return }
+        let data = weatherData!
         weatherIcon.image = UIImage(named: (data.currently?.icon)!)
         dateLabel.text = "\(data.date!)"
         highLabel.text = "\(data.high!) °F"
         lowLabel.text = "\(data.low!) °F"
         let summ = (data.currently?.summary)!
-        summaryLabel.text = "Today:\n\n\(summ)"
+        summaryLabel.text = "Today expect...\n\n\(summ)"
     }
     
     func setupUserData() {
