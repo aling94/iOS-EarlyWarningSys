@@ -18,7 +18,7 @@ class EarthquakeResponse: Mappable {
     }
 }
 
-class Earthquake: Mappable {
+class Earthquake: Mappable, CustomStringConvertible {
     var id, status, place: String?
     var mag: Double?
     var time : UInt64?
@@ -37,5 +37,9 @@ class Earthquake: Mappable {
         lat <- map["geometry.coordinates.0"]
         long <- map["geometry.coordinates.1"]
         depth <- map["geometry.coordinates.2"]
+    }
+    
+    var description: String {
+        return "\(id!) - \(mag!) @ \(place!): (\(lat!), \(long!))"
     }
 }
