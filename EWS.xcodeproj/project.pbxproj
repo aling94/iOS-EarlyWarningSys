@@ -17,6 +17,8 @@
 		E1354F57225D494600ED365E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F56225D494600ED365E /* Weather.swift */; };
 		E1354F59225D75F400ED365E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F58225D75F400ED365E /* HomeVC.swift */; };
 		E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5C225D847500ED365E /* WeatherCell.swift */; };
+		E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5E225DAA3000ED365E /* UsersVC.swift */; };
+		E1354F61225DAE0000ED365E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F60225DAE0000ED365E /* UserCell.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
 		E1550FE0225C0962003B554B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1550FDE225C0962003B554B /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		E1354F56225D494600ED365E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		E1354F58225D75F400ED365E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		E1354F5C225D847500ED365E /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		E1354F5E225DAA3000ED365E /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		E1354F60225DAE0000ED365E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1550FDC225C0962003B554B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				E1354F5C225D847500ED365E /* WeatherCell.swift */,
+				E1354F60225DAE0000ED365E /* UserCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				E1550FDC225C0962003B554B /* LoginVC.swift */,
 				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
 				E1354F58225D75F400ED365E /* HomeVC.swift */,
+				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
 				E1354F57225D494600ED365E /* Weather.swift in Sources */,
 				E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */,
+				E1354F61225DAE0000ED365E /* UserCell.swift in Sources */,
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
 				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
@@ -393,6 +400,7 @@
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
+				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

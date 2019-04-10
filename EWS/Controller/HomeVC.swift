@@ -11,8 +11,13 @@ import UIKit
 class HomeVC: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var imageV: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var highLabel: UILabel!
+    @IBOutlet weak var lowLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     
     var weatherData: DarkSkyResponse? {
         didSet {
@@ -24,6 +29,7 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userImage.cornerRadius = userImage.frame.height / 2
         fetchWeatherData()
         setupUserData()
     }
@@ -40,7 +46,19 @@ class HomeVC: UIViewController {
         APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
             guard let data = response else { return }
             self.weatherData = data
+            DispatchQueue.main.async {
+                self.setWeatherInfo()
+            }
         }
+    }
+    
+    func setWeatherInfo() {
+        guard let data = weatherData else { return }
+        weatherIcon.image = UIImage(named: (data.currently?.icon)!)
+        highLabel.text = "\(data.high!) °F"
+        lowLabel.text = "\(data.low!) °F"
+        let summ = (data.currently?.summary)!
+        summaryLabel.text = "\(data.date!)\n\n\(summ)"
     }
     
     func setupUserData() {

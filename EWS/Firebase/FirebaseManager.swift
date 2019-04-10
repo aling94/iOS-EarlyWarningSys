@@ -53,6 +53,19 @@ class FirebaseManager {
         }
     }
     
+    func getUsers(completion: (([UserInfo]) -> Void)? = nil  ) {
+        ref.child("User").observe(.value) { (snapshot) in
+            guard let userObj = snapshot.value as? [String: Any] else { return }
+            let users: [UserInfo] = userObj.map { (uid, data) in
+                let info = data as! [String: String]
+                var user = UserInfo(info: info)
+                user.uid = uid
+                return user
+            }
+            completion?(users)
+        }
+    }
+    
     func saveUserImage(_ image: UIImage) {
         guard let user = currentUser else { return }
         let imgData = image.jpegData(compressionQuality: 0 )
