@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import FirebaseAuth
+import SVProgressHUD
 
 class LoginVC: FormViewController {
 
@@ -18,6 +19,11 @@ class LoginVC: FormViewController {
         super.viewDidLoad()
         setupUI()
         setupForm()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SVProgressHUD.dismiss()
     }
     
     func setupUI() {
@@ -78,13 +84,17 @@ class LoginVC: FormViewController {
             showAlert(title: "Oops", msg: "Some fields are invalid.")
             return
         }
+        SVProgressHUD.show()
         FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
             if error == nil {
                 DispatchQueue.main.async {
                     let vc = self.getVC(identifier: "Tabs")
                     self.goToVC(vc!)
                 }
-            } else { self.alertError(error) }
+            } else {
+                self.alertError(error)
+                SVProgressHUD.dismiss()
+            }
         }
     }
     
