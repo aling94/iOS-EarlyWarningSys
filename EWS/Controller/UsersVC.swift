@@ -46,6 +46,25 @@ class UsersVC: UIViewController {
             SVProgressHUD.dismiss()
         }
     }
+    
+    func setCell(_ cell: UserCell, indexPath: IndexPath) {
+        let user = userList[indexPath.item]
+        if let image = user.image { cell.userImage.image = image}
+        cell.nameLabel.text = "\(user.fname) \(user.lname)"
+        cell.addFriendBtn.tag = indexPath.item
+        cell.addFriendBtn.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
+    }
+    
+    @objc func addFriend(sender: UIButton) {
+        let user = userList[sender.tag]
+        FirebaseManager.shared.addFriend(user.uid) { error in
+            if let error = error {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
+            } else {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've added \(user.fname) as a friend!", type: .success)
+            }
+        }
+    }
 }
 
 extension UsersVC: UICollectionViewDataSource {
@@ -58,30 +77,10 @@ extension UsersVC: UICollectionViewDataSource {
         setCell(cell, indexPath: indexPath)
         return cell
     }
-    
-    func setCell(_ cell: UserCell, indexPath: IndexPath) {
-        let user = userList[indexPath.item]
-        if let image = user.image { cell.userImage.image = image}
-        cell.nameLabel.text = "\(user.fname) \(user.lname)"
-        cell.addFriendBtn.tag = indexPath.item
-        cell.addFriendBtn.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
-    }
-    
-    @objc func addFriend(sender: UIButton) {
-        let uid = userList[sender.tag].uid
-        FirebaseManager.shared.addFriend(uid) { error in
-            if let error = error {
-                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
-            } else {
-                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've got a new friend!", type: .success)
-            }
-        }
-    }
 }
 
 extension UsersVC: UISearchBarDelegate {
     func setupSeachBar() {
-        searchBar.delegate = self
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = UIColor.black
             textfield.backgroundColor = UIColor.white
