@@ -21,6 +21,8 @@ class FirebaseManager {
     var currentUser: User? {
         return Auth.auth().currentUser
     }
+    
+    var currentUserInfo: UserInfo?
 }
 
 // MARK: - Authentication
@@ -81,11 +83,20 @@ extension FirebaseManager {
     func getUsers(completion: @escaping ([UserInfo]) -> Void) {
         dbRef.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else { return }
-            let users: [UserInfo] = usersDict.map { (uid, data) in
-                let info = data as! [String: Any]
-                return UserInfo(uid, info: info)
+            let dispatchGroup = DispatchGroup()
+            
+            var userList: [UserInfo] = []
+            for (uid, data) in usersDict {
+                dispatchGroup.enter()
+                let user = UserInfo(uid, info: data as! [String: Any])
+                userList.append(user)
+                self.getUserImage(uid) { (image, _) in
+                    user.image = image
+                    dispatchGroup.leave()
+                }
             }
-            completion(users)
+            dispatchGroup.notify(queue: .main) { completion(userList) }
+            
         }
     }
 }
@@ -98,11 +109,14 @@ extension FirebaseManager {
         let metaData = StorageMetadata()
         metaData.contentType = "Image/jpeg"
         let imgName = "UserImage/\(user.uid).jpeg"
-        stRef.child(imgName).putData(imgData!, metadata: metaData)
+        stRef.child(imgName).putData(imgData!, metadata: metaData) { _, error in
+            
+        }
+        
     }
     
-    func getserImage(_ user: User, completion: @escaping (UIImage?, Error?) -> Void) {
-        let imageName = "UserImage/\(user.uid).jpeg"
+    func getUserImage(_ uid: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        let imageName = "UserImage/\(uid).jpeg"
         stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
             if let data = data { completion(UIImage(data: data), nil) }
             else { completion(nil, error)}
