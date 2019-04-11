@@ -15,14 +15,9 @@ class ProfileVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userImage.cornerRadius = userImage.frame.height / 2
+        navigationController?.setNavigationBarHidden(true, animated: false)
         setupTable()
         setupForm()
-        loadUserInfo()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
         loadUserInfo()
     }
 
@@ -132,4 +127,33 @@ class ProfileVC: FormViewController {
         }
     }
 
+    @IBAction func changePic(_ sender: Any) {
+        promptImageUpload()
+    }
 }
+
+// MARK : - ImagePicker
+extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Prompt the user to upload an image
+    func promptImageUpload() {
+        let imgPicker = UIImagePickerController()
+        let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
+        imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
+        imgPicker.delegate = self
+        self.present(imgPicker, animated:true, completion:nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            userImage.setImage(selected, for: .normal)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+
