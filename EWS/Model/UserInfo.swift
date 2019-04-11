@@ -6,13 +6,14 @@
 //  Copyright © 2019 iOSPlayground. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct UserInfo {
+final class UserInfo {
     var fname, lname, email, dob, phone, gender : String
     var latitude, longitude: Double
     var location: String
     var uid: String
+    var image: UIImage?
     
     init(_ uid: String, info: [String: Any]) {
         fname = info["fname"] as! String
