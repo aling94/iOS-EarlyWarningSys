@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = initialView
         }
     }
+    
 }
 
 extension AppDelegate: CLLocationManagerDelegate {

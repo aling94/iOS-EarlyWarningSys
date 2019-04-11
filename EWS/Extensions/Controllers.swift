@@ -60,4 +60,38 @@ extension UIViewController {
         }
         return handler
     }
+    
+    func jumpToHome() {
+        let home = getVC(identifier: "Tabs")
+        app.window?.rootViewController = home
+    }
+    
+    func jumpToLogin() {
+        let vc = storyboard?.instantiateInitialViewController()
+        app.window?.rootViewController = vc
+    }
+}
+
+extension FormViewController {
+    
+    func spacer(gapSize: CGFloat) -> SpaceCellRow {
+        return SpaceCellRow {
+            $0.cell.spaceHeight = gapSize
+            $0.cell.backgroundColor = .clear
+        }
+    }
+    
+    func formToDict(tags: [String]) -> [String : Any] {
+        var info: [String : Any] = [:]
+        for tag in tags {
+            let row = form.rowBy(tag: tag)
+            if let val = row?.baseValue as? String, !val.isEmpty {
+                info[tag] = val
+            }
+            else if let text = row?.baseCell.textLabel?.text {
+                info[tag] = text
+            }
+        }
+        return info
+    }
 }

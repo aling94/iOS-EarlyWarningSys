@@ -82,8 +82,9 @@ class LoginVC: FormViewController {
         FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
             if error == nil {
                 DispatchQueue.main.async {
-                    let vc = self.getVC(identifier: "Tabs")
-                    self.goToVC(vc!)
+                    self.jumpToHome()
+//                    let vc = self.getVC(identifier: "Tabs")
+//                    self.goToVC(vc!)
                 }
             } else {
                 self.alertError(error)

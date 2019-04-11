@@ -709,17 +709,45 @@
                                     <action selector="changePic:" destination="1Qa-gh-kOP" eventType="touchUpInside" id="jzd-hP-3OQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EB5-V5-l58">
+                                <rect key="frame" x="90" y="577" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YpE-S5-2dT"/>
+                                    <constraint firstAttribute="width" constant="50" id="kyw-n1-Eqc"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="saveInfo:" destination="1Qa-gh-kOP" eventType="touchUpInside" id="Mod-O3-PyX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa2-6R-K0r">
+                                <rect key="frame" x="274" y="577" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6JA-ng-b0I"/>
+                                    <constraint firstAttribute="width" constant="50" id="7T0-Yc-Mfz"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="0.150029252" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="signout"/>
+                                <connections>
+                                    <action selector="signOut:" destination="1Qa-gh-kOP" eventType="touchUpInside" id="bhW-Kc-N0r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="W9T-cz-750" firstAttribute="top" secondItem="t3c-lc-NWq" secondAttribute="top" constant="40" id="17Q-d3-KVs"/>
                             <constraint firstItem="0gC-zg-5Py" firstAttribute="leading" secondItem="t3c-lc-NWq" secondAttribute="leading" constant="25" id="2lj-Wz-rCn"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="trailing" secondItem="t3c-lc-NWq" secondAttribute="trailing" id="C2j-Yu-gJX"/>
+                            <constraint firstItem="t3c-lc-NWq" firstAttribute="trailing" secondItem="pa2-6R-K0r" secondAttribute="trailing" constant="90" id="DKE-0a-Vfc"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="leading" secondItem="t3c-lc-NWq" secondAttribute="leading" id="Dio-Iq-TmO"/>
                             <constraint firstItem="W9T-cz-750" firstAttribute="centerX" secondItem="gfo-p5-qcZ" secondAttribute="centerX" id="Hl7-m9-n1C"/>
                             <constraint firstAttribute="bottom" secondItem="Hk1-y1-lfX" secondAttribute="bottom" id="RpB-iB-95V"/>
+                            <constraint firstItem="t3c-lc-NWq" firstAttribute="bottom" secondItem="pa2-6R-K0r" secondAttribute="bottom" constant="60" id="WxN-O6-XEa"/>
                             <constraint firstItem="t3c-lc-NWq" firstAttribute="trailing" secondItem="0gC-zg-5Py" secondAttribute="trailing" constant="25" id="Yj8-Uz-BBH"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="top" secondItem="gfo-p5-qcZ" secondAttribute="top" constant="-1" id="iDO-YU-vvB"/>
+                            <constraint firstItem="t3c-lc-NWq" firstAttribute="bottom" secondItem="EB5-V5-l58" secondAttribute="bottom" constant="60" id="mjH-QK-tYM"/>
+                            <constraint firstItem="EB5-V5-l58" firstAttribute="leading" secondItem="t3c-lc-NWq" secondAttribute="leading" constant="90" id="xd9-4Q-dzJ"/>
                             <constraint firstItem="0gC-zg-5Py" firstAttribute="top" secondItem="W9T-cz-750" secondAttribute="bottom" constant="40" id="xlv-Yu-iw8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t3c-lc-NWq"/>
@@ -782,6 +810,8 @@
         <image name="home" width="25" height="25"/>
         <image name="map" width="25" height="25"/>
         <image name="profile" width="25" height="25"/>
+        <image name="save" width="50" height="50"/>
+        <image name="signout" width="50" height="50"/>
         <image name="users" width="25" height="25"/>
     </resources>
 </document>

@@ -13,6 +13,9 @@ class ProfileVC: FormViewController {
 
     @IBOutlet weak var userImage: UIButton!
     
+    let fields = ["fname", "lname", "phone", "dob", "gender"]
+    var picChanged = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -22,11 +25,7 @@ class ProfileVC: FormViewController {
     }
 
     var spacer: SpaceCellRow {
-        let cellGap: CGFloat = 10
-        return SpaceCellRow {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
+        return spacer(gapSize: 10)
     }
 
     func setupTable() {
@@ -130,6 +129,31 @@ class ProfileVC: FormViewController {
     @IBAction func changePic(_ sender: Any) {
         promptImageUpload()
     }
+    
+    @IBAction func saveInfo(_ sender: Any) {
+        var info: [String : Any] = [:]
+        for tag in fields {
+            let row = form.rowBy(tag: tag)
+            if let val = row?.baseValue as? String, !val.isEmpty {
+                info[tag] = val
+            }
+            else if let text = row?.baseCell.textLabel?.text {
+                info[tag] = text
+            }
+        }
+ 
+        FirebaseManager.shared.updateCurrentUserInfo(info)
+        if picChanged {
+            FirebaseManager.shared.saveUserImage(userImage.currentImage!)
+            picChanged = false
+        }
+        
+    }
+    
+    @IBAction func signOut(_ sender: Any) {
+        FirebaseManager.shared.signoutUser()
+        jumpToLogin()
+    }
 }
 
 // MARK : - ImagePicker
@@ -151,6 +175,7 @@ extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             userImage.setImage(selected, for: .normal)
+            picChanged = true
         }
         dismiss(animated: true, completion: nil)
     }
