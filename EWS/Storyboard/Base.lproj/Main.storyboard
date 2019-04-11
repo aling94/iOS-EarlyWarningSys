@@ -498,12 +498,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZd-Hf-Nvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434.7826086956522" y="1877.4456521739132"/>
+            <point key="canvasLocation" x="996" y="1590"/>
         </scene>
-        <!--Google PlacesVC-->
+        <!--FriendsVC-->
         <scene sceneID="TfT-aL-jr7">
             <objects>
-                <viewController storyboardIdentifier="GooglePlacesVC" id="aQb-g6-sqZ" customClass="GooglePlacesVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendsVC" id="aQb-g6-sqZ" customClass="FriendsVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lCh-9f-rNU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -513,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ie2-JI-Egw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="2592"/>
+            <point key="canvasLocation" x="225" y="2349"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="PZz-fv-ZGt">
@@ -543,7 +543,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoC-fZ-Imo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252.1739130434785" y="2095.9239130434785"/>
+            <point key="canvasLocation" x="1999" y="1796"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nnV-7o-GwP">
@@ -563,7 +563,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDX-rS-laK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528" y="1118"/>
+            <point key="canvasLocation" x="145" y="771"/>
         </scene>
         <!--Users-->
         <scene sceneID="hHb-kf-h8i">
@@ -613,12 +613,21 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td8-ZU-o1S">
-                                                    <rect key="frame" x="140" y="26.666666666666664" width="216" height="21.666666666666664"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td8-ZU-o1S">
+                                                    <rect key="frame" x="140" y="81.666666666666671" width="216" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-9h-N3i">
+                                                    <rect key="frame" x="341" y="133" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="1lk-PM-1jB"/>
+                                                        <constraint firstAttribute="width" constant="15" id="qiy-Ik-ZYr"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.80136571229999998" green="1" blue="0.74618580310000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <state key="normal" image="add-friend"/>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="0.28009952910958902" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -626,7 +635,9 @@
                                             <constraint firstItem="QJB-oX-f15" firstAttribute="leading" secondItem="Smn-L7-usO" secondAttribute="leading" constant="15" id="0Al-7N-50r"/>
                                             <constraint firstItem="Td8-ZU-o1S" firstAttribute="leading" secondItem="QJB-oX-f15" secondAttribute="trailing" constant="15" id="Mz0-Cl-kxl"/>
                                             <constraint firstItem="QJB-oX-f15" firstAttribute="centerY" secondItem="Smn-L7-usO" secondAttribute="centerY" id="cWU-ke-lo8"/>
-                                            <constraint firstItem="Td8-ZU-o1S" firstAttribute="top" secondItem="QJB-oX-f15" secondAttribute="top" id="udU-B5-bKb"/>
+                                            <constraint firstAttribute="bottom" secondItem="276-9h-N3i" secondAttribute="bottom" constant="15" id="dSp-kw-rd9"/>
+                                            <constraint firstItem="Td8-ZU-o1S" firstAttribute="centerY" secondItem="QJB-oX-f15" secondAttribute="centerY" id="iEY-cV-Ro2"/>
+                                            <constraint firstAttribute="trailing" secondItem="276-9h-N3i" secondAttribute="trailing" constant="15" id="u5q-jb-V2S"/>
                                             <constraint firstAttribute="trailing" secondItem="Td8-ZU-o1S" secondAttribute="trailing" constant="15" id="wxT-pp-5HW"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -635,6 +646,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="addFriendBtn" destination="276-9h-N3i" id="Vts-HN-hHk"/>
                                             <outlet property="nameLabel" destination="Td8-ZU-o1S" id="rL8-Lg-vRb"/>
                                             <outlet property="userImage" destination="QJB-oX-f15" id="e79-eJ-mOa"/>
                                         </connections>
@@ -670,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XR4-qH-vC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2903" y="890"/>
+            <point key="canvasLocation" x="1336" y="770"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="0eZ-sW-aHU">
@@ -696,7 +708,7 @@
                                     <constraint firstAttribute="width" constant="150" id="WD0-UC-hKo"/>
                                     <constraint firstAttribute="height" constant="150" id="cBd-U2-HD4"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="default-user"/>
+                                <state key="normal" image="default-user"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="3"/>
@@ -761,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRF-6j-JqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4498.5507246376819" y="1698.0978260869567"/>
+            <point key="canvasLocation" x="3699" y="1564"/>
         </scene>
         <!--Home-->
         <scene sceneID="XTZ-V1-aNw">
@@ -780,7 +792,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ed5-0e-BD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="527.536231884058" y="1877.4456521739132"/>
+            <point key="canvasLocation" x="145" y="1590"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xYZ-Mw-FAm">
@@ -799,10 +811,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rq-pX-J0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3589.8550724637685" y="1697.2826086956522"/>
+            <point key="canvasLocation" x="2852" y="1564"/>
         </scene>
     </scenes>
     <resources>
+        <image name="add-friend" width="25" height="25"/>
         <image name="bg2" width="675" height="1200"/>
         <image name="bg3" width="320" height="568"/>
         <image name="default-user" width="256" height="256"/>

@@ -37,6 +37,7 @@
 		E1D971F5225E507F0052AD32 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F4225E507F0052AD32 /* Earthquake.swift */; };
 		E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */; };
 		E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971FA225E81A70052AD32 /* ProfileVC.swift */; };
+		E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C2225FD5F30076853F /* FriendsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		E1D971F4225E507F0052AD32 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQMapVC.swift; sourceTree = "<group>"; };
 		E1D971FA225E81A70052AD32 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		E1DAC5C2225FD5F30076853F /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				E1354F5A225D83DE00ED365E /* Custom Cells */,
 				E1550FDC225C0962003B554B /* LoginVC.swift */,
 				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
+				E1DAC5C2225FD5F30076853F /* FriendsVC.swift */,
 				E1354F58225D75F400ED365E /* HomeVC.swift */,
 				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
 				E1D971FA225E81A70052AD32 /* ProfileVC.swift */,
@@ -345,6 +348,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -359,6 +363,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -464,6 +469,7 @@
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
+				E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
