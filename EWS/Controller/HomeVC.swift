@@ -33,13 +33,13 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         makeNavBarClear()
         navigationController?.navigationBar.tintColor = .white
-        fetchWeatherData()
-        setupUserData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        setupUserData()
         if weatherData == nil {
             fetchWeatherData()
         }
@@ -68,7 +68,14 @@ class HomeVC: UIViewController {
     }
     
     func setupUserData() {
-        emailLabel.text = FirebaseManager.shared.currentUser?.email
+        guard let currentUser = FirebaseManager.shared.currentUser else { return }
+        emailLabel.text = currentUser.email
+        FirebaseManager.shared.getUserImage(currentUser.uid) { (image, _) in
+            DispatchQueue.main.async {
+                self.userImage.image = image
+            }
+        }
+        
     }
     
     
