@@ -30,7 +30,8 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userImage.cornerRadius = userImage.frame.height / 2
+        makeNavBarClear()
+        navigationController?.navigationBar.tintColor = .white
         fetchWeatherData()
         setupUserData()
     }

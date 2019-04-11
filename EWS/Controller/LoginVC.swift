@@ -17,20 +17,14 @@ class LoginVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        title = "LOGIN"
+        makeNavBarClear()
         setupForm()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.dismiss()
-    }
-    
-    func setupUI() {
-        title = "LOGIN"
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
     }
     
     func setupForm() {
