@@ -15,7 +15,8 @@ class FirebaseManager {
     static let shared = FirebaseManager()
     private init() {}
     
-    let ref = Database.database().reference()
+    let dbRef = Database.database().reference()
+    let stRef = Storage.storage().reference()
     
     var currentUser: User? {
         return Auth.auth().currentUser
@@ -56,11 +57,16 @@ extension FirebaseManager {
 // MARK: - Database
 extension FirebaseManager {
     func updateUserInfo(uid: String, info: [String: Any]) {
-        self.ref.child("User").child(uid).setValue(info)
+        self.dbRef.child("User").child(uid).updateChildValues(info)
+    }
+    
+    func updateCurrentUserInfo(_ info: [String: Any]) {
+        guard let uid = currentUser?.uid else { return }
+        self.dbRef.child("User").child(uid).updateChildValues(info)
     }
     
     func getUserInfo(_ user: User, completion: @escaping (UserInfo) -> Void) {
-        ref.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
+        dbRef.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let userObj = snapshot.value as? [String: Any] else { return }
             let userInfo = UserInfo(user.uid, info: userObj)
             completion(userInfo)
@@ -73,7 +79,7 @@ extension FirebaseManager {
     }
     
     func getUsers(completion: @escaping ([UserInfo]) -> Void) {
-        ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
+        dbRef.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else { return }
             let users: [UserInfo] = usersDict.map { (uid, data) in
                 let info = data as! [String: Any]
@@ -92,26 +98,14 @@ extension FirebaseManager {
         let metaData = StorageMetadata()
         metaData.contentType = "Image/jpeg"
         let imgName = "UserImage/\(user.uid).jpeg"
-        var storageRef = Storage.storage().reference()
-        storageRef = storageRef.child(imgName)
-        storageRef.putData(imgData!, metadata: metaData)
+        stRef.child(imgName).putData(imgData!, metadata: metaData)
     }
     
-    func loadUserImage(completion: @escaping (UIImage?, Error?) -> Void) {
-        guard let user = currentUser else {
-            completion(nil, nil)
-            return
-        }
-        let imagename = "UserImage/\(user.uid).jpeg"
-        var storageRef = Storage.storage().reference()
-        storageRef = storageRef.child(imagename)
-        storageRef.getData(maxSize: 300*300) { (data, error) in
-            if let data = data {
-                let img = UIImage(data: data)
-                completion(img, nil)
-            } else {
-                completion(nil, error)
-            }
+    func getserImage(_ user: User, completion: @escaping (UIImage?, Error?) -> Void) {
+        let imageName = "UserImage/\(user.uid).jpeg"
+        stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
+            if let data = data { completion(UIImage(data: data), nil) }
+            else { completion(nil, error)}
         }
     }
 }
