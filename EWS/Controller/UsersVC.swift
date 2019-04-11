@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class UsersVC: UIViewController {
 
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var users: [UserInfo] = [] {
+    var userList: [UserInfo] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.collection.reloadData()
@@ -28,15 +29,22 @@ class UsersVC: UIViewController {
     }
     
     func getUsers() {
+        SVProgressHUD.show()
         FirebaseManager.shared.getUsers { (users) in
-            self.users = users
+            if let users = users { self.userList = users }
+            SVProgressHUD.dismiss()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
 }
 
 extension UsersVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return users.count
+        return userList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -46,7 +54,7 @@ extension UsersVC: UICollectionViewDataSource {
     }
     
     func setCell(_ cell: UserCell, indexPath: IndexPath) {
-        let user = users[indexPath.item]
+        let user = userList[indexPath.item]
         if let image = user.image { cell.userImage.image = image}
         cell.nameLabel.text = "\(user.fname) \(user.lname)"
     }
