@@ -47,6 +47,7 @@ extension UsersVC: UICollectionViewDataSource {
     
     func setCell(_ cell: UserCell, indexPath: IndexPath) {
         let user = users[indexPath.item]
+        if let image = user.image { cell.userImage.image = image}
         cell.nameLabel.text = "\(user.fname) \(user.lname)"
     }
 }
