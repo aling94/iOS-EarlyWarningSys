@@ -67,24 +67,27 @@ extension FirebaseManager {
         self.dbRef.child("User").child(uid).updateChildValues(info)
     }
     
-    func getUserInfo(_ user: User, completion: @escaping (UserInfo) -> Void) {
-        dbRef.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
+    func getUserInfo(_ uid: String, completion: @escaping (UserInfo?) -> Void) {
+        dbRef.child("User").child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let userObj = snapshot.value as? [String: Any] else { return }
-            let userInfo = UserInfo(user.uid, info: userObj)
-            completion(userInfo)
+            let userInfo = UserInfo(uid, info: userObj)
+            self.getUserImage(uid) { (image, _) in
+                userInfo.image = image
+                completion(userInfo)
+            }
         }
     }
     
-    func getCurrentUserInfo(completion: @escaping (UserInfo) -> Void) {
+    func getCurrentUserInfo(completion: @escaping (UserInfo?) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        getUserInfo(user, completion: completion)
+        getUserInfo(user.uid, completion: completion)
     }
     
-    func getUsers(completion: @escaping ([UserInfo]) -> Void) {
+    func getUsers(completion: @escaping ([UserInfo]?) -> Void) {
         dbRef.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else { return }
-            let dispatchGroup = DispatchGroup()
             
+            let dispatchGroup = DispatchGroup()
             var userList: [UserInfo] = []
             for (uid, data) in usersDict {
                 dispatchGroup.enter()
@@ -96,7 +99,42 @@ extension FirebaseManager {
                 }
             }
             dispatchGroup.notify(queue: .main) { completion(userList) }
+        }
+    }
+    
+    func addFriend(_ uid: String, errorHandler: @escaping ErrorHandler) {
+        guard let uid = currentUser?.uid else { return }
+        let info: [String : Any] = [uid : true]
+        self.dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
+            errorHandler(error)
+        }
+    }
+    
+    func removeFriend(_ uid: String, errorHandler: @escaping ErrorHandler) {
+        guard let uid = currentUser?.uid else { return }
+        let info: [String : Any] = [uid : true]
+        self.dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
+            errorHandler(error)
+        }
+        
+    }
+    
+    func getFriends(completion: @escaping ([UserInfo]?) -> Void) {
+        guard let uid = currentUser?.uid else { return }
+        dbRef.child("User").child(uid).child("friends").observeSingleEvent(of: .value) { (snapshot) in
+            guard let friends = snapshot.value as? [String : Any] else { return }
+            let dispatchGroup = DispatchGroup()
+            var friendInfoList: [UserInfo] = []
             
+            for friend in friends {
+                dispatchGroup.enter()
+                self.getUserInfo(friend.key) { userInfo in
+                    friendInfoList.append(userInfo!)
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) { completion(friendInfoList) }
         }
     }
 }
