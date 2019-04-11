@@ -7,24 +7,41 @@
 //
 
 import UIKit
+import SVProgressHUD
+import TWMessageBarManager
 
-class FriendsVC: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class FriendsVC: UsersVC {
+    
+    override func getUsers() {
+        SVProgressHUD.show()
+        FirebaseManager.shared.getFriends { (friends) in
+            if let friends = friends { self.userList = friends }
+            else { self.userList = [] }
+            SVProgressHUD.dismiss()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func setCell(_ cell: UserCell, indexPath: IndexPath) {
+        let user = userList[indexPath.item]
+        if let image = user.image { cell.userImage.image = image}
+        cell.nameLabel.text = "\(user.fname) \(user.lname)"
+        cell.deleteFriendBtn.tag = indexPath.item
+        cell.deleteFriendBtn.addTarget(self, action: #selector(deleteFriend), for: .touchUpInside)
     }
-    */
-
+    
+    @objc func deleteFriend(sender: UIButton) {
+        let user = userList[sender.tag].uid
+        FirebaseManager.shared.removeFriend(user) { (error) in
+            if let error = error {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
+            } else {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've lost a friend!", type: .success)
+                DispatchQueue.main.async {
+                    self.getUsers()
+                }
+            }
+        }
+    }
+    
+    
 }
