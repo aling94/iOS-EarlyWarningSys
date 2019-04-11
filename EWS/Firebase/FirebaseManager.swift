@@ -59,14 +59,27 @@ extension FirebaseManager {
         self.ref.child("User").child(uid).setValue(info)
     }
     
-    func getUsers(completion: (([UserInfo]) -> Void)? = nil  ) {
+    func getUserInfo(_ user: User, completion: @escaping (UserInfo) -> Void) {
+        ref.child("User").child(user.uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let userObj = snapshot.value as? [String: Any] else { return }
+            let userInfo = UserInfo(user.uid, info: userObj)
+            completion(userInfo)
+        }
+    }
+    
+    func getCurrentUserInfo(completion: @escaping (UserInfo) -> Void) {
+        guard let user = Auth.auth().currentUser else { return }
+        getUserInfo(user, completion: completion)
+    }
+    
+    func getUsers(completion: @escaping ([UserInfo]) -> Void) {
         ref.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else { return }
             let users: [UserInfo] = usersDict.map { (uid, data) in
                 let info = data as! [String: Any]
                 return UserInfo(uid, info: info)
             }
-            completion?(users)
+            completion(users)
         }
     }
 }
