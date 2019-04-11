@@ -11,6 +11,12 @@ import Eureka
 
 extension UIViewController {
     
+    func makeNavBarClear() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+    }
+    
     func getVC(identifier: String) -> UIViewController? {
         return storyboard?.instantiateViewController(withIdentifier: identifier)
     }
@@ -54,8 +60,4 @@ extension UIViewController {
         }
         return handler
     }
-}
-
-extension FormViewController {
-    
 }
