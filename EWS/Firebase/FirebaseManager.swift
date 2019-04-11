@@ -85,7 +85,10 @@ extension FirebaseManager {
     
     func getUsers(completion: @escaping ([UserInfo]?) -> Void) {
         dbRef.child("User").observeSingleEvent(of: .value) { (snapshot) in
-            guard let usersDict = snapshot.value as? [String: Any] else { return }
+            guard let usersDict = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
             
             let dispatchGroup = DispatchGroup()
             var userList: [UserInfo] = []
@@ -102,27 +105,33 @@ extension FirebaseManager {
         }
     }
     
-    func addFriend(_ uid: String, errorHandler: @escaping ErrorHandler) {
+    func addFriend(_ friendID: String, errorHandler: @escaping ErrorHandler) {
         guard let uid = currentUser?.uid else { return }
-        let info: [String : Any] = [uid : true]
+        let info: [String : Any] = [friendID : true]
         self.dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
             errorHandler(error)
         }
     }
     
-    func removeFriend(_ uid: String, errorHandler: @escaping ErrorHandler) {
+    func removeFriend(_ friendID: String, errorHandler: @escaping ErrorHandler) {
         guard let uid = currentUser?.uid else { return }
-        let info: [String : Any] = [uid : true]
-        self.dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
+        self.dbRef.child("User").child(uid).child("friends").child(friendID).removeValue() { error, _ in
             errorHandler(error)
         }
         
     }
     
     func getFriends(completion: @escaping ([UserInfo]?) -> Void) {
-        guard let uid = currentUser?.uid else { return }
+        guard let uid = currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
         dbRef.child("User").child(uid).child("friends").observeSingleEvent(of: .value) { (snapshot) in
-            guard let friends = snapshot.value as? [String : Any] else { return }
+            guard let friends = snapshot.value as? [String : Any] else {
+                completion(nil)
+                return
+            }
             let dispatchGroup = DispatchGroup()
             var friendInfoList: [UserInfo] = []
             
