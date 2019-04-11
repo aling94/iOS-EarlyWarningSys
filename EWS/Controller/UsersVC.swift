@@ -24,15 +24,11 @@ class UsersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSeachBar()
+        getUsers()
         
     }
     
-    func setupSeachBar() {
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.black
-            textfield.backgroundColor = UIColor.white
-        }
-    }
+    
     
     func getUsers() {
         FirebaseManager.shared.getUsers { (users) in
@@ -47,7 +43,29 @@ extension UsersVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+        setCell(cell, indexPath: indexPath)
+        return cell
     }
+    
+    func setCell(_ cell: UserCell, indexPath: IndexPath) {
+        let user = users[indexPath.item]
+        cell.nameLabel.text = "\(user.fname) \(user.lname)"
+    }
+}
+
+extension UsersVC: UISearchBarDelegate {
+    func setupSeachBar() {
+        searchBar.delegate = self
+        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = UIColor.black
+            textfield.backgroundColor = UIColor.white
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     
 }
