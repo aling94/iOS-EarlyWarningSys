@@ -38,10 +38,12 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        if weatherData == nil {
+            fetchWeatherData()
+        }
     }
     
     func fetchWeatherData() {
-        let app = UIApplication.shared.delegate as! AppDelegate
         guard let loc = app.currentLocation?.coordinate else { return }
         
         APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
