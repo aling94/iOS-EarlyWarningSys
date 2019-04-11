@@ -31,20 +31,27 @@ class EQMapVC: UIViewController {
     
     func setupGMsp() {
         gmap.mapType = .hybrid
+        guard let myLoc = app.currentLocation?.coordinate else { return }
+        let coord = CLLocationCoordinate2D(latitude: myLoc.latitude, longitude: myLoc.longitude)
+        addMaker(coord, title: "Me")
+        gmap.camera = GMSCameraPosition(target: coord, zoom: gmap.minZoom)
     }
     
     func displayEarthQuakes(_ earthquakes: [Earthquake]) {
         let icon = UIImage.animatedMarker
         
-        let markers: [GMSMarker] = earthquakes.map { eq in
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: eq.lat!, longitude: eq.long!)
-            marker.title = eq.place!
-            marker.icon = icon
-            marker.map = gmap
-            return marker
+        for eq in earthquakes {
+            let coord = CLLocationCoordinate2D(latitude: eq.lat!, longitude: eq.long!)
+            addMaker(coord, title: eq.place!, icon: icon)
         }
-        gmap.camera = GMSCameraPosition(target: markers[0].position, zoom: 5)
+    }
+    
+    func addMaker(_ coords: CLLocationCoordinate2D, title: String = "", icon: UIImage? = nil) {
+        let marker = GMSMarker()
+        marker.position = coords
+        marker.title = title
+        if let icon = icon { marker.icon = icon }
+        marker.map = gmap
     }
 
 }
