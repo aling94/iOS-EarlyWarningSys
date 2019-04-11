@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey(GoogleAPIKey)
-        GMSPlacesClient.provideAPIKey(GoogleAPIKey)
+        GMSServices.provideAPIKey(GoogleAPIKeys.maps)
+        GMSPlacesClient.provideAPIKey(GoogleAPIKeys.places)
         setupCoreLocation()
         requestLocation()
         FirebaseApp.configure()
