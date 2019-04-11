@@ -21,6 +21,11 @@ class ProfileVC: FormViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupTable()
         setupForm()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadUserInfo()
     }
 
@@ -112,6 +117,7 @@ class ProfileVC: FormViewController {
     
     func loadUserInfo() {
         FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
+            guard let userInfo = userInfo else { return }
             let form = self.form
             (form.rowBy(tag: "fname") as! TextFloatLabelRow).value = userInfo.fname
             (form.rowBy(tag: "lname") as! TextFloatLabelRow).value = userInfo.lname
@@ -121,6 +127,7 @@ class ProfileVC: FormViewController {
             dateRow.value = dateRow.dateFormatter?.date(from: userInfo.dob)
             
             DispatchQueue.main.async {
+                self.userImage.setImage(userInfo.image, for: .normal)
                 form.rows.forEach( {$0.reload()} )
             }
         }
