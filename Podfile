@@ -7,6 +7,7 @@ target 'EWS' do
 
   pod 'Eureka'
   pod 'SVProgressHUD', '~> 2.2'
+  pod 'TWMessageBarManager', '~> 1.8'
   pod 'AlamofireObjectMapper', '~> 5.2'
   
   pod 'GoogleMaps'
