@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w92-Je-aqJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ky-QD-L0Y">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -503,13 +503,28 @@
                     <view key="view" contentMode="scaleToFill" id="7aM-Pw-9YS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-S3-V09" userLabel="MapView" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zeD-S3-V09" firstAttribute="leading" secondItem="f3S-n2-nLJ" secondAttribute="leading" id="BoN-42-SIq"/>
+                            <constraint firstItem="zeD-S3-V09" firstAttribute="bottom" secondItem="f3S-n2-nLJ" secondAttribute="bottom" id="GEP-t2-f4x"/>
+                            <constraint firstItem="zeD-S3-V09" firstAttribute="top" secondItem="7aM-Pw-9YS" secondAttribute="top" id="Wg7-hB-EhK"/>
+                            <constraint firstItem="zeD-S3-V09" firstAttribute="trailing" secondItem="f3S-n2-nLJ" secondAttribute="trailing" id="wsr-Ki-cen"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="f3S-n2-nLJ"/>
                     </view>
+                    <connections>
+                        <outlet property="gmap" destination="zeD-S3-V09" id="FE3-ee-EuN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoC-fZ-Imo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589" y="1200"/>
+            <point key="canvasLocation" x="588.40579710144937" y="1200"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nnV-7o-GwP">
@@ -650,28 +665,47 @@
                                 <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0gC-zg-5Py">
-                                <rect key="frame" x="25" y="133" width="364" height="470"/>
+                                <rect key="frame" x="25" y="294" width="364" height="280"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="470" id="S2b-dI-zVq"/>
+                                    <constraint firstAttribute="height" constant="280" id="S2b-dI-zVq"/>
                                 </constraints>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9T-cz-750">
+                                <rect key="frame" x="132" y="104" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WD0-UC-hKo"/>
+                                    <constraint firstAttribute="height" constant="150" id="cBd-U2-HD4"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="default-user"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="W9T-cz-750" firstAttribute="top" secondItem="t3c-lc-NWq" secondAttribute="top" constant="40" id="17Q-d3-KVs"/>
                             <constraint firstItem="0gC-zg-5Py" firstAttribute="leading" secondItem="t3c-lc-NWq" secondAttribute="leading" constant="25" id="2lj-Wz-rCn"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="trailing" secondItem="t3c-lc-NWq" secondAttribute="trailing" id="C2j-Yu-gJX"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="leading" secondItem="t3c-lc-NWq" secondAttribute="leading" id="Dio-Iq-TmO"/>
+                            <constraint firstItem="W9T-cz-750" firstAttribute="centerX" secondItem="gfo-p5-qcZ" secondAttribute="centerX" id="Hl7-m9-n1C"/>
                             <constraint firstAttribute="bottom" secondItem="Hk1-y1-lfX" secondAttribute="bottom" id="RpB-iB-95V"/>
                             <constraint firstItem="t3c-lc-NWq" firstAttribute="trailing" secondItem="0gC-zg-5Py" secondAttribute="trailing" constant="25" id="Yj8-Uz-BBH"/>
                             <constraint firstItem="Hk1-y1-lfX" firstAttribute="top" secondItem="gfo-p5-qcZ" secondAttribute="top" constant="-1" id="iDO-YU-vvB"/>
-                            <constraint firstItem="0gC-zg-5Py" firstAttribute="centerY" secondItem="gfo-p5-qcZ" secondAttribute="centerY" id="zNK-Cz-9QK"/>
+                            <constraint firstItem="0gC-zg-5Py" firstAttribute="top" secondItem="W9T-cz-750" secondAttribute="bottom" constant="40" id="xlv-Yu-iw8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t3c-lc-NWq"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="47N-ha-2nj"/>
                     <connections>
                         <outlet property="tableView" destination="0gC-zg-5Py" id="f4g-OL-46G"/>
+                        <outlet property="userImage" destination="W9T-cz-750" id="Jh4-yn-SnY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRF-6j-JqA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,7 @@
 		E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5C225D847500ED365E /* WeatherCell.swift */; };
 		E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5E225DAA3000ED365E /* UsersVC.swift */; };
 		E1354F61225DAE0000ED365E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F60225DAE0000ED365E /* UserCell.swift */; };
+		E1518094225ED41300EC040F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518093225ED41300EC040F /* Keys.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
 		E1550FE0225C0962003B554B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1550FDE225C0962003B554B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155100A225C5B1F003B554B /* SpaceCellRow.swift */; };
 		E1D971F5225E507F0052AD32 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F4225E507F0052AD32 /* Earthquake.swift */; };
 		E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */; };
+		E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971FA225E81A70052AD32 /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,7 @@
 		E1354F5C225D847500ED365E /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		E1354F5E225DAA3000ED365E /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		E1354F60225DAE0000ED365E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E1518093225ED41300EC040F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1550FDC225C0962003B554B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		E155100A225C5B1F003B554B /* SpaceCellRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
 		E1D971F4225E507F0052AD32 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQMapVC.swift; sourceTree = "<group>"; };
+		E1D971FA225E81A70052AD32 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,14 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		E1518092225ED3F600EC040F /* MyKeys */ = {
+			isa = PBXGroup;
+			children = (
+				E1518093225ED41300EC040F /* Keys.swift */,
+			);
+			path = MyKeys;
+			sourceTree = "<group>";
+		};
 		E1550FCE225C0962003B554B = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +184,7 @@
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1354F48225D2D5B00ED365E /* Firebase */,
 				E1354F53225D48EC00ED365E /* API */,
+				E1518092225ED3F600EC040F /* MyKeys */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
 				E1354F44225D083C00ED365E /* GoogleService-Info.plist */,
@@ -187,6 +200,7 @@
 				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
 				E1354F58225D75F400ED365E /* HomeVC.swift */,
 				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
+				E1D971FA225E81A70052AD32 /* ProfileVC.swift */,
 				E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */,
 			);
 			path = Controller;
@@ -244,6 +258,7 @@
 				E1550FD5225C0962003B554B /* Resources */,
 				8156D17CBDCD4F73B2C316D8 /* [CP] Embed Pods Frameworks */,
 				E1551002225C544B003B554B /* ShellScript */,
+				9B549ABBB09178EBD53F7AEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,6 +378,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9B549ABBB09178EBD53F7AEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EWS/Pods-EWS-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EWS/Pods-EWS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E1551002225C544B003B554B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,8 +430,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */,
+				E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */,
 				E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */,
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
+				E1518094225ED41300EC040F /* Keys.swift in Sources */,
 				E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */,
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
 				E1354F57225D494600ED365E /* Weather.swift in Sources */,

@@ -25,10 +25,7 @@ class UsersVC: UIViewController {
         super.viewDidLoad()
         setupSeachBar()
         getUsers()
-        
     }
-    
-    
     
     func getUsers() {
         FirebaseManager.shared.getUsers { (users) in
@@ -66,6 +63,4 @@ extension UsersVC: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
-    
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import CoreLocation
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var locationName: String?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSServices.provideAPIKey(gmapKey)
         setupCoreLocation()
         requestLocation()
-        
         FirebaseApp.configure()
-        FirebaseManager.shared.signoutUser()
+//        checkAlreadyLoggedIn()
+        
         return true
+    }
+    
+    func checkAlreadyLoggedIn() {
+        if let _ = FirebaseManager.shared.currentUser {
+            let initialView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Tabs")
+            window?.rootViewController = initialView
+        }
     }
 }
 
@@ -37,6 +47,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     func setupCoreLocation() {
         clManager = CLLocationManager()
         clManager.delegate = self
+        clManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     func requestLocation() {

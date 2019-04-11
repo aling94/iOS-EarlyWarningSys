@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 
-let weatherURL = "https://api.darksky.net/forecast/1c32a0c10b1e247f0fc1f6ab8300b217/%d,%d"
+let weatherURL = "https://api.darksky.net/forecast/1c32a0c10b1e247f0fc1f6ab8300b217/%f,%f"
 let earthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson"
 
 class APIHandler : NSObject {
