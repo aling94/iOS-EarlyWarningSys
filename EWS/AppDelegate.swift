@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupCoreLocation()
         requestLocation()
         FirebaseApp.configure()
-//        checkAlreadyLoggedIn()
+        checkAlreadyLoggedIn()
         
         return true
     }
