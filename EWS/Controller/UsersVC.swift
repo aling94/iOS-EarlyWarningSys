@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import TWMessageBarManager
 
 class UsersVC: UIViewController {
 
@@ -25,7 +26,17 @@ class UsersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSeachBar()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getUsers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
     
     func getUsers() {
@@ -34,11 +45,6 @@ class UsersVC: UIViewController {
             if let users = users { self.userList = users }
             SVProgressHUD.dismiss()
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
     }
 }
 
@@ -57,6 +63,19 @@ extension UsersVC: UICollectionViewDataSource {
         let user = userList[indexPath.item]
         if let image = user.image { cell.userImage.image = image}
         cell.nameLabel.text = "\(user.fname) \(user.lname)"
+        cell.addFriendBtn.tag = indexPath.item
+        cell.addFriendBtn.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
+    }
+    
+    @objc func addFriend(sender: UIButton) {
+        let uid = userList[sender.tag].uid
+        FirebaseManager.shared.addFriend(uid) { error in
+            if let error = error {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
+            } else {
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've got a new friend!", type: .success)
+            }
+        }
     }
 }
 
