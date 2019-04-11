@@ -179,12 +179,15 @@ extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            userImage.setImage(selected, for: .normal)
-            picChanged = true
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        dismiss(animated: true) {
+            guard let newPic = selected else { return }
+            self.userImage.setImage(newPic, for: .normal)
+            self.picChanged = true
         }
-        dismiss(animated: true, completion: nil)
     }
 }
 
