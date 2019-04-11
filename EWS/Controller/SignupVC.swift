@@ -20,7 +20,6 @@ class SignupVC: FormViewController {
     var email, passw, cpassw: String!
     var fname, lname, phone, dob, gender: String!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "JOIN"
@@ -196,7 +195,7 @@ class SignupVC: FormViewController {
     
     func registerToDB() {
         guard let coords = app.currentLocation?.coordinate, let locName = app.locationName else {
-            showAlert(title: "Ooops", msg: "Error in retrieving location. Please restart the app.")
+            showAlert(title: "Ooops", msg: "Error in retrieving location. Please restart or try again.")
             return
         }
         var info = fieldsAsDict
