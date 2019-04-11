@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import CoreLocation
 import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey(gmapKey)
+        GMSServices.provideAPIKey(GoogleAPIKey)
+        GMSPlacesClient.provideAPIKey(GoogleAPIKey)
         setupCoreLocation()
         requestLocation()
         FirebaseApp.configure()
@@ -67,7 +69,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         guard let loc = manager.location else { return }
         print("-- Your Location: \(loc) --")
         currentLocation = loc
-        manager.stopUpdatingLocation()
+//        manager.stopUpdatingLocation()
         
         let gc = CLGeocoder()
         gc.reverseGeocodeLocation(loc) { (placemarks, error) in

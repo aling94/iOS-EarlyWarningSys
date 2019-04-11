@@ -450,6 +450,9 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="map"/>
+                                <connections>
+                                    <action selector="searchPlaces:" destination="wMO-pz-kkv" eventType="touchUpInside" id="I8V-Hg-gBh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
