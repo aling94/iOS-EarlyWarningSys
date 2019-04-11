@@ -61,11 +61,6 @@ extension UIViewController {
         return handler
     }
     
-    func jumpToHome() {
-        let home = getVC(identifier: "Tabs")
-        app.window?.rootViewController = home
-    }
-    
     func jumpToLogin() {
         let vc = storyboard?.instantiateInitialViewController()
         app.window?.rootViewController = vc
