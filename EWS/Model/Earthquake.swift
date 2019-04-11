@@ -34,8 +34,8 @@ class Earthquake: Mappable, CustomStringConvertible {
         mag <- map["properties.mag"]
         time <- map["properties.time"]
         
-        lat <- map["geometry.coordinates.0"]
-        long <- map["geometry.coordinates.1"]
+        long <- map["geometry.coordinates.0"]
+        lat <- map["geometry.coordinates.1"]
         depth <- map["geometry.coordinates.2"]
     }
     

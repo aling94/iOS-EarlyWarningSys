@@ -34,3 +34,9 @@ extension UIView {
         set { layer.borderColor = newValue.cgColor }
     }
 }
+
+extension UIImage {
+    static var animatedMarker: UIImage? {
+        return UIImage.animatedImageNamed("Anim 2_", duration: 2.5)
+    }
+}
