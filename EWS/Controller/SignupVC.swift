@@ -218,9 +218,8 @@ class SignupVC: FormViewController {
         FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
             if error == nil {
                 DispatchQueue.main.async {
-                    self.jumpToHome()
-//                    let vc = self.getVC(identifier: "Tabs")
-//                    self.goToVC(vc!)
+                    let vc = self.getVC(identifier: "Tabs")
+                    self.present(vc!, animated: true, completion: nil)
                 }
             } else {
                 SVProgressHUD.dismiss()
