@@ -31,12 +31,12 @@ class WeatherResponse : Mappable {
     }
     
     var date : String? {
-        let time = (currently?.time)!
+        guard let time = currently?.time else { return nil }
         return formatDate(time: time, format: "MMMM dd, yyyy")
     }
     
     var day : String? {
-        let time = (currently?.time)!
+        guard let time = currently?.time else { return nil }
         return formatWeekday(time: time)
     }
 }
