@@ -72,7 +72,8 @@ extension UIViewController {
         return handler
     }
     
-    func jumpToLogin() {
+    @IBAction func jumpToLogin() {
+        FirebaseManager.shared.signoutUser()
         let vc = storyboard?.instantiateInitialViewController()
         app.window?.rootViewController = vc
     }
