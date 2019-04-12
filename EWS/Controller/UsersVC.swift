@@ -25,8 +25,6 @@ class UsersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupSeachBar()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,9 +39,10 @@ class UsersVC: UIViewController {
     
     func getUsers() {
         SVProgressHUD.show()
-        FirebaseManager.shared.getUsers { (users) in
+        let uid = FirebaseManager.shared.currentUser?.uid
+        FirebaseManager.shared.getUsers([uid!]) { (users) in
             if let users = users { self.userList = users.sorted(by: <) }
-            SVProgressHUD.dismiss()
+            DispatchQueue.main.async { SVProgressHUD.dismiss() }
         }
     }
     
@@ -61,7 +60,7 @@ class UsersVC: UIViewController {
             if let error = error {
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
             } else {
-                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've added \(user.fname) as a friend!", type: .success)
+                TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've added \(user.name) as a friend!", type: .success)
             }
         }
     }
