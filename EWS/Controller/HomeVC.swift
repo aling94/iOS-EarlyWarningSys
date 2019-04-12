@@ -34,7 +34,6 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeNavBarClear()
-        navigationController?.navigationBar.tintColor = .white
         if let loc = app.currentLocation?.coordinate {
             myLocation = loc
             fetchWeatherData()
@@ -77,12 +76,11 @@ class HomeVC: UIViewController {
     func setupUserData() {
         guard let currentUser = FirebaseManager.shared.currentUser else { return }
         emailLabel.text = currentUser.email
-        FirebaseManager.shared.getUserImage(currentUser.uid) { (image, _) in
+        FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
             DispatchQueue.main.async {
-                if let pic = image { self.userImage.image = pic }
+                if let pic = userInfo?.image { self.userImage.image = pic }
             }
-        }
-        
+        }        
     }
     
     @IBAction func searchPlaces(_ sender: Any) {
