@@ -47,8 +47,9 @@ class FriendsVC: UsersVC {
         getUsers()
     }
     
-    @IBAction private func showMapBtn(_ sender: Any) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! FriendsMapVC
+        vc.friendsList = userList
     }
     
     
