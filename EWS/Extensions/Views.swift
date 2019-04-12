@@ -39,4 +39,17 @@ extension UIImage {
     static var animatedMarker: UIImage? {
         return UIImage.animatedImageNamed("Anim 2_", duration: 2.5)
     }
+    
+    func imageWith(newSize: CGSize) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: newSize)
+        let image = renderer.image { _ in
+            self.draw(in: CGRect.init(origin: CGPoint.zero, size: newSize))
+        }
+        return image
+    }
+    
+    func imageWith(side: Int) -> UIImage {
+        return self.imageWith(newSize: CGSize(width: side, height: side))
+    }
+    
 }
