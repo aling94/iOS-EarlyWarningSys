@@ -214,7 +214,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="DN4-rh-DTy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-95-fr9" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-95-fr9" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
                                 <rect key="frame" x="132" y="60" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="CKT-UD-gwb"/>
@@ -575,7 +575,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="371" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="QJB-oX-f15" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="QJB-oX-f15" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="15" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="SCK-6a-fS5"/>
@@ -717,10 +717,10 @@
                                     <constraint firstAttribute="height" constant="50" id="6JA-ng-b0I"/>
                                     <constraint firstAttribute="width" constant="50" id="7T0-Yc-Mfz"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="0.150029252" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" image="signout"/>
+                                <color key="tintColor" red="0.27116137829999998" green="0.82120479059999996" blue="0.4480163969" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="refresh"/>
                                 <connections>
-                                    <action selector="signOut:" destination="1Qa-gh-kOP" eventType="touchUpInside" id="bhW-Kc-N0r"/>
+                                    <action selector="resetFields:" destination="1Qa-gh-kOP" eventType="touchUpInside" id="CgY-Ps-5eh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -808,6 +808,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="phH-6S-P79" kind="show" id="nes-fM-Fmm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQC-rP-QEf">
                                 <rect key="frame" x="50" y="475.66666666666669" width="314" height="35"/>
@@ -859,10 +862,10 @@
             </objects>
             <point key="canvasLocation" x="2407" y="1564"/>
         </scene>
-        <!--Home-->
+        <!--NavCtrl-Home-->
         <scene sceneID="XTZ-V1-aNw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TQR-1E-8cr" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Home" automaticallyAdjustsScrollViewInsets="NO" id="TQR-1E-8cr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="Srv-k3-bZ5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dox-Ce-T9H">
@@ -944,7 +947,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="371" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="b16-V8-bFU" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="b16-V8-bFU" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="15" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="Y9Q-P4-WBV"/>
@@ -1059,10 +1062,10 @@
             </objects>
             <point key="canvasLocation" x="333" y="2336"/>
         </scene>
-        <!--Friends-->
+        <!--NavCtrl-Friend-->
         <scene sceneID="Exj-bv-ESE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R1S-jV-CIU" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Friend" automaticallyAdjustsScrollViewInsets="NO" id="R1S-jV-CIU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="Ry5-yn-vFh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gis-EO-g3g">
@@ -1078,10 +1081,10 @@
             </objects>
             <point key="canvasLocation" x="333" y="1564"/>
         </scene>
-        <!--Settings-->
+        <!--NavCtrl-Setting-->
         <scene sceneID="jgN-wZ-qB1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C18-qi-UMb" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Setting" automaticallyAdjustsScrollViewInsets="NO" id="C18-qi-UMb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="l8I-xV-lhJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lcn-nd-V2T">
@@ -1096,6 +1099,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKh-Fx-ZuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1546" y="1564"/>
+        </scene>
+        <!--Edit PasswordVC-->
+        <scene sceneID="3Et-k0-rTs">
+            <objects>
+                <viewController storyboardIdentifier="PasswVC" id="phH-6S-P79" customClass="EditPasswordVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0sy-WF-3tW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="432-7r-3M9">
+                                <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cPz-6i-Wdv">
+                                <rect key="frame" x="25" y="228" width="364" height="280"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="yAl-IW-mS7"/>
+                                </constraints>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crK-Wh-DXS">
+                                <rect key="frame" x="90" y="577" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1wz-ZF-ppP"/>
+                                    <constraint firstAttribute="width" constant="50" id="K7E-1a-l8K"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="saveInfo:" destination="phH-6S-P79" eventType="touchUpInside" id="NuH-vX-IAr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sY-Kx-aXn">
+                                <rect key="frame" x="274" y="577" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ita-iu-juV"/>
+                                    <constraint firstAttribute="width" constant="50" id="VCa-rj-VKm"/>
+                                </constraints>
+                                <color key="tintColor" red="0.27116137829999998" green="0.82120479059999996" blue="0.4480163969" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="refresh"/>
+                                <connections>
+                                    <action selector="resetFields:" destination="phH-6S-P79" eventType="touchUpInside" id="AeK-Nd-pA7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w2T-aT-p0e" firstAttribute="bottom" secondItem="6sY-Kx-aXn" secondAttribute="bottom" constant="60" id="3ic-HN-t7v"/>
+                            <constraint firstItem="w2T-aT-p0e" firstAttribute="trailing" secondItem="cPz-6i-Wdv" secondAttribute="trailing" constant="25" id="Fdb-W1-Rsj"/>
+                            <constraint firstItem="crK-Wh-DXS" firstAttribute="leading" secondItem="w2T-aT-p0e" secondAttribute="leading" constant="90" id="G5h-IL-AdQ"/>
+                            <constraint firstAttribute="bottom" secondItem="432-7r-3M9" secondAttribute="bottom" id="JZf-Qu-klX"/>
+                            <constraint firstItem="432-7r-3M9" firstAttribute="trailing" secondItem="w2T-aT-p0e" secondAttribute="trailing" id="QJd-V7-fVL"/>
+                            <constraint firstItem="w2T-aT-p0e" firstAttribute="trailing" secondItem="6sY-Kx-aXn" secondAttribute="trailing" constant="90" id="QTS-W1-Pjh"/>
+                            <constraint firstItem="432-7r-3M9" firstAttribute="leading" secondItem="w2T-aT-p0e" secondAttribute="leading" id="SWk-BN-EV4"/>
+                            <constraint firstItem="w2T-aT-p0e" firstAttribute="bottom" secondItem="crK-Wh-DXS" secondAttribute="bottom" constant="60" id="T2r-1l-oh0"/>
+                            <constraint firstItem="432-7r-3M9" firstAttribute="top" secondItem="0sy-WF-3tW" secondAttribute="top" constant="-1" id="fNP-GB-bJh"/>
+                            <constraint firstItem="cPz-6i-Wdv" firstAttribute="leading" secondItem="w2T-aT-p0e" secondAttribute="leading" constant="25" id="qp1-Vr-rzO"/>
+                            <constraint firstItem="cPz-6i-Wdv" firstAttribute="centerY" secondItem="0sy-WF-3tW" secondAttribute="centerY" id="tRd-tg-xcm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w2T-aT-p0e"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TEg-fd-VEU"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="cPz-6i-Wdv" id="suk-om-77s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILc-2V-1Jh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2777" y="2336"/>
         </scene>
     </scenes>
     <resources>
@@ -1113,7 +1185,6 @@
         <image name="refresh" width="48" height="48"/>
         <image name="save" width="50" height="50"/>
         <image name="settings" width="25" height="25"/>
-        <image name="signout" width="50" height="50"/>
         <image name="users" width="25" height="25"/>
     </resources>
 </document>
