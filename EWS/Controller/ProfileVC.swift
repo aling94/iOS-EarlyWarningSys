@@ -13,11 +13,12 @@ class ProfileVC: FormViewController {
 
     @IBOutlet weak var userImage: UIButton!
     
-    let fields = ["fname", "lname", "phone", "dob", "gender"]
+    var fields: [String] = []
     var picChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeNavBarClear()
         setupTable()
         setupForm()
         loadUserInfo()
@@ -36,6 +37,7 @@ class ProfileVC: FormViewController {
     func setupForm() {
         
         // Form config
+        fields = ["fname", "lname", "phone", "dob", "gender"]
         let cellHeight: CGFloat = 48
         
         // Create form
@@ -126,11 +128,8 @@ class ProfileVC: FormViewController {
         }
     }
 
-    @IBAction func changePic(_ sender: Any) {
-        promptImageUpload()
-    }
-    
-    @IBAction func saveInfo(_ sender: Any) {
+    var fieldsAsDict: [String : Any] {
+        
         var info: [String : Any] = [:]
         for tag in fields {
             let row = form.rowBy(tag: tag)
@@ -141,7 +140,12 @@ class ProfileVC: FormViewController {
                 info[tag] = text
             }
         }
- 
+        return info
+    }
+    
+    @IBAction func saveInfo(_ sender: Any) {
+       
+        let info = fieldsAsDict
         FirebaseManager.shared.updateCurrentUserInfo(info)
         if picChanged {
             FirebaseManager.shared.saveUserImage(userImage.currentImage!)
@@ -150,9 +154,13 @@ class ProfileVC: FormViewController {
         
     }
     
-    @IBAction func signOut(_ sender: Any) {
-        FirebaseManager.shared.signoutUser()
-        jumpToLogin()
+    @IBAction func resetFields(_ sender: Any) {
+        // TODO use stored current user info instead
+        loadUserInfo()
+    }
+    
+    @IBAction private func changePic(_ sender: Any) {
+        promptImageUpload()
     }
 }
 
@@ -178,7 +186,7 @@ extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         dismiss(animated: true) {
             guard let newPic = selected else { return }
-            self.userImage.setImage(newPic, for: .normal)
+            self.userImage?.setImage(newPic, for: .normal)
             self.picChanged = true
         }
     }
