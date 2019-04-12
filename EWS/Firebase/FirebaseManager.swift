@@ -27,6 +27,7 @@ class FirebaseManager {
 
 // MARK: - Authentication
 extension FirebaseManager {
+    
     func loginUser(email: String, passw: String, errorHandler: ErrorHandler? = nil) {
         Auth.auth().signIn(withEmail: email, password: passw) { (result, error) in
             errorHandler?(error)
@@ -60,8 +61,12 @@ extension FirebaseManager {
     }
 }
 
+
 // MARK: - Database
 extension FirebaseManager {
+    
+    // MARK: - Database/User
+    
     func updateUserInfo(uid: String, info: [String: Any]) {
         self.dbRef.child("User").child(uid).updateChildValues(info)
     }
@@ -155,10 +160,50 @@ extension FirebaseManager {
             dispatchGroup.notify(queue: .main) { completion(friendInfoList) }
         }
     }
+    
+    // MARK: - Database/Post
+    
+    func addPost(img : UIImage , postdesc : String? , errorHandler: @escaping ErrorHandler) {
+        let user = Auth.auth().currentUser
+        let postKey = dbRef.child("Post").childByAutoId().key!
+        let info = [
+            "uid" : user?.uid,
+            "description" : postdesc ?? "" ,
+            "timestamp" : "\(Date().timeIntervalSince1970)"
+        ]
+        
+        dbRef.child("Post").child(postKey).setValue(info) { (error, _) in
+            if error != nil { errorHandler(error) }
+            else { self.savePostImg(id: postKey, image: img, errorHandler: errorHandler) }
+        }
+    }
 }
+
 
 // MARK: - Storage
 extension FirebaseManager {
+    
+    func getImage(_ dirName: String, _ imageName: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        let imageName = "\(dirName)/\(imageName).jpeg"
+        stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
+            if let data = data { completion(UIImage(data: data), nil) }
+            else { completion(nil, error)}
+        }
+    }
+    
+    
+    
+    
+    func saveImage(_ image: UIImage, _ dirName: String, _ imageName: String, errorHander: ErrorHandler? = nil) {
+        let imgData = image.jpegData(compressionQuality: 0 )
+        let metaData = StorageMetadata()
+        metaData.contentType = "Image/jpeg"
+        let imageName = "\(dirName)/\(imageName).jpeg"
+        stRef.child(imageName).putData(imgData!, metadata: metaData) { _, error in errorHander?(error) }
+    }
+    
+    // MARK: - Storage/UserImage
+    
     func saveUserImage(_ image: UIImage) {
         guard let user = currentUser else { return }
         let imgData = image.jpegData(compressionQuality: 0 )
@@ -168,15 +213,37 @@ extension FirebaseManager {
         stRef.child(imgName).putData(imgData!, metadata: metaData) { _, error in
             
         }
-        
     }
+
     
     func getUserImage(_ uid: String, completion: @escaping (UIImage?, Error?) -> Void) {
-        let imageName = "UserImage/\(uid).jpeg"
-        stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
-            
-            if let data = data { completion(UIImage(data: data), nil) }
-            else { completion(nil, error)}
+        getImage("UserImage", uid, completion: completion)
+//        let imageName = "UserImage/\(uid).jpeg"
+//        stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
+//            if let data = data { completion(UIImage(data: data), nil) }
+//            else { completion(nil, error)}
+//        }
+    }
+    
+    // MARK: - Storage - Posts
+    
+    func savePostImg(id: String, image: UIImage, errorHandler: @escaping ErrorHandler) {
+        let imgData = image.jpegData(compressionQuality: 0)
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        let imgName = "Post/\(String(describing: id)).jpeg"
+        stRef.child(imgName).putData(imgData!, metadata: metaData) { (data, error) in
+            errorHandler(error)
         }
     }
+    
+    func getPostImg(id : String, completion : @escaping (UIImage?, Error?) -> Void) {
+        getImage("Post", id, completion: completion)
+//        let imageName = "Post/\(String(describing: id)).jpeg"
+//        stRef.child(imageName).getData(maxSize: 1*300*300) { (data, error) in
+//            if let data = data { completion(UIImage(data: data), nil) }
+//            else { completion(nil, error)}
+//        }
+    }
 }
+
