@@ -24,7 +24,7 @@ class FriendsVC: UsersVC {
     override func setCell(_ cell: UserCell, indexPath: IndexPath) {
         let user = userList[indexPath.item]
         if let image = user.image { cell.userImage.image = image}
-        cell.nameLabel.text = "\(user.fname) \(user.lname)"
+        cell.nameLabel.text = user.name
         cell.deleteFriendBtn.tag = indexPath.item
         cell.deleteFriendBtn.addTarget(self, action: #selector(deleteFriend), for: .touchUpInside)
     }
