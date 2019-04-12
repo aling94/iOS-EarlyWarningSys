@@ -80,10 +80,13 @@ extension FirebaseManager {
     
     func getCurrentUserInfo(completion: @escaping (UserInfo?) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
-        getUserInfo(user.uid, completion: completion)
+        getUserInfo(user.uid) { userInfo in
+            self.currentUserInfo = userInfo
+            completion(userInfo)
+        }
     }
     
-    func getUsers(completion: @escaping ([UserInfo]?) -> Void) {
+    func getUsers(_ blacklist: [String] = [], completion: @escaping ([UserInfo]?) -> Void) {
         dbRef.child("User").observeSingleEvent(of: .value) { (snapshot) in
             guard let usersDict = snapshot.value as? [String: Any] else {
                 completion(nil)
@@ -93,6 +96,7 @@ extension FirebaseManager {
             let dispatchGroup = DispatchGroup()
             var userList: [UserInfo] = []
             for (uid, data) in usersDict {
+                if blacklist.contains(uid) { continue }
                 dispatchGroup.enter()
                 let user = UserInfo(uid, info: data as! [String: Any])
                 userList.append(user)
