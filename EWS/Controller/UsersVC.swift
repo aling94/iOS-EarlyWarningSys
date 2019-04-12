@@ -25,10 +25,12 @@ class UsersVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeNavBarClear()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navbarIsHidden = true
         getUsers()
     }
     
