@@ -127,7 +127,7 @@ class ProfileVC: FormViewController {
             dateRow.value = dateRow.dateFormatter?.date(from: userInfo.dob)
             
             DispatchQueue.main.async {
-                self.userImage.setImage(userInfo.image, for: .normal)
+                if let pic = userInfo.image { self.userImage.setImage(pic, for: .normal) }
                 form.rows.forEach( {$0.reload()} )
             }
         }
