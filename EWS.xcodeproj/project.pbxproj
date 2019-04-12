@@ -35,6 +35,7 @@
 		E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */; };
 		E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155100A225C5B1F003B554B /* SpaceCellRow.swift */; };
 		E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */; };
+		E1D1E381226101CF00AF8B24 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E380226101CF00AF8B24 /* Post.swift */; };
 		E1D971F5225E507F0052AD32 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F4225E507F0052AD32 /* Earthquake.swift */; };
 		E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */; };
 		E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971FA225E81A70052AD32 /* ProfileVC.swift */; };
@@ -77,6 +78,7 @@
 		E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
 		E155100A225C5B1F003B554B /* SpaceCellRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
 		E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordVC.swift; sourceTree = "<group>"; };
+		E1D1E380226101CF00AF8B24 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1D971F4225E507F0052AD32 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQMapVC.swift; sourceTree = "<group>"; };
 		E1D971FA225E81A70052AD32 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				E1354F4F225D421F00ED365E /* UserInfo.swift */,
 				E1354F56225D494600ED365E /* Weather.swift */,
 				E1D971F4225E507F0052AD32 /* Earthquake.swift */,
+				E1D1E380226101CF00AF8B24 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -474,6 +477,7 @@
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
 				E1354F57225D494600ED365E /* Weather.swift in Sources */,
 				E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */,
+				E1D1E381226101CF00AF8B24 /* Post.swift in Sources */,
 				E1354F61225DAE0000ED365E /* UserCell.swift in Sources */,
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
