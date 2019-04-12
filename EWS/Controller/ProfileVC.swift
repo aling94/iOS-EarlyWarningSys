@@ -99,7 +99,6 @@ class ProfileVC: FormViewController {
         }
         
         <<< SegmentedRow<String>("gender") {
-            $0.title = "GENDER"
             $0.options = ["MALE", "FEMALE"]
             $0.value = "MALE"
             $0.cell.height = { cellHeight }

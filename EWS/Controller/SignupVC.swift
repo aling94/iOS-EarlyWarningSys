@@ -149,7 +149,6 @@ class SignupVC: FormViewController {
         
  
         <<< SegmentedRow<String> {
-            $0.title = "GENDER"
             $0.options = ["MALE", "FEMALE"]
             $0.value = ($0.options?.first)!
             gender = $0.value
