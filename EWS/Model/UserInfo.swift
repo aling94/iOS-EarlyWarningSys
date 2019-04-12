@@ -15,6 +15,8 @@ final class UserInfo {
     var uid: String
     var image: UIImage?
     
+    var name: String { return "\(fname) \(lname)"}
+    
     init(_ uid: String, info: [String: Any]) {
         fname = info["fname"] as! String
         lname = info["lname"] as! String
@@ -26,5 +28,9 @@ final class UserInfo {
         latitude = info["latitude"] as! Double
         longitude = info["longitude"] as! Double
         self.uid = uid
+    }
+    
+    static func <(left: UserInfo, right: UserInfo) -> Bool {
+        return left.fname < right.fname
     }
 }
