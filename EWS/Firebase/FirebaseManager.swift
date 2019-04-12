@@ -54,6 +54,10 @@ extension FirebaseManager {
             errorHandler?(error)
         }
     }
+    
+    func updatePassword(_ newPass: String, errorHandler: @escaping ErrorHandler) {
+        currentUser?.updatePassword(to: newPass, completion: errorHandler)
+    }
 }
 
 // MARK: - Database
