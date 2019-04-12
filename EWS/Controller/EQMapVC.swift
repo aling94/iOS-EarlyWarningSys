@@ -9,50 +9,30 @@
 import UIKit
 import GoogleMaps
 
-class EQMapVC: UIViewController {
-    
-    @IBOutlet weak var gmap: GMSMapView!
+class EQMapVC: GMSMarkerVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        makeNavBarClear()
-        setupGMsp()
-        fetchEQData()
+        displayEarthquakes()
     }
-    
-    func fetchEQData() {
+
+    func displayEarthquakes() {
+        let icon = UIImage.animatedMarker!
         APIHandler.shared.fetchEQData { (earthquakes) in
             guard let earthquakes = earthquakes else { return }
             DispatchQueue.main.async {
-                self.displayEarthQuakes(earthquakes)
+                for eq in earthquakes { self.addMaker(eq, icon: icon) }
             }
         }
+
     }
     
-    func setupGMsp() {
-        gmap.mapType = .hybrid
-        guard let myLoc = app.currentLocation?.coordinate else { return }
-        let coord = CLLocationCoordinate2D(latitude: myLoc.latitude, longitude: myLoc.longitude)
-        addMaker(coord, title: "Me")
-        gmap.camera = GMSCameraPosition(target: coord, zoom: gmap.minZoom)
-    }
-    
-    func displayEarthQuakes(_ earthquakes: [Earthquake]) {
-        let icon = UIImage.animatedMarker
-        
-        for eq in earthquakes {
-            let coord = CLLocationCoordinate2D(latitude: eq.lat!, longitude: eq.long!)
-            addMaker(coord, title: eq.place!, icon: icon)
-        }
-    }
-    
-    func addMaker(_ coords: CLLocationCoordinate2D, title: String = "", icon: UIImage? = nil) {
+    func addMaker(_ eq: Earthquake, icon: UIImage) {
         let marker = GMSMarker()
-        marker.position = coords
-        marker.title = title
-        if let icon = icon { marker.icon = icon }
-        marker.map = gmap
+        marker.position = CLLocationCoordinate2D(latitude: eq.lat!, longitude: eq.long!)
+        marker.title = eq.place!
+        marker.icon = icon
+        marker.map = map
     }
 
 }
