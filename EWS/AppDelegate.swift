@@ -19,16 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var clManager: CLLocationManager!
     var currentLocation: CLLocation?
     var locationName: String?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         GMSServices.provideAPIKey(GoogleAPIKeys.maps)
         GMSPlacesClient.provideAPIKey(GoogleAPIKeys.places)
         setupCoreLocation()
         requestLocation()
         FirebaseApp.configure()
+        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 1) as Date)
         checkAlreadyLoggedIn()
-        
         return true
     }
     
@@ -68,15 +68,15 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let loc = manager.location else { return }
-        print("-- Your Location: \(loc) --")
+        print("\n--- Your Location: \(loc) ---\n")
         currentLocation = loc
 //        manager.stopUpdatingLocation()
         
         let gc = CLGeocoder()
         gc.reverseGeocodeLocation(loc) { (placemarks, error) in
             guard let place = placemarks?.last?.locality else { return }
-            self.locationName = place
-            print("-- Your Location: \(place) --")
+            DispatchQueue.main.async { self.locationName = place }
+            print("\n--- Your Location: \(place) ---\n")
         }
         
     }
