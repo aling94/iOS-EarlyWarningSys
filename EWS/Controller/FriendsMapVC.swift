@@ -27,7 +27,7 @@ class FriendsMapVC: GMSMarkerVC {
     
     func addMarker(_ info: UserInfo, zIndex: Int) {
         let marker = GMSMarker()
-        marker.position = info.coord
+        marker.position = info.coords
         marker.title = info.name
         let icon = info.image ?? UIImage(named: "default-user")
         let imgView = UIImageView(frame: CGRect(x: info.latitude, y: info.longitude, width: 40, height: 40))

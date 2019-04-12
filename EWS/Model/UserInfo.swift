@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class UserInfo {
     var fname, lname, email, dob, phone, gender : String
@@ -16,6 +17,10 @@ final class UserInfo {
     var image: UIImage?
     
     var name: String { return "\(fname) \(lname)"}
+    
+    var coords: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
     
     init(_ uid: String, info: [String: Any]) {
         fname = info["fname"] as! String
