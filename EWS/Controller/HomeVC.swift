@@ -21,6 +21,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var lowLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
+    var myLocation: CLLocationCoordinate2D?
+    
     var weatherData: WeatherResponse? {
         didSet {
             DispatchQueue.main.async {
@@ -33,6 +35,9 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         makeNavBarClear()
         navigationController?.navigationBar.tintColor = .white
+        if let loc = app.currentLocation?.coordinate {
+            myLocation = loc
+        }
         
     }
     
@@ -40,13 +45,14 @@ class HomeVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupUserData()
-        if weatherData == nil {
+        if myLocation == nil, let loc = app.currentLocation?.coordinate {
+            myLocation = loc
             fetchWeatherData()
         }
     }
     
     func fetchWeatherData() {
-        guard let loc = app.currentLocation?.coordinate else { return }
+        guard let loc = myLocation else { return }
         
         APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
             guard let data = response else { return }
@@ -59,7 +65,7 @@ class HomeVC: UIViewController {
     
     func setWeatherInfo() {
         let data = weatherData!
-        weatherIcon.image = UIImage(named: (data.currently?.icon)!)
+        if let iconName = data.currently?.icon { weatherIcon.image = UIImage(named: iconName) }
         dateLabel.text = "\(data.date!)"
         highLabel.text = "\(data.high!) °F"
         lowLabel.text = "\(data.low!) °F"
@@ -72,12 +78,11 @@ class HomeVC: UIViewController {
         emailLabel.text = currentUser.email
         FirebaseManager.shared.getUserImage(currentUser.uid) { (image, _) in
             DispatchQueue.main.async {
-                self.userImage.image = image
+                if let pic = image { self.userImage.image = pic }
             }
         }
         
     }
-    
     
     @IBAction func searchPlaces(_ sender: Any) {
         displayPlacesController()
@@ -111,7 +116,7 @@ extension HomeVC: GMSAutocompleteViewControllerDelegate {
         autocompleteController.delegate = self
         
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.placeID.rawValue))!
+            UInt(GMSPlaceField.coordinate.rawValue))!
         autocompleteController.placeFields = fields
         
         let filter = GMSAutocompleteFilter()
@@ -122,8 +127,8 @@ extension HomeVC: GMSAutocompleteViewControllerDelegate {
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        
-        
+        myLocation = place.coordinate
+        fetchWeatherData()
         dismiss(animated: true, completion: nil)
     }
     
@@ -131,7 +136,6 @@ extension HomeVC: GMSAutocompleteViewControllerDelegate {
         print("Error: ", error.localizedDescription)
     }
     
-    // User canceled the operation.
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }
