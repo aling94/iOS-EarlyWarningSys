@@ -109,13 +109,13 @@ extension FirebaseManager {
                 if blacklist.contains(uid) { continue }
                 dispatchGroup.enter()
                 let user = UserInfo(uid, info: data as! [String: Any])
-                userList.append(user)
                 self.getUserImage(uid) { (image, _) in
                     user.image = image
+                    userList.append(user)
                     dispatchGroup.leave()
                 }
             }
-            dispatchGroup.notify(queue: .main) { completion(userList) }
+            dispatchGroup.notify(queue: .main) {completion(userList) }
         }
     }
     
@@ -165,16 +165,50 @@ extension FirebaseManager {
     
     func addPost(img : UIImage , postdesc : String? , errorHandler: @escaping ErrorHandler) {
         let user = Auth.auth().currentUser
-        let postKey = dbRef.child("Post").childByAutoId().key!
+        let pid = dbRef.child("Post").childByAutoId().key!
         let info = [
+            "pid" : pid,
             "uid" : user?.uid,
             "description" : postdesc ?? "" ,
             "timestamp" : "\(Date().timeIntervalSince1970)"
         ]
         
-        dbRef.child("Post").child(postKey).setValue(info) { (error, _) in
+        dbRef.child("Post").child(pid).setValue(info) { (error, _) in
             if error != nil { errorHandler(error) }
-            else { self.savePostImg(id: postKey, image: img, errorHandler: errorHandler) }
+            else { self.savePostImg(id: pid, image: img, errorHandler: errorHandler) }
+        }
+    }
+    
+    func getPosts(completion: @escaping ([PostInfo]?) -> Void) {
+        var postList: [PostInfo] = []
+        let getPostDPG = DispatchGroup()
+        let getUserDPG = DispatchGroup()
+        dbRef.child("Post").observeSingleEvent(of: .value) { snapshot in
+            guard let posts = snapshot.value as? [String : Any] else {
+                completion(nil)
+                return
+            }
+
+            for (pid, data) in posts {
+                getPostDPG.enter()
+                let post = PostInfo(pid, info: data as! [String : Any])
+                getUserDPG.enter()
+                
+                self.getUserInfo(post.uid) { userInfo in
+                    post.user = userInfo
+                    getUserDPG.leave()
+                }
+                
+                self.getPostImg(id: pid) { (image, error) in
+                    post.image = image
+                    getUserDPG.notify(queue: .main) {
+                        postList.append(post)
+                        getPostDPG.leave()
+                    }
+                }
+            }
+            
+            getPostDPG.notify(queue: .main) { completion(postList) }
         }
     }
 }
