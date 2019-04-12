@@ -18,17 +18,11 @@ class ProfileVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
         setupTable()
         setupForm()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadUserInfo()
     }
-
+    
     var spacer: SpaceCellRow {
         return spacer(gapSize: 10)
     }
