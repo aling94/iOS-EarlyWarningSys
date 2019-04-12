@@ -38,6 +38,9 @@
 		E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */; };
 		E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D971FA225E81A70052AD32 /* ProfileVC.swift */; };
 		E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C2225FD5F30076853F /* FriendsVC.swift */; };
+		E1DAC5C622600A640076853F /* BaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C522600A640076853F /* BaseClasses.swift */; };
+		E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C72260374C0076853F /* FriendsMapVC.swift */; };
+		E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +79,9 @@
 		E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EQMapVC.swift; sourceTree = "<group>"; };
 		E1D971FA225E81A70052AD32 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		E1DAC5C2225FD5F30076853F /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		E1DAC5C522600A640076853F /* BaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClasses.swift; sourceTree = "<group>"; };
+		E1DAC5C72260374C0076853F /* FriendsMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMapVC.swift; sourceTree = "<group>"; };
+		E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMarkerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,7 @@
 		E1550FEC225C0AED003B554B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1DAC5C422600A520076853F /* BaseClasses */,
 				E1354F5A225D83DE00ED365E /* Custom Cells */,
 				E1550FDC225C0962003B554B /* LoginVC.swift */,
 				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
@@ -216,6 +223,7 @@
 				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
 				E1D971FA225E81A70052AD32 /* ProfileVC.swift */,
 				E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */,
+				E1DAC5C72260374C0076853F /* FriendsMapVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +265,15 @@
 				E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */,
 			);
 			path = SpaceRows;
+			sourceTree = "<group>";
+		};
+		E1DAC5C422600A520076853F /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				E1DAC5C522600A640076853F /* BaseClasses.swift */,
+				E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */,
+			);
+			path = BaseClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,6 +475,7 @@
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
 				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
+				E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */,
 				E1D971F5225E507F0052AD32 /* Earthquake.swift in Sources */,
 				E1354F59225D75F400ED365E /* HomeVC.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
@@ -468,7 +486,9 @@
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
+				E1DAC5C622600A640076853F /* BaseClasses.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
+				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
 				E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
