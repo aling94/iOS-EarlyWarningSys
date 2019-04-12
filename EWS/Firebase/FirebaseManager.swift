@@ -100,7 +100,8 @@ extension FirebaseManager {
             let dispatchGroup = DispatchGroup()
             var userList: [UserInfo] = []
             
-            for (uid, data) in usersDict.filter( {!blacklist.contains($0.key)} ) {
+            for (uid, data) in usersDict {
+                if blacklist.contains(uid) { continue }
                 dispatchGroup.enter()
                 let user = UserInfo(uid, info: data as! [String: Any])
                 userList.append(user)
