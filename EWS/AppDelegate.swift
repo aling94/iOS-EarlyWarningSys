@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupCoreLocation()
         requestLocation()
         FirebaseApp.configure()
-        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 1) as Date)
+        RunLoop.current.run(until: NSDate(timeIntervalSinceNow: 2) as Date)
         checkAlreadyLoggedIn()
         return true
     }
