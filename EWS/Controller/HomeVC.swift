@@ -37,6 +37,7 @@ class HomeVC: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         if let loc = app.currentLocation?.coordinate {
             myLocation = loc
+            fetchWeatherData()
         }
         
     }
