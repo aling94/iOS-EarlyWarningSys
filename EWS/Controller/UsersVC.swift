@@ -50,7 +50,7 @@ class UsersVC: UIViewController {
     
     func setCell(_ cell: UserCell, indexPath: IndexPath) {
         let user = userList[indexPath.item]
-        if let image = user.image { cell.userImage.image = image}
+        cell.userImage.image = user.image ?? UIImage(named: "default-user")
         cell.nameLabel.text = user.name
         cell.addFriendBtn.tag = indexPath.item
         cell.addFriendBtn.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
