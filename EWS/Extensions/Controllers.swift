@@ -11,10 +11,21 @@ import Eureka
 
 extension UIViewController {
     
+    var navbarIsHidden: Bool {
+        get { return navigationController?.isNavigationBarHidden ?? false }
+        set { navigationController?.setNavigationBarHidden(newValue, animated: false) }
+    }
+    
+    var navbarTextColor: UIColor? {
+        get { return navigationController?.navigationBar.tintColor }
+        set { navigationController?.navigationBar.tintColor = newValue }
+    }
+    
     func makeNavBarClear() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        navbarTextColor = .white
     }
     
     func getVC(identifier: String) -> UIViewController? {
