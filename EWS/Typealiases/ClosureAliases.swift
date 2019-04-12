@@ -9,3 +9,4 @@ import FirebaseAuth
 
 typealias ErrorHandler = (Error?) -> Void
 typealias AuthHandler = (AuthDataResult?, Error?) -> Void
+typealias ImageHandler = (UIImage?, Error?) -> Void

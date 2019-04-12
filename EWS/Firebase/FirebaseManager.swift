@@ -183,16 +183,13 @@ extension FirebaseManager {
 // MARK: - Storage
 extension FirebaseManager {
     
-    func getImage(_ dirName: String, _ imageName: String, completion: @escaping (UIImage?, Error?) -> Void) {
+    func getImage(_ dirName: String, _ imageName: String, completion: @escaping ImageHandler) {
         let imageName = "\(dirName)/\(imageName).jpeg"
         stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
             if let data = data { completion(UIImage(data: data), nil) }
             else { completion(nil, error)}
         }
     }
-    
-    
-    
     
     func saveImage(_ image: UIImage, _ dirName: String, _ imageName: String, errorHander: ErrorHandler? = nil) {
         let imgData = image.jpegData(compressionQuality: 0 )
@@ -204,46 +201,25 @@ extension FirebaseManager {
     
     // MARK: - Storage/UserImage
     
-    func saveUserImage(_ image: UIImage) {
+    func saveUserImage(_ image: UIImage,  errorHander: ErrorHandler? = nil) {
         guard let user = currentUser else { return }
-        let imgData = image.jpegData(compressionQuality: 0 )
-        let metaData = StorageMetadata()
-        metaData.contentType = "Image/jpeg"
-        let imgName = "UserImage/\(user.uid).jpeg"
-        stRef.child(imgName).putData(imgData!, metadata: metaData) { _, error in
-            
-        }
+        saveImage(image, "UserImage", user.uid, errorHander: errorHander)
     }
-
     
-    func getUserImage(_ uid: String, completion: @escaping (UIImage?, Error?) -> Void) {
+    func getUserImage(_ uid: String, completion: @escaping ImageHandler) {
         getImage("UserImage", uid, completion: completion)
-//        let imageName = "UserImage/\(uid).jpeg"
-//        stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
-//            if let data = data { completion(UIImage(data: data), nil) }
-//            else { completion(nil, error)}
-//        }
     }
     
     // MARK: - Storage - Posts
     
     func savePostImg(id: String, image: UIImage, errorHandler: @escaping ErrorHandler) {
-        let imgData = image.jpegData(compressionQuality: 0)
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpeg"
-        let imgName = "Post/\(String(describing: id)).jpeg"
-        stRef.child(imgName).putData(imgData!, metadata: metaData) { (data, error) in
-            errorHandler(error)
-        }
+        let fileName = String(describing: id)
+        saveImage(image, "Post", fileName, errorHander: errorHandler)
     }
     
-    func getPostImg(id : String, completion : @escaping (UIImage?, Error?) -> Void) {
-        getImage("Post", id, completion: completion)
-//        let imageName = "Post/\(String(describing: id)).jpeg"
-//        stRef.child(imageName).getData(maxSize: 1*300*300) { (data, error) in
-//            if let data = data { completion(UIImage(data: data), nil) }
-//            else { completion(nil, error)}
-//        }
+    func getPostImg(id : String, completion : @escaping ImageHandler) {
+        let fileName = String(describing: id)
+        getImage("Post", fileName, completion: completion)
     }
 }
 
