@@ -19,17 +19,26 @@ class FriendsMapVC: GMSMarkerVC {
     }
     
     func displayFriends() {
-        for (i, friend) in friendsList.enumerated() { addMarker(friend, zIndex: i) }
+        for (i, friend) in friendsList.enumerated() {
+            addMarker(friend, zIndex: i)
+        }
+
     }
     
     func addMarker(_ info: UserInfo, zIndex: Int) {
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: info.latitude, longitude: info.longitude)
+        marker.position = info.coord
         marker.title = info.name
         let icon = info.image ?? UIImage(named: "default-user")
-        marker.iconView = UIImageView(image: icon?.imageWith(side: 50))
-        marker.iconView?.cornerRadius = 25
+        let imgView = UIImageView(frame: CGRect(x: info.latitude, y: info.longitude, width: 40, height: 40))
+        imgView.image = icon
+        imgView.borderWidth = 2
+        imgView.borderColor = .orange
+        imgView.cornerRadius = imgView.frame.height / 2
+        
+        marker.iconView = imgView
         marker.zIndex = Int32(zIndex)
         marker.map = map
     }
 }
+
