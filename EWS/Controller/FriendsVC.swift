@@ -15,7 +15,7 @@ class FriendsVC: UsersVC {
     override func getUsers() {
         SVProgressHUD.show()
         FirebaseManager.shared.getFriends { (friends) in
-            if let friends = friends { self.userList = friends }
+            if let friends = friends { self.userList = friends.sorted(by: <) }
             else { self.userList = [] }
             SVProgressHUD.dismiss()
         }
