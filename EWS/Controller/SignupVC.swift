@@ -22,7 +22,7 @@ class SignupVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "JOIN"
+        title = "SIGN UP"
         ref = Database.database().reference()
         setupForm()
     }
