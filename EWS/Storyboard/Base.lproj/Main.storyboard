@@ -20,14 +20,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="BvG-5t-8rU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x32-BH-Xeq">
                                 <rect key="frame" x="50" y="502" width="314" height="35"/>
@@ -107,9 +99,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HWj-1w-oJ7" secondAttribute="trailing" constant="25" id="WGs-Pn-9zk"/>
                             <constraint firstItem="HWj-1w-oJ7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="ctp-HK-gB3"/>
                             <constraint firstItem="x32-BH-Xeq" firstAttribute="width" secondItem="hgo-ma-Z1L" secondAttribute="width" id="eJJ-cs-FES"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BvG-5t-8rU" secondAttribute="trailing" id="exr-Bj-fYV"/>
+                            <constraint firstItem="BvG-5t-8rU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="exr-Bj-fYV"/>
                             <constraint firstItem="x32-BH-Xeq" firstAttribute="height" secondItem="hgo-ma-Z1L" secondAttribute="height" id="s2R-eK-i2h"/>
-                            <constraint firstAttribute="bottom" secondItem="BvG-5t-8rU" secondAttribute="bottom" id="wzP-wN-fPG"/>
+                            <constraint firstItem="BvG-5t-8rU" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="wzP-wN-fPG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -152,16 +144,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="s9V-gO-Vp9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="s9V-gO-Vp9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hni-zP-DJ6">
                                 <rect key="frame" x="50" y="621" width="314" height="35"/>
