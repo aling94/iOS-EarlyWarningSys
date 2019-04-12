@@ -42,7 +42,7 @@ class UsersVC: UIViewController {
     func getUsers() {
         SVProgressHUD.show()
         FirebaseManager.shared.getUsers { (users) in
-            if let users = users { self.userList = users }
+            if let users = users { self.userList = users.sorted(by: <) }
             SVProgressHUD.dismiss()
         }
     }
