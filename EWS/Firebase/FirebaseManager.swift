@@ -95,8 +95,8 @@ extension FirebaseManager {
             
             let dispatchGroup = DispatchGroup()
             var userList: [UserInfo] = []
-            for (uid, data) in usersDict {
-                if blacklist.contains(uid) { continue }
+            
+            for (uid, data) in usersDict.filter( {!blacklist.contains($0.key)} ) {
                 dispatchGroup.enter()
                 let user = UserInfo(uid, info: data as! [String: Any])
                 userList.append(user)
@@ -169,6 +169,7 @@ extension FirebaseManager {
     func getUserImage(_ uid: String, completion: @escaping (UIImage?, Error?) -> Void) {
         let imageName = "UserImage/\(uid).jpeg"
         stRef.child(imageName).getData(maxSize: 300*300) { (data, error) in
+            
             if let data = data { completion(UIImage(data: data), nil) }
             else { completion(nil, error)}
         }
