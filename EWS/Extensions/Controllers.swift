@@ -18,7 +18,12 @@ extension UIViewController {
     
     var navbarTextColor: UIColor? {
         get { return navigationController?.navigationBar.tintColor }
-        set { navigationController?.navigationBar.tintColor = newValue }
+        set {
+            guard let color = newValue else { return }
+            navigationController?.navigationBar.tintColor = color
+            let textAttributes = [NSAttributedString.Key.foregroundColor : color]
+            navigationController?.navigationBar.titleTextAttributes = textAttributes
+        }
     }
     
     func makeNavBarClear() {
