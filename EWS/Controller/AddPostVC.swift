@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UITextView_Placeholder
 
 class AddPostVC: UIViewController {
 
@@ -16,7 +17,9 @@ class AddPostVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "New Post"
-        // Do any additional setup after loading the view.
+        navbarTextColor = .white
+        commentBox.placeholder = "What are your thoughts?"
+        commentBox.placeholderColor = .white
     }
     
     @IBAction func savePost(_ sender: Any) {

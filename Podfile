@@ -5,15 +5,18 @@ target 'EWS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
+  # Utilities
   pod 'Eureka'
   pod 'SVProgressHUD', '~> 2.2'
   pod 'TWMessageBarManager', '~> 1.8'
   pod 'AlamofireObjectMapper', '~> 5.2'
-  
+  # Addons
+  pod 'UITextView+Placeholder'
+  # Google
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
-  
+  # Firebase
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.9.0'
   pod 'Crashlytics', '~> 3.12.0'

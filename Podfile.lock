@@ -95,6 +95,7 @@ PODS:
   - ObjectMapper (3.4.2)
   - SVProgressHUD (2.2.5)
   - TWMessageBarManager (1.8.1)
+  - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.2)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - GooglePlaces
   - SVProgressHUD (~> 2.2)
   - TWMessageBarManager (~> 1.8)
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -137,6 +139,7 @@ SPEC REPOS:
     - ObjectMapper
     - SVProgressHUD
     - TWMessageBarManager
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -163,7 +166,8 @@ SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: 50ce3f3edac117d011aaed67c48d7372d91d40e2
+PODFILE CHECKSUM: 1e36ad28784487b9e4f17b43fd436c94c36f6982
 
 COCOAPODS: 1.6.1
