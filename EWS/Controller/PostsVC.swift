@@ -12,21 +12,44 @@ class PostsVC: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var posts: [PostInfo] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.table.reloadData()
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        makeNavBarClear()
+        fetchPosts()
     }
-    */
+    
+    func fetchPosts() {
+        FirebaseManager.shared.getPosts { postList in
+            self.posts = postList ?? []
+        }
+    }
+}
 
+extension PostsVC: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! PostCell
+        setCell(cell, indexPath: indexPath)
+        return cell
+    }
+    
+    func setCell(_ cell: PostCell, indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        cell.nameLabel.text = post.user?.name
+        cell.commentText.text = post.description
+        cell.userImage.image = post.user?.image ?? UIImage(named: "default-user")
+        cell.postImage.image = post.image
+    }
 }
