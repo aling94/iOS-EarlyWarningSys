@@ -527,7 +527,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="F1k-uG-VGT">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tDz-bj-Ppu">
                                 <rect key="frame" x="20" y="89" width="374" height="573"/>
@@ -611,7 +611,7 @@
                             <constraint firstItem="0Da-Rq-Q6c" firstAttribute="trailing" secondItem="tDz-bj-Ppu" secondAttribute="trailing" constant="20" id="CdD-h8-VQZ"/>
                             <constraint firstItem="tDz-bj-Ppu" firstAttribute="top" secondItem="0Da-Rq-Q6c" secondAttribute="top" constant="25" id="FIH-OG-TkQ"/>
                             <constraint firstItem="0Da-Rq-Q6c" firstAttribute="trailing" secondItem="F1k-uG-VGT" secondAttribute="trailing" id="FwQ-jJ-ogM"/>
-                            <constraint firstItem="0Da-Rq-Q6c" firstAttribute="bottom" secondItem="F1k-uG-VGT" secondAttribute="bottom" id="LI6-Pe-9mc"/>
+                            <constraint firstAttribute="bottom" secondItem="F1k-uG-VGT" secondAttribute="bottom" id="LI6-Pe-9mc"/>
                             <constraint firstItem="tDz-bj-Ppu" firstAttribute="leading" secondItem="0Da-Rq-Q6c" secondAttribute="leading" constant="20" id="MPs-ZT-LcO"/>
                             <constraint firstItem="F1k-uG-VGT" firstAttribute="leading" secondItem="0Da-Rq-Q6c" secondAttribute="leading" id="iTY-2E-LcQ"/>
                             <constraint firstItem="F1k-uG-VGT" firstAttribute="top" secondItem="qfp-RG-lG1" secondAttribute="top" id="uea-Cb-2Fk"/>
@@ -641,7 +641,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-gg-5DM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-gg-5DM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uvj-Oz-09Y">
@@ -978,7 +978,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="FME-RS-m2s">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMm-bH-WwU">
                                 <rect key="frame" x="50" y="225.66666666666666" width="314" height="34.999999999999972"/>
@@ -1067,7 +1067,7 @@
                             <constraint firstItem="CQC-rP-QEf" firstAttribute="leading" secondItem="o7f-ee-hwO" secondAttribute="leading" id="W1b-Xi-PmX"/>
                             <constraint firstItem="CQC-rP-QEf" firstAttribute="top" secondItem="o7f-ee-hwO" secondAttribute="bottom" constant="90" id="fa3-0S-3aE"/>
                             <constraint firstItem="xN5-Rw-MJx" firstAttribute="trailing" secondItem="FME-RS-m2s" secondAttribute="trailing" id="kd6-aD-14H"/>
-                            <constraint firstItem="xN5-Rw-MJx" firstAttribute="bottom" secondItem="FME-RS-m2s" secondAttribute="bottom" id="rjd-lm-idZ"/>
+                            <constraint firstAttribute="bottom" secondItem="FME-RS-m2s" secondAttribute="bottom" id="rjd-lm-idZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xN5-Rw-MJx"/>
                     </view>
@@ -1306,6 +1306,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lcn-nd-V2T">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
