@@ -34,6 +34,7 @@
 		E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */; };
 		E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */; };
 		E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155100A225C5B1F003B554B /* SpaceCellRow.swift */; };
+		E195943F2261A9B10061F101 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195943E2261A9B10061F101 /* PostCell.swift */; };
 		E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */; };
 		E1D1E381226101CF00AF8B24 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E380226101CF00AF8B24 /* Post.swift */; };
 		E1D1E383226130E100AF8B24 /* PostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E382226130E100AF8B24 /* PostsVC.swift */; };
@@ -78,6 +79,7 @@
 		E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
 		E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
 		E155100A225C5B1F003B554B /* SpaceCellRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
+		E195943E2261A9B10061F101 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordVC.swift; sourceTree = "<group>"; };
 		E1D1E380226101CF00AF8B24 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		E1D1E382226130E100AF8B24 /* PostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsVC.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				E1354F5C225D847500ED365E /* WeatherCell.swift */,
 				E1354F60225DAE0000ED365E /* UserCell.swift */,
+				E195943E2261A9B10061F101 /* PostCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
 				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
+				E195943F2261A9B10061F101 /* PostCell.swift in Sources */,
 				E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */,
 				E1D971F5225E507F0052AD32 /* Earthquake.swift in Sources */,
 				E1354F59225D75F400ED365E /* HomeVC.swift in Sources */,

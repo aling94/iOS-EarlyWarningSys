@@ -10,6 +10,8 @@ import UIKit
 
 class PostsVC: UIViewController {
 
+    @IBOutlet weak var table: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
