@@ -619,7 +619,11 @@
                         <viewLayoutGuide key="safeArea" id="0Da-Rq-Q6c"/>
                     </view>
                     <navigationItem key="navigationItem" id="rOe-Zd-wLN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xgm-ty-tLs"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xgm-ty-tLs">
+                            <connections>
+                                <segue destination="nex-oq-V9J" kind="show" id="BWj-7i-2j6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="tDz-bj-Ppu" id="lr6-kY-CMX"/>
@@ -629,20 +633,105 @@
             </objects>
             <point key="canvasLocation" x="1441" y="2336"/>
         </scene>
-        <!--View Controller-->
+        <!--Add PostVC-->
         <scene sceneID="ouW-50-e4F">
             <objects>
-                <viewController id="nex-oq-V9J" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPostVC" id="nex-oq-V9J" customClass="AddPostVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qM4-9X-gIY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-gg-5DM">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uvj-Oz-09Y">
+                                <rect key="frame" x="30" y="114" width="354" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="pcM-Nd-Xds"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG4-7R-07Z">
+                                <rect key="frame" x="100" y="202.66666666666666" width="214" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="gqF-MQ-vjy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Upload Image">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="uploadImage:" destination="nex-oq-V9J" eventType="touchUpInside" id="m5f-xM-qhy"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bvK-z6-Zk1">
+                                <rect key="frame" x="30" y="386" width="354" height="200"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.25152504280821919" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="1ID-Ea-yAu"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="nex-oq-V9J" id="JUd-TE-iir"/>
+                                </connections>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mw4-gg-5DM" firstAttribute="leading" secondItem="8l1-tu-J5d" secondAttribute="leading" id="1KU-I5-80W"/>
+                            <constraint firstItem="mw4-gg-5DM" firstAttribute="trailing" secondItem="8l1-tu-J5d" secondAttribute="trailing" id="2kz-Ra-7tb"/>
+                            <constraint firstItem="bvK-z6-Zk1" firstAttribute="top" secondItem="Uvj-Oz-09Y" secondAttribute="bottom" constant="60" id="8Qk-iX-bm9"/>
+                            <constraint firstItem="8l1-tu-J5d" firstAttribute="trailing" secondItem="zG4-7R-07Z" secondAttribute="trailing" constant="100" id="9jB-yZ-eWw"/>
+                            <constraint firstItem="8l1-tu-J5d" firstAttribute="trailing" secondItem="bvK-z6-Zk1" secondAttribute="trailing" constant="30" id="EwD-Eb-BmD"/>
+                            <constraint firstItem="bvK-z6-Zk1" firstAttribute="leading" secondItem="8l1-tu-J5d" secondAttribute="leading" constant="30" id="GqM-vf-F50"/>
+                            <constraint firstItem="Uvj-Oz-09Y" firstAttribute="top" secondItem="8l1-tu-J5d" secondAttribute="top" constant="50" id="O9c-Mn-KJb"/>
+                            <constraint firstItem="8l1-tu-J5d" firstAttribute="trailing" secondItem="Uvj-Oz-09Y" secondAttribute="trailing" constant="30" id="OGT-Cm-FCD"/>
+                            <constraint firstItem="Uvj-Oz-09Y" firstAttribute="leading" secondItem="8l1-tu-J5d" secondAttribute="leading" constant="30" id="Tua-G3-MAN"/>
+                            <constraint firstItem="mw4-gg-5DM" firstAttribute="top" secondItem="qM4-9X-gIY" secondAttribute="top" id="Udp-1L-ttN"/>
+                            <constraint firstAttribute="bottom" secondItem="mw4-gg-5DM" secondAttribute="bottom" id="aHv-fd-WcL"/>
+                            <constraint firstItem="zG4-7R-07Z" firstAttribute="leading" secondItem="8l1-tu-J5d" secondAttribute="leading" constant="100" id="hb3-cS-xbz"/>
+                            <constraint firstItem="zG4-7R-07Z" firstAttribute="centerY" secondItem="Uvj-Oz-09Y" secondAttribute="centerY" id="zxw-Iv-moL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8l1-tu-J5d"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Qb9-T8-9ZT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BCX-Ft-4zu">
+                            <connections>
+                                <action selector="savePost:" destination="nex-oq-V9J" id="9tv-Mf-dzJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="commentBox" destination="bvK-z6-Zk1" id="Oxo-jK-Dhd"/>
+                        <outlet property="postImage" destination="Uvj-Oz-09Y" id="753-oZ-w65"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pz1-cV-IB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="3052"/>
+            <point key="canvasLocation" x="1440.5797101449277" y="3051.358695652174"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nnV-7o-GwP">
