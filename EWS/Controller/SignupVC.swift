@@ -15,7 +15,6 @@ import SVProgressHUD
 
 class SignupVC: FormViewController {
 
-    var ref: DatabaseReference!
     
     var email, passw, cpassw: String!
     var fname, lname, phone, dob, gender: String!
@@ -23,7 +22,6 @@ class SignupVC: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "SIGN UP"
-        ref = Database.database().reference()
         setupForm()
     }
     
