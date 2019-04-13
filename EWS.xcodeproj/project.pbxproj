@@ -19,6 +19,7 @@
 		E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5C225D847500ED365E /* WeatherCell.swift */; };
 		E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5E225DAA3000ED365E /* UsersVC.swift */; };
 		E1354F61225DAE0000ED365E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F60225DAE0000ED365E /* UserCell.swift */; };
+		E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141B4A52262430C009F8FDA /* AddPostVC.swift */; };
 		E1518094225ED41300EC040F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518093225ED41300EC040F /* Keys.swift */; };
 		E1518099225EE84800EC040F /* RoundViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518098225EE84800EC040F /* RoundViews.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		E1354F5C225D847500ED365E /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		E1354F5E225DAA3000ED365E /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		E1354F60225DAE0000ED365E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E141B4A52262430C009F8FDA /* AddPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
 		E1518093225ED41300EC040F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		E1518098225EE84800EC040F /* RoundViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViews.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +238,7 @@
 				E1DAC5C72260374C0076853F /* FriendsMapVC.swift */,
 				E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */,
 				E1D1E382226130E100AF8B24 /* PostsVC.swift */,
+				E141B4A52262430C009F8FDA /* AddPostVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
 				E1DAC5C622600A640076853F /* BaseClasses.swift in Sources */,
+				E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
 				E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */,

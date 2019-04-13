@@ -22,6 +22,7 @@ class PostsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Posts"
         makeNavBarClear()
         fetchPosts()
     }
