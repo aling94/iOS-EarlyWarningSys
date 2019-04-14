@@ -33,7 +33,6 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeNavBarClear()
         if let loc = app.currentLocation?.coordinate {
             myLocation = loc
             fetchWeatherData()

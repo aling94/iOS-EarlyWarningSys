@@ -13,11 +13,22 @@ class BaseVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeNavBarClear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss()
+    }
+}
+
+class NavController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        navigationBar.tintColor = .white
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
     }
 }

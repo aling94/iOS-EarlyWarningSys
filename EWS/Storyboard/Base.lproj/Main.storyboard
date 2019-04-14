@@ -114,10 +114,10 @@
             </objects>
             <point key="canvasLocation" x="942.02898550724649" y="23.64130434782609"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Nav Controller-->
         <scene sceneID="IjG-A5-z0L">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w92-Je-aqJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w92-Je-aqJ" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N8Q-ST-bvM">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1088,7 +1088,7 @@
         <!--NavCtrl-Home-->
         <scene sceneID="XTZ-V1-aNw">
             <objects>
-                <navigationController title="NavCtrl-Home" automaticallyAdjustsScrollViewInsets="NO" id="TQR-1E-8cr" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Home" automaticallyAdjustsScrollViewInsets="NO" id="TQR-1E-8cr" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="Srv-k3-bZ5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dox-Ce-T9H">
@@ -1288,7 +1288,7 @@
         <!--NavCtrl-Friend-->
         <scene sceneID="Exj-bv-ESE">
             <objects>
-                <navigationController title="NavCtrl-Friend" automaticallyAdjustsScrollViewInsets="NO" id="R1S-jV-CIU" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Friend" automaticallyAdjustsScrollViewInsets="NO" id="R1S-jV-CIU" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="friends" id="Ry5-yn-vFh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gis-EO-g3g">
@@ -1307,7 +1307,7 @@
         <!--NavCtrl-Setting-->
         <scene sceneID="jgN-wZ-qB1">
             <objects>
-                <navigationController title="NavCtrl-Setting" automaticallyAdjustsScrollViewInsets="NO" id="C18-qi-UMb" sceneMemberID="viewController">
+                <navigationController title="NavCtrl-Setting" automaticallyAdjustsScrollViewInsets="NO" id="C18-qi-UMb" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="l8I-xV-lhJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lcn-nd-V2T">
@@ -1398,7 +1398,7 @@
         <!--Feed-->
         <scene sceneID="Fli-3O-oMS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rDA-kc-879" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rDA-kc-879" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Feed" image="feed" id="428-Iu-csw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YTX-rH-Yj3">

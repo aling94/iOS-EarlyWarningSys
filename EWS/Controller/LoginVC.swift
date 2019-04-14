@@ -18,7 +18,6 @@ class LoginVC: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "LOGIN"
-        makeNavBarClear()
         setupForm()
     }
     

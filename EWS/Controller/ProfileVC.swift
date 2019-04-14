@@ -18,7 +18,6 @@ class ProfileVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeNavBarClear()
         setupTable()
         setupForm()
         loadUserInfo()
