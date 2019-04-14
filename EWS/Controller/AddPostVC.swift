@@ -55,11 +55,6 @@ class AddPostVC: UIViewController {
     }
 }
 
-extension AddPostVC: UITextViewDelegate {
-    
-    
-}
-
 // MARK : - ImagePicker
 extension AddPostVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
