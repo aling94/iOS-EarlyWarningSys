@@ -8,11 +8,13 @@
 
 import UIKit
 import UITextView_Placeholder
+import SVProgressHUD
 
 class AddPostVC: UIViewController {
 
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentBox: UITextView!
+    @IBOutlet weak var pickImageBtn: UIButton!
     
     var picChanged = false
     
@@ -24,10 +26,17 @@ class AddPostVC: UIViewController {
         commentBox.placeholderColor = .white
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+    
     func changePostImage(_ image: UIImage?) {
         guard let image = image else { return }
         postImage.image = image
+        pickImageBtn.setTitle("", for: .normal)
         picChanged = true
+        
     }
     
     @IBAction func savePost(_ sender: Any) {
@@ -65,7 +74,8 @@ extension AddPostVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
         imgPicker.delegate = self
-        self.present(imgPicker, animated:true, completion:nil)
+        SVProgressHUD.show()
+        self.present(imgPicker, animated:true)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import SVProgressHUD
 
 class ProfileVC: FormViewController {
 
@@ -21,6 +22,11 @@ class ProfileVC: FormViewController {
         setupTable()
         setupForm()
         loadUserInfo()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
     
     var spacer: SpaceCellRow {
@@ -172,6 +178,7 @@ extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDel
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
         imgPicker.delegate = self
+        SVProgressHUD.show()
         self.present(imgPicker, animated:true, completion:nil)
     }
     
