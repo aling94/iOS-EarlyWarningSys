@@ -164,13 +164,13 @@ extension FirebaseManager {
     // MARK: - Database/Post
     
     func addPost(img : UIImage , postdesc : String? , errorHandler: @escaping ErrorHandler) {
-        let user = Auth.auth().currentUser
+        let user = Auth.auth().currentUser!
         let pid = dbRef.child("Post").childByAutoId().key!
-        let info = [
+        let info: [String : Any] = [
             "pid" : pid,
-            "uid" : user?.uid,
+            "uid" : user.uid,
             "description" : postdesc ?? "" ,
-            "timestamp" : "\(Date().timeIntervalSince1970)"
+            "timestamp" : Date().timeIntervalSince1970
         ]
         
         dbRef.child("Post").child(pid).setValue(info) { (error, _) in
