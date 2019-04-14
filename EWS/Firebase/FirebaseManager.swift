@@ -113,8 +113,10 @@ extension FirebaseManager {
                 let user = UserInfo(uid, info: data as! [String: Any])
                 self.getUserImage(uid) { (image, _) in
                     user.image = image
-                    userList.append(user)
-                    dispatchGroup.leave()
+                    DispatchQueue.global().async(flags: .barrier) {
+                        userList.append(user)
+                        dispatchGroup.leave()
+                    }
                 }
             }
             dispatchGroup.notify(queue: .main) {completion(userList) }
