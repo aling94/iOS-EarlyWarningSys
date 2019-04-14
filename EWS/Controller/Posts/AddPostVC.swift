@@ -10,7 +10,7 @@ import UIKit
 import UITextView_Placeholder
 import SVProgressHUD
 
-class AddPostVC: UIViewController {
+class AddPostVC: BaseVC {
 
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentBox: UITextView!
@@ -25,11 +25,6 @@ class AddPostVC: UIViewController {
         navbarTextColor = .white
         commentBox.placeholder = "What are your thoughts?"
         commentBox.placeholderColor = .white
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
     }
     
     func changePostImage(_ image: UIImage?) {

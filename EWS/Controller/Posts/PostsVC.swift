@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class PostsVC: UIViewController {
+class PostsVC: BaseVC {
 
     @IBOutlet weak var table: UITableView!
     

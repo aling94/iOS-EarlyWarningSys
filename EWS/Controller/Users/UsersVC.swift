@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import TWMessageBarManager
 
-class UsersVC: UIViewController {
+class UsersVC: BaseVC {
 
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -31,11 +31,6 @@ class UsersVC: UIViewController {
         super.viewWillAppear(animated)
         navbarIsHidden = true
         getUsers()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
     }
     
     func getUsers() {
