@@ -1,5 +1,5 @@
 //
-//  Post.swift
+//  PostInfo.swift
 //  EWS
 //
 //  Created by Alvin Ling on 4/12/19.
