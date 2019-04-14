@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w92-Je-aqJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="weM-nR-7MK">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -117,7 +117,7 @@
         <!--Nav Controller-->
         <scene sceneID="IjG-A5-z0L">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w92-Je-aqJ" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNav" automaticallyAdjustsScrollViewInsets="NO" id="w92-Je-aqJ" customClass="NavController" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N8Q-ST-bvM">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -1414,6 +1414,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMA-Fx-RUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1441" y="1677"/>
+        </scene>
+        <!--SplashVC-->
+        <scene sceneID="cMn-GH-jAE">
+            <objects>
+                <viewController storyboardIdentifier="EWSSplashVC" id="weM-nR-7MK" customClass="SplashVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V1h-RM-UIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmm-DP-KGq" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2b-uo-r1I" customClass="TAPageControl">
+                                <rect key="frame" x="182" y="699" width="50" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="L9M-KV-tgz"/>
+                                    <constraint firstAttribute="width" constant="50" id="glm-Xp-OAp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tmm-DP-KGq" firstAttribute="bottom" secondItem="xsb-su-b12" secondAttribute="bottom" id="52k-35-dTc"/>
+                            <constraint firstItem="xsb-su-b12" firstAttribute="bottom" secondItem="p2b-uo-r1I" secondAttribute="bottom" id="ax9-Nt-psd"/>
+                            <constraint firstItem="tmm-DP-KGq" firstAttribute="trailing" secondItem="xsb-su-b12" secondAttribute="trailing" id="ccg-E8-fqQ"/>
+                            <constraint firstItem="tmm-DP-KGq" firstAttribute="top" secondItem="V1h-RM-UIZ" secondAttribute="top" id="dsb-aW-Ubh"/>
+                            <constraint firstItem="tmm-DP-KGq" firstAttribute="leading" secondItem="xsb-su-b12" secondAttribute="leading" id="fAT-pu-X5M"/>
+                            <constraint firstItem="p2b-uo-r1I" firstAttribute="centerX" secondItem="V1h-RM-UIZ" secondAttribute="centerX" id="yz9-bA-lpC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xsb-su-b12"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j7o-Bh-qog"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="carouselView" destination="tmm-DP-KGq" id="nGR-PX-uEN"/>
+                        <outlet property="pageControl" destination="p2b-uo-r1I" id="su8-fj-3y9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RhP-5I-eZo" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-988" y="24"/>
         </scene>
     </scenes>
     <resources>

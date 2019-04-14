@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4C00B0116FDE073AB65F0AE3 /* Pods_EWS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CA024447C4DAC28573E023 /* Pods_EWS.framework */; };
+		E10E36372263847900129B47 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10E36332263847900129B47 /* SplashView.xib */; };
+		E10E36382263847900129B47 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36342263847900129B47 /* SplashVC.swift */; };
+		E10E36392263847900129B47 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36352263847900129B47 /* SplashView.swift */; };
 		E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1354F44225D083C00ED365E /* GoogleService-Info.plist */; };
 		E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F46225D0D9800ED365E /* CustomValidations.swift */; };
 		E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F49225D2DB700ED365E /* FirebaseManager.swift */; };
@@ -53,6 +56,9 @@
 		26CA024447C4DAC28573E023 /* Pods_EWS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EWS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0FAF0DC3A3CCCB33861BFA /* Pods-EWS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.debug.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.debug.xcconfig"; sourceTree = "<group>"; };
 		DE5FB97AB8EC9284EBDEB57E /* Pods-EWS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWS.release.xcconfig"; path = "Target Support Files/Pods-EWS/Pods-EWS.release.xcconfig"; sourceTree = "<group>"; };
+		E10E36332263847900129B47 /* SplashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
+		E10E36342263847900129B47 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		E10E36352263847900129B47 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1354F44225D083C00ED365E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1354F46225D0D9800ED365E /* CustomValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValidations.swift; sourceTree = "<group>"; };
 		E1354F49225D2DB700ED365E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -123,6 +129,16 @@
 				DE5FB97AB8EC9284EBDEB57E /* Pods-EWS.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E10E36322263845400129B47 /* SplashPage */ = {
+			isa = PBXGroup;
+			children = (
+				E10E36352263847900129B47 /* SplashView.swift */,
+				E10E36332263847900129B47 /* SplashView.xib */,
+				E10E36342263847900129B47 /* SplashVC.swift */,
+			);
+			path = SplashPage;
 			sourceTree = "<group>";
 		};
 		E1354F48225D2D5B00ED365E /* Firebase */ = {
@@ -284,6 +300,7 @@
 				E1DAC5C422600A520076853F /* BaseClasses */,
 				E1E6AF262262F072005AF9F9 /* Delegates */,
 				E1354F5A225D83DE00ED365E /* Custom Cells */,
+				E10E36322263845400129B47 /* SplashPage */,
 				E141B4A72262E7ED009F8FDA /* StartPage */,
 				E141B4A82262E818009F8FDA /* Home */,
 				E141B4AB2262E84C009F8FDA /* Posts */,
@@ -413,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1550FE5225C0963003B554B /* LaunchScreen.storyboard in Resources */,
+				E10E36372263847900129B47 /* SplashView.xib in Resources */,
 				E1550FE2225C0963003B554B /* Assets.xcassets in Resources */,
 				E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */,
 				E1550FE0225C0962003B554B /* Main.storyboard in Resources */,
@@ -569,7 +587,9 @@
 				E1354F50225D421F00ED365E /* UserInfo.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */,
+				E10E36392263847900129B47 /* SplashView.swift in Sources */,
 				E1518099225EE84800EC040F /* RoundViews.swift in Sources */,
+				E10E36382263847900129B47 /* SplashVC.swift in Sources */,
 				E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */,
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
