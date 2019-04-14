@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PostsVC: UIViewController {
 
@@ -16,6 +17,7 @@ class PostsVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.table.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -30,8 +32,9 @@ class PostsVC: UIViewController {
     }
     
     func fetchPosts() {
+        SVProgressHUD.show()
         FirebaseManager.shared.getPosts { postList in
-            self.posts = postList?.sorted(by: <) ?? []
+            self.posts = postList?.sorted(by: >) ?? []
         }
     }
 }

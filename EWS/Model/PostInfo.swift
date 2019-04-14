@@ -29,4 +29,9 @@ final class PostInfo {
     static func <(left: PostInfo, right: PostInfo) -> Bool {
         return left.timestamp < right.timestamp
     }
+    
+    
+    static func >(left: PostInfo, right: PostInfo) -> Bool {
+        return left.timestamp > right.timestamp
+    }
 }
