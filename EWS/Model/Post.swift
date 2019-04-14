@@ -25,4 +25,8 @@ final class PostInfo {
         uid = info["uid"] as! String
         timestamp = info["timestamp"] as! Double
     }
+    
+    static func <(left: PostInfo, right: PostInfo) -> Bool {
+        return left.timestamp < right.timestamp
+    }
 }

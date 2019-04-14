@@ -32,7 +32,7 @@ class PostsVC: UIViewController {
     
     func fetchPosts() {
         FirebaseManager.shared.getPosts { postList in
-            self.posts = postList ?? []
+            self.posts = postList?.sorted(by: <) ?? []
         }
     }
 }
