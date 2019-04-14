@@ -11,21 +11,16 @@ import Eureka
 import FirebaseAuth
 import SVProgressHUD
 
-class LoginVC: FormViewController {
+class LoginVC: FormVC {
 
     var email, passw: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "LOGIN"
         setupForm()
+        title = "LOGIN"
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        SVProgressHUD.dismiss()
-    }
-    
+
     func setupForm() {
         // Table config
         tableView.isScrollEnabled = false
@@ -33,11 +28,6 @@ class LoginVC: FormViewController {
         
         // Form config
         let cellHeight: CGFloat = 50
-        let cellGap: CGFloat = 15
-        let spacer = SpaceCellRow {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
         
         // Create form
         form
@@ -56,7 +46,7 @@ class LoginVC: FormViewController {
             self.email = cell.textField.text
         }
             
-        <<< spacer
+        <<< spacer(gapSize: 15)
             
         // Password field
         <<< PasswordFloatLabelRow {
@@ -99,6 +89,5 @@ class LoginVC: FormViewController {
             FirebaseManager.shared.resetPassword(email: email, errorHandler: self.alertError)
         }
     }
-    
 }
 

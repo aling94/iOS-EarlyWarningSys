@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import Eureka
 import SVProgressHUD
 
 class BaseVC: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
     }
-    
+}
+
+class FormVC: FormViewController {
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss()

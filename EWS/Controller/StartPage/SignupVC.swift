@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
 
-class SignupVC: FormViewController {
+class SignupVC: FormVC {
 
     
     var email, passw, cpassw: String!
@@ -21,21 +21,12 @@ class SignupVC: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "SIGN UP"
         setupForm()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        SVProgressHUD.dismiss()
+        title = "SIGN UP"
     }
     
     var spacer: SpaceCellRow {
-        let cellGap: CGFloat = 10
-        return SpaceCellRow {
-            $0.cell.spaceHeight = cellGap
-            $0.cell.backgroundColor = .clear
-        }
+        return spacer(gapSize: 10)
     }
     
     func setupForm() {
