@@ -10,6 +10,8 @@ target 'EWS' do
   pod 'SVProgressHUD', '~> 2.2'
   pod 'TWMessageBarManager', '~> 1.8'
   pod 'AlamofireObjectMapper', '~> 5.2'
+  pod 'TAPageControl'
+  pod 'VGContent', :git => 'https://github.com/mojidabckuu/VGContent.git', :branch => 'UIControls'
   # Addons
   pod 'UITextView+Placeholder'
   # Google

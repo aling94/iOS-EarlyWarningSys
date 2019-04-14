@@ -168,6 +168,59 @@
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		E141B4A72262E7ED009F8FDA /* StartPage */ = {
+			isa = PBXGroup;
+			children = (
+				E1550FDC225C0962003B554B /* LoginVC.swift */,
+				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
+			);
+			path = StartPage;
+			sourceTree = "<group>";
+		};
+		E141B4A82262E818009F8FDA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E1354F58225D75F400ED365E /* HomeVC.swift */,
+				E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E141B4A92262E834009F8FDA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E1D971FA225E81A70052AD32 /* ProfileVC.swift */,
+				E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E141B4AA2262E840009F8FDA /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				E1DAC5C2225FD5F30076853F /* FriendsVC.swift */,
+				E1DAC5C72260374C0076853F /* FriendsMapVC.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		E141B4AB2262E84C009F8FDA /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				E1D1E382226130E100AF8B24 /* PostsVC.swift */,
+				E141B4A52262430C009F8FDA /* AddPostVC.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
+		E141B4AC2262E85A009F8FDA /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		E1518092225ED3F600EC040F /* MyKeys */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,17 +281,12 @@
 			children = (
 				E1DAC5C422600A520076853F /* BaseClasses */,
 				E1354F5A225D83DE00ED365E /* Custom Cells */,
-				E1550FDC225C0962003B554B /* LoginVC.swift */,
-				E1550FF1225C1EAA003B554B /* SignupVC.swift */,
-				E1DAC5C2225FD5F30076853F /* FriendsVC.swift */,
-				E1354F58225D75F400ED365E /* HomeVC.swift */,
-				E1354F5E225DAA3000ED365E /* UsersVC.swift */,
-				E1D971FA225E81A70052AD32 /* ProfileVC.swift */,
-				E1D971F6225E5D3F0052AD32 /* EQMapVC.swift */,
-				E1DAC5C72260374C0076853F /* FriendsMapVC.swift */,
-				E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */,
-				E1D1E382226130E100AF8B24 /* PostsVC.swift */,
-				E141B4A52262430C009F8FDA /* AddPostVC.swift */,
+				E141B4A72262E7ED009F8FDA /* StartPage */,
+				E141B4A82262E818009F8FDA /* Home */,
+				E141B4AB2262E84C009F8FDA /* Posts */,
+				E141B4AA2262E840009F8FDA /* Friends */,
+				E141B4AC2262E85A009F8FDA /* Users */,
+				E141B4A92262E834009F8FDA /* Settings */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -380,8 +428,12 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TAPageControl/TAPageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/TWMessageBarManager/TWMessageBarManager.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/VGContent/VGContent.framework",
+				"${BUILT_PRODUCTS_DIR}/VGInfiniteControl/VGInfiniteControl.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -396,8 +448,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TAPageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TWMessageBarManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VGContent.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VGInfiniteControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

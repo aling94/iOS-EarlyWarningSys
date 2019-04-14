@@ -86,6 +86,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - iCarousel (1.8.3)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -94,8 +95,13 @@ PODS:
   - nanopb/encode (0.3.901)
   - ObjectMapper (3.4.2)
   - SVProgressHUD (2.2.5)
+  - TAPageControl (0.2.0)
   - TWMessageBarManager (1.8.1)
   - "UITextView+Placeholder (1.2.1)"
+  - VGContent (0.1.0):
+    - iCarousel
+    - VGInfiniteControl
+  - VGInfiniteControl (0.1.0)
 
 DEPENDENCIES:
   - AlamofireObjectMapper (~> 5.2)
@@ -110,8 +116,10 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - SVProgressHUD (~> 2.2)
+  - TAPageControl
   - TWMessageBarManager (~> 1.8)
   - "UITextView+Placeholder"
+  - VGContent (from `https://github.com/mojidabckuu/VGContent.git`, branch `UIControls`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -134,12 +142,25 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
+    - iCarousel
     - leveldb-library
     - nanopb
     - ObjectMapper
     - SVProgressHUD
+    - TAPageControl
     - TWMessageBarManager
     - "UITextView+Placeholder"
+    - VGInfiniteControl
+
+EXTERNAL SOURCES:
+  VGContent:
+    :branch: UIControls
+    :git: https://github.com/mojidabckuu/VGContent.git
+
+CHECKOUT OPTIONS:
+  VGContent:
+    :commit: ca3687b1e7f3ac4d726a8e0811967ebfcc70b5d9
+    :git: https://github.com/mojidabckuu/VGContent.git
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -161,13 +182,17 @@ SPEC CHECKSUMS:
   GooglePlaces: f09e76993c9c3ee4af8f4f7f535bb94d6aa3b649
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TAPageControl: fd11d779bbb5c2464ca2f55dde9e288213ea8a9b
   TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
   "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
+  VGContent: ffdf303df508ae195da98e9a7878d60b9166aa7d
+  VGInfiniteControl: ebe8f4903e4cb9eea9c8fef01e9d2a01cec02e66
 
-PODFILE CHECKSUM: 1e36ad28784487b9e4f17b43fd436c94c36f6982
+PODFILE CHECKSUM: 7f1ce0aa89538b388e1d936beaebde5acc87be8b
 
 COCOAPODS: 1.6.1
