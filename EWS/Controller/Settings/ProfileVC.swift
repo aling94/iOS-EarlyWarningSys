@@ -133,35 +133,19 @@ class ProfileVC: FormViewController, UINavigationControllerDelegate {
             }
         }
     }
-
-    var fieldsAsDict: [String : Any] {
-        
-        var info: [String : Any] = [:]
-        for tag in fields {
-            let row = form.rowBy(tag: tag)
-            if let val = row?.baseValue as? String, !val.isEmpty {
-                info[tag] = val
-            }
-            else if let text = row?.baseCell.textLabel?.text {
-                info[tag] = text
-            }
-        }
-        return info
+    
+    @IBAction func resetFields(_ sender: Any) {
+        // TODO use stored current user info instead
+        loadUserInfo()
     }
     
     @IBAction func saveInfo(_ sender: Any) {
-       
-        let info = fieldsAsDict
+        let info = formToDict(tags: fields)
         FirebaseManager.shared.updateCurrentUserInfo(info)
         if picChanged {
             FirebaseManager.shared.saveUserImage(userImage.currentImage!)
             picChanged = false
         }
-    }
-    
-    @IBAction func resetFields(_ sender: Any) {
-        // TODO use stored current user info instead
-        loadUserInfo()
     }
     
     @IBAction private func changePic(_ sender: Any) {
