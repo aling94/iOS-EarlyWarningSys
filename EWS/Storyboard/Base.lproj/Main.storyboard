@@ -591,7 +591,12 @@
                                                 <constraint firstItem="xUS-n3-U20" firstAttribute="leading" secondItem="sa8-aS-6cc" secondAttribute="trailing" constant="30" id="xhG-AZ-56Y"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.3028413955479452" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="commentText" destination="QqA-lJ-ATh" id="LHQ-gO-Cmz"/>
                                             <outlet property="nameLabel" destination="xUS-n3-U20" id="UKg-zc-61f"/>
