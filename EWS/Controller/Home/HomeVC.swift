@@ -76,6 +76,10 @@ class HomeVC: UIViewController {
         guard let currentUser = FirebaseManager.shared.currentUser else { return }
         emailLabel.text = currentUser.email
         FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
+            if let  loc = userInfo?.coords, self.myLocation == nil {
+                self.myLocation = loc
+                self.fetchWeatherData()
+            }
             DispatchQueue.main.async {
                 if let pic = userInfo?.image { self.userImage.image = pic }
             }
