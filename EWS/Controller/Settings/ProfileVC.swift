@@ -10,7 +10,7 @@ import UIKit
 import Eureka
 import SVProgressHUD
 
-class ProfileVC: FormViewController, UINavigationControllerDelegate {
+class ProfileVC: FormVC, UINavigationControllerDelegate {
 
     @IBOutlet private weak var userImage: UIButton!
     
@@ -23,11 +23,6 @@ class ProfileVC: FormViewController, UINavigationControllerDelegate {
         setupTable()
         setupForm()
         loadUserInfo()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        SVProgressHUD.dismiss()
     }
     
     var spacer: SpaceCellRow {
