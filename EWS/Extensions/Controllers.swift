@@ -48,7 +48,10 @@ extension UIViewController {
     func showAlert(title: String, msg: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func promptInput(title: String, msg: String, placeHolder: String, textAction: @escaping (String) -> Void) {
@@ -65,6 +68,17 @@ extension UIViewController {
         alert.addAction(okAction)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func alertError(successMsg: String) -> ErrorHandler {
+        let handler: ErrorHandler = { error in
+            DispatchQueue.main.async {
+                let errorMsg = error?.localizedDescription
+                if let errorMsg = errorMsg { self.showAlert(title: "Oops!", msg: errorMsg) }
+                else { self.showAlert(title: "Success!", msg: successMsg) }
+            }
+        }
+        return handler
     }
     
     var alertError: ErrorHandler {
