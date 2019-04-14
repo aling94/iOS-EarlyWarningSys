@@ -1338,10 +1338,10 @@
                                 <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cPz-6i-Wdv">
-                                <rect key="frame" x="25" y="228" width="364" height="280"/>
+                                <rect key="frame" x="25" y="268" width="364" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="yAl-IW-mS7"/>
+                                    <constraint firstAttribute="height" constant="200" id="yAl-IW-mS7"/>
                                 </constraints>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crK-Wh-DXS">
