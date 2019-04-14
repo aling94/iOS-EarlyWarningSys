@@ -36,7 +36,7 @@ class LoginVC: FormVC {
         <<< EmailFloatLabelRow {
             $0.title = "EMAIL"
             $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleRequired(msg: "Email required!"))
             $0.add(rule: RuleEmail())
         }
         .cellUpdate { cell, row in
@@ -52,9 +52,9 @@ class LoginVC: FormVC {
         <<< PasswordFloatLabelRow {
             $0.title = "PASSWORD"
             $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
+            $0.add(rule: RuleRequired(msg: "Password required!"))
+            $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
+            $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
         }
         .cellUpdate { (cell, row) in
             self.passw = cell.textField.text
@@ -63,8 +63,10 @@ class LoginVC: FormVC {
     }
 
     @IBAction func loginBtn(_ sender: Any) {
-        guard form.validate().isEmpty else {
-            showAlert(title: "Oops", msg: "Some fields are invalid.")
+        let errors = form.validate()
+        guard errors.isEmpty else {
+            let msgs = errors.map( {$0.msg} )
+            showAlert(title: "Oops", msg: msgs.joined(separator: "\n\n"))
             return
         }
         SVProgressHUD.show()

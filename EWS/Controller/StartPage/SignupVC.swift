@@ -56,25 +56,31 @@ class SignupVC: FormVC {
         
         <<< spacer
         // Password field
-        <<< PasswordFloatLabelRow {
+        <<< PasswordFloatLabelRow("pass") {
             $0.title = "PASSWORD"
             $0.cell.height = { cellHeight }
             
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
+            $0.add(rule: RuleRequired(msg: "Password required!"))
+            $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
+            $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
         }.cellUpdate { (cell, row) in
             self.passw = cell.textField.text
         }
         
         <<< spacer
         // Confirm Password field
-        <<< PasswordFloatLabelRow {
-            $0.title = "CONFIRM PASSWORD"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
+        <<< PasswordFloatLabelRow { row in
+            row.title = "CONFIRM PASSWORD"
+            row.cell.height = { cellHeight }
+            row.add(rule: RuleRequired(msg: "Please confirm your password."))
+            
+            row.add(rule: RuleClosure(closure: { _ in
+                if let pass = (self.form.rowBy(tag: "pass") as? PasswordFloatLabelRow)?.value, pass != row.value {
+                    return ValidationError(msg: "Passwords do not match!")
+                }
+                return nil
+            }))
+            
         }.cellUpdate { (cell, row) in
             self.cpassw = cell.textField.text
         }
@@ -83,7 +89,7 @@ class SignupVC: FormVC {
         <<< TextFloatLabelRow() {
             $0.title = "FIRST NAME"
             $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleRequired(msg: "First name required."))
         }.cellUpdate { cell, row in
             self.fname = cell.textField.text
         }
@@ -93,7 +99,7 @@ class SignupVC: FormVC {
         <<< TextFloatLabelRow() {
             $0.title = "LAST NAME"
             $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleRequired(msg: "First name required."))
         }.cellUpdate { cell, row in
             self.lname = cell.textField.text
         }
@@ -103,7 +109,8 @@ class SignupVC: FormVC {
         <<< PhoneFloatLabelRow() {
             $0.title = "PHONE NO."
             $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleRequired(msg: "Phone number required."))
+            $0.add(rule: RuleRegExp(regExpr: "^\\d{10}$", allowsEmpty: false, msg: "Not a valid phone number."))
         }.cellUpdate { cell, row in
             self.phone = cell.textField.text
         }
@@ -112,7 +119,7 @@ class SignupVC: FormVC {
         // DOB field
         <<< DateRow() {
             $0.title = "DATE OF BIRTH"
-            $0.add(rule: RuleRequired())
+            $0.add(rule: RuleRequired(msg: "Date of birth required."))
         }.cellSetup { cell, row in
             row.maximumDate = Date()
             cell.height = { cellHeight }
@@ -163,11 +170,11 @@ class SignupVC: FormVC {
             return
         }
         
-        let valid = form.validate().isEmpty && (passw == cpassw)
-        if valid { registerToDB() }
-        else {
-            showAlert(title: "Ooops", msg: "You've got some errors.")
-        }
+        let errors = form.validate()
+        if !errors.isEmpty {
+            let msgs = errors.map( {$0.msg} )
+            showAlert(title: "Oops", msg: msgs.joined(separator: "\n\n"))
+        } else { registerToDB() }
     }
     
     var fieldsAsDict: [String: Any] {
