@@ -8,8 +8,9 @@
 
 import UIKit
 import GooglePlaces
+import SVProgressHUD
 
-class HomeVC: UIViewController {
+class HomeVC: BaseVC {
 
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var userImage: UIImageView!
@@ -27,38 +28,33 @@ class HomeVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.collection.reloadData()
+                self.setWeatherInfo()
+                SVProgressHUD.dismiss()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let loc = app.currentLocation?.coordinate {
-            myLocation = loc
-            fetchWeatherData()
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        setupUserData()
-        if myLocation == nil, let loc = app.currentLocation?.coordinate {
+        if let loc = app.currentLocation?.coordinate {
             myLocation = loc
             fetchWeatherData()
         }
+        setupUserData()
     }
     
     func fetchWeatherData() {
         guard let loc = myLocation else { return }
-        
+        SVProgressHUD.show()
         APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
+            DispatchQueue.main.async { SVProgressHUD.dismiss() }
             guard let data = response else { return }
             self.weatherData = data
-            DispatchQueue.main.async {
-                self.setWeatherInfo()
-            }
         }
     }
     
