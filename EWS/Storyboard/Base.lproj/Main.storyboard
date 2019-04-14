@@ -662,7 +662,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="mw4-gg-5DM">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-img" translatesAutoresizingMaskIntoConstraints="NO" id="Uvj-Oz-09Y">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uvj-Oz-09Y">
                                 <rect key="frame" x="30" y="114" width="354" height="212"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="pcM-Nd-Xds"/>
@@ -671,7 +671,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG4-7R-07Z" userLabel="Pic Image">
                                 <rect key="frame" x="30" y="114" width="354" height="212"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal">
+                                <state key="normal" title="Select Image">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -733,6 +733,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="commentBox" destination="bvK-z6-Zk1" id="Oxo-jK-Dhd"/>
+                        <outlet property="pickImageBtn" destination="zG4-7R-07Z" id="bLo-sk-5Kn"/>
                         <outlet property="postImage" destination="Uvj-Oz-09Y" id="753-oZ-w65"/>
                     </connections>
                 </viewController>
@@ -1428,7 +1429,6 @@
         <image name="home" width="25" height="25"/>
         <image name="lowtemp" width="40" height="40"/>
         <image name="map" width="25" height="25"/>
-        <image name="placeholder-img" width="960" height="640"/>
         <image name="refresh" width="48" height="48"/>
         <image name="save" width="50" height="50"/>
         <image name="settings" width="25" height="25"/>
