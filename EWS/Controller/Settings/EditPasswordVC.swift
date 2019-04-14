@@ -15,7 +15,6 @@ class EditPasswordVC: ProfileVC {
         super.viewDidLoad()
     }
     
-
     override func setupForm() {
         // Form config
         fields = ["pass", "cpass"]

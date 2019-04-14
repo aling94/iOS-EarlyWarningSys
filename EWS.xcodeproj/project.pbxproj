@@ -46,6 +46,7 @@
 		E1DAC5C622600A640076853F /* BaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C522600A640076853F /* BaseClasses.swift */; };
 		E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C72260374C0076853F /* FriendsMapVC.swift */; };
 		E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */; };
+		E1E6AF282262F082005AF9F9 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		E1DAC5C522600A640076853F /* BaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClasses.swift; sourceTree = "<group>"; };
 		E1DAC5C72260374C0076853F /* FriendsMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMapVC.swift; sourceTree = "<group>"; };
 		E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMarkerVC.swift; sourceTree = "<group>"; };
+		E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 		E1550FEC225C0AED003B554B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1E6AF262262F072005AF9F9 /* Delegates */,
 				E1DAC5C422600A520076853F /* BaseClasses */,
 				E1354F5A225D83DE00ED365E /* Custom Cells */,
 				E141B4A72262E7ED009F8FDA /* StartPage */,
@@ -337,6 +340,14 @@
 				E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */,
 			);
 			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		E1E6AF262262F072005AF9F9 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -563,6 +574,7 @@
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
 				E1DAC5C622600A640076853F /* BaseClasses.swift in Sources */,
+				E1E6AF282262F082005AF9F9 /* ImagePickerDelegate.swift in Sources */,
 				E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,

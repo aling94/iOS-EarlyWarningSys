@@ -17,6 +17,7 @@ class AddPostVC: UIViewController {
     @IBOutlet weak var pickImageBtn: UIButton!
     
     var picChanged = false
+    var imagePickerDelegate: ImagePickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,6 @@ class AddPostVC: UIViewController {
         postImage.image = image
         pickImageBtn.setTitle("", for: .normal)
         picChanged = true
-        
     }
     
     @IBAction func savePost(_ sender: Any) {
@@ -61,33 +61,14 @@ class AddPostVC: UIViewController {
     }
     
     @IBAction func uploadImage(_ sender: Any) {
-        promptImageUpload()
-    }
-}
-
-// MARK : - ImagePicker
-extension AddPostVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // Prompt the user to upload an image
-    func promptImageUpload() {
+        imagePickerDelegate = ImagePickerDelegate()
+        imagePickerDelegate?.selectImageAction = { [unowned self] img in self.changePostImage(img) }
+        
         let imgPicker = UIImagePickerController()
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
-        imgPicker.delegate = self
+        imgPicker.delegate = imagePickerDelegate
         SVProgressHUD.show()
         self.present(imgPicker, animated:true)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        
-        let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        dismiss(animated: true) {
-            self.changePostImage(selected)
-        }
     }
 }

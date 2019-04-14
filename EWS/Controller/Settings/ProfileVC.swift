@@ -10,12 +10,13 @@ import UIKit
 import Eureka
 import SVProgressHUD
 
-class ProfileVC: FormViewController {
+class ProfileVC: FormViewController, UINavigationControllerDelegate {
 
-    @IBOutlet weak var userImage: UIButton!
+    @IBOutlet private weak var userImage: UIButton!
     
     var fields: [String] = []
-    var picChanged = false
+    private var picChanged = false
+    private var imagePickerDelegate: ImagePickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,7 +157,6 @@ class ProfileVC: FormViewController {
             FirebaseManager.shared.saveUserImage(userImage.currentImage!)
             picChanged = false
         }
-        
     }
     
     @IBAction func resetFields(_ sender: Any) {
@@ -165,37 +165,20 @@ class ProfileVC: FormViewController {
     }
     
     @IBAction private func changePic(_ sender: Any) {
-        promptImageUpload()
-    }
-}
-
-// MARK : - ImagePicker
-extension ProfileVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    // Prompt the user to upload an image
-    func promptImageUpload() {
+        imagePickerDelegate = ImagePickerDelegate()
+        imagePickerDelegate?.selectImageAction = { [unowned self] img in self.changeUserImage(img) }
+        
         let imgPicker = UIImagePickerController()
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
-        imgPicker.delegate = self
+        imgPicker.delegate = imagePickerDelegate
         SVProgressHUD.show()
-        self.present(imgPicker, animated:true, completion:nil)
+        self.present(imgPicker, animated:true)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        
-        let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        dismiss(animated: true) {
-            guard let newPic = selected else { return }
-            self.userImage?.setImage(newPic, for: .normal)
-            self.picChanged = true
-        }
+    private func changeUserImage(_ image: UIImage?) {
+        guard let image = image else { return }
+        self.userImage?.setImage(image, for: .normal)
+        self.picChanged = true
     }
 }
-
-
