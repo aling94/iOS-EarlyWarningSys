@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SplashView" customModule="EWS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgB-Vt-S8w">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dZM-Qc-4u5">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="dZM-Qc-4u5" firstAttribute="leading" secondItem="JgB-Vt-S8w" secondAttribute="leading" id="KsV-yn-pWi"/>
+                        <constraint firstAttribute="trailing" secondItem="dZM-Qc-4u5" secondAttribute="trailing" id="LQf-cV-mu3"/>
+                        <constraint firstAttribute="bottom" secondItem="dZM-Qc-4u5" secondAttribute="bottom" id="Mlx-Qr-WHc"/>
+                        <constraint firstItem="dZM-Qc-4u5" firstAttribute="top" secondItem="JgB-Vt-S8w" secondAttribute="top" id="vqc-aj-9r7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="JgB-Vt-S8w" secondAttribute="bottom" id="5am-Dm-hsR"/>
+                <constraint firstAttribute="trailing" secondItem="JgB-Vt-S8w" secondAttribute="trailing" id="BGB-iR-HVh"/>
+                <constraint firstItem="JgB-Vt-S8w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OqB-M6-wb0"/>
+                <constraint firstItem="JgB-Vt-S8w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eUn-mI-VlJ"/>
+            </constraints>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="JgB-Vt-S8w"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imageView" destination="dZM-Qc-4u5" id="Dq0-Za-HoJ"/>
+            </connections>
+            <point key="canvasLocation" x="-149.59999999999999" y="-28.335832083958024"/>
+        </view>
+    </objects>
+</document>
