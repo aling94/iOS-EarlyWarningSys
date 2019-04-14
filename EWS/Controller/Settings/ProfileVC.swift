@@ -135,11 +135,44 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
     }
     
     @IBAction func saveInfo(_ sender: Any) {
+        guard form.validate().isEmpty else {
+            showAlert(title: "Oops", msg: "Some inputs are invalid.")
+            return
+        }
+        SVProgressHUD.show()
         let info = formToDict(tags: fields)
-        FirebaseManager.shared.updateCurrentUserInfo(info)
+        var errorsMsgs: [String] = []
+        let dpg = DispatchGroup()
+        dpg.enter()
+        FirebaseManager.shared.updateCurrentUserInfo(info) { error in
+            if let error = error {
+                DispatchQueue.global().async(flags: .barrier) {
+                    errorsMsgs.append(error.localizedDescription)
+                    dpg.leave()
+                }
+            } else { dpg.leave() }
+        }
+        
         if picChanged {
-            FirebaseManager.shared.saveUserImage(userImage.currentImage!)
+            dpg.enter()
+            FirebaseManager.shared.saveUserImage(userImage.currentImage!) { error in
+                if let error = error {
+                    DispatchQueue.global().async(flags: .barrier) {
+                        errorsMsgs.append(error.localizedDescription)
+                        dpg.leave()
+                    }
+                } else { dpg.leave() }
+            }
             picChanged = false
+        }
+        
+        dpg.notify(queue: .main) {
+            SVProgressHUD.dismiss()
+            if errorsMsgs.isEmpty {
+                self.showAlert(title: "Success!", msg: "Your profile info has been updated!")
+            } else {
+                self.showAlert(title: "Oops!", msg: errorsMsgs.joined(separator: "\n\n"))
+            }
         }
     }
     

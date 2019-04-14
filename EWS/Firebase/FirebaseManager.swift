@@ -67,13 +67,15 @@ extension FirebaseManager {
     
     // MARK: - Database/User
     
-    func updateUserInfo(uid: String, info: [String: Any]) {
-        self.dbRef.child("User").child(uid).updateChildValues(info)
+    func updateUserInfo(uid: String, info: [String: Any], errorHandler: ErrorHandler? = nil) {
+        self.dbRef.child("User").child(uid).updateChildValues(info) { (error, _) in
+            errorHandler?(error)
+        }
     }
     
-    func updateCurrentUserInfo(_ info: [String: Any]) {
+    func updateCurrentUserInfo(_ info: [String: Any], errorHandler: ErrorHandler? = nil) {
         guard let uid = currentUser?.uid else { return }
-        self.dbRef.child("User").child(uid).updateChildValues(info)
+        updateUserInfo(uid: uid, info: info, errorHandler: errorHandler)
     }
     
     func getUserInfo(_ uid: String, completion: @escaping (UserInfo?) -> Void) {
