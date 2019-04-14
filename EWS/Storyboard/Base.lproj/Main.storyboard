@@ -619,6 +619,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="mTd-e9-lxO" id="3qJ-pr-qfl"/>
+                                    <outlet property="delegate" destination="mTd-e9-lxO" id="ozk-PI-I5F"/>
                                 </connections>
                             </tableView>
                         </subviews>

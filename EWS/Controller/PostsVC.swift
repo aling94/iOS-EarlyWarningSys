@@ -56,4 +56,8 @@ extension PostsVC: UITableViewDataSource, UITableViewDelegate {
         cell.userImage.image = post.user?.image ?? UIImage(named: "default-user")
         cell.postImage.image = post.image
     }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
 }
