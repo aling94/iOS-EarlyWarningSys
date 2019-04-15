@@ -774,7 +774,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="oh1-A2-XTH">
                                 <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
                             </imageView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SaN-Sc-j95">
+                            <searchBar hidden="YES" contentMode="redraw" searchBarStyle="minimal" placeholder="Search by name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SaN-Sc-j95">
                                 <rect key="frame" x="0.0" y="20" width="414" height="56"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1146,7 +1146,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3" translatesAutoresizingMaskIntoConstraints="NO" id="zb9-7x-6YV">
                                 <rect key="frame" x="0.0" y="-1" width="414" height="737"/>
                             </imageView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search by name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8G-O1-0Lm">
+                            <searchBar hidden="YES" contentMode="redraw" searchBarStyle="minimal" placeholder="Search by name" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8G-O1-0Lm">
                                 <rect key="frame" x="0.0" y="20" width="414" height="56"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
