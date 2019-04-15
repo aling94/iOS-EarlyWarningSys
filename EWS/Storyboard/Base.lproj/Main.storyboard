@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-user" translatesAutoresizingMaskIntoConstraints="NO" id="j4E-95-fr9" customClass="CircleImageView" customModule="EWS" customModuleProvider="target">
-                                <rect key="frame" x="132" y="60" width="150" height="150"/>
+                                <rect key="frame" x="132" y="70" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="CKT-UD-gwb"/>
                                     <constraint firstAttribute="width" constant="150" id="J24-io-vBD"/>
@@ -230,7 +230,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbX-R1-Oya">
-                                <rect key="frame" x="25" y="235" width="364" height="0.0"/>
+                                <rect key="frame" x="25" y="245" width="364" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -296,7 +296,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="0.4472121147260274" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.66666666666666663" green="0.66666668653488159" blue="0.66666668653488159" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="gaW-JC-QIH" secondAttribute="bottom" constant="10" id="1aC-YR-JgL"/>
                                             <constraint firstItem="gaW-JC-QIH" firstAttribute="leading" secondItem="9D9-dH-W3S" secondAttribute="leading" id="BLl-Cr-lLA"/>
@@ -372,7 +372,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.44076412671232879" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.30027290239726029" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="rlZ-lA-LcC" firstAttribute="leading" secondItem="mML-Wi-A3K" secondAttribute="leading" constant="15" id="0MH-zj-ggD"/>
                                     <constraint firstAttribute="height" constant="165" id="0dF-og-Kf9"/>
@@ -405,7 +405,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="0.44076412669999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.30027290239726029" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="KmA-Ej-Ivk" firstAttribute="leading" secondItem="oFl-me-lsU" secondAttribute="leading" constant="15" id="C9a-zs-YCJ"/>
                                     <constraint firstAttribute="trailing" secondItem="KmA-Ej-Ivk" secondAttribute="trailing" constant="15" id="PCL-bi-39w"/>
@@ -419,10 +419,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyT-dN-lXd" userLabel="ShowEQs">
-                                <rect key="frame" x="339" y="30" width="15" height="15"/>
+                                <rect key="frame" x="329" y="40" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="1JR-oJ-Tog"/>
-                                    <constraint firstAttribute="height" constant="15" id="6fp-6G-qLc"/>
+                                    <constraint firstAttribute="width" constant="25" id="1JR-oJ-Tog"/>
+                                    <constraint firstAttribute="height" constant="25" id="6fp-6G-qLc"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="earthquake"/>
@@ -431,10 +431,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dxg-ee-uLm" userLabel="Places">
-                                <rect key="frame" x="60" y="30" width="15" height="15"/>
+                                <rect key="frame" x="60" y="40" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="59O-UJ-bcO"/>
-                                    <constraint firstAttribute="height" constant="15" id="U9u-Bz-gIh"/>
+                                    <constraint firstAttribute="width" constant="25" id="59O-UJ-bcO"/>
+                                    <constraint firstAttribute="height" constant="25" id="U9u-Bz-gIh"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="map"/>
@@ -447,14 +447,14 @@
                         <constraints>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="KK0-po-whm" secondAttribute="trailing" constant="20" id="0Og-nS-fC0"/>
                             <constraint firstItem="DN4-rh-DTy" firstAttribute="top" secondItem="pE8-rn-JXA" secondAttribute="top" id="18T-h8-wZc"/>
-                            <constraint firstItem="Dxg-ee-uLm" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="10" id="3ut-5f-JD2"/>
+                            <constraint firstItem="Dxg-ee-uLm" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="20" id="3ut-5f-JD2"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="YyT-dN-lXd" secondAttribute="trailing" constant="60" id="4rX-U3-Niq"/>
                             <constraint firstItem="oFl-me-lsU" firstAttribute="top" secondItem="mML-Wi-A3K" secondAttribute="top" id="6sE-gz-TkV"/>
                             <constraint firstItem="Dxg-ee-uLm" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="60" id="AgD-2Q-ClJ"/>
-                            <constraint firstItem="YyT-dN-lXd" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="10" id="Az7-q3-lGM"/>
+                            <constraint firstItem="YyT-dN-lXd" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="20" id="Az7-q3-lGM"/>
                             <constraint firstItem="DN4-rh-DTy" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" id="Bn6-Ks-ojF"/>
                             <constraint firstItem="oFl-me-lsU" firstAttribute="leading" secondItem="mML-Wi-A3K" secondAttribute="trailing" constant="10" id="E1o-8S-2Le"/>
-                            <constraint firstItem="j4E-95-fr9" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="40" id="EXz-h6-4KI"/>
+                            <constraint firstItem="j4E-95-fr9" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="50" id="EXz-h6-4KI"/>
                             <constraint firstItem="KK0-po-whm" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="20" id="Fer-sp-98U"/>
                             <constraint firstItem="DN4-rh-DTy" firstAttribute="trailing" secondItem="DBI-rd-Qla" secondAttribute="trailing" id="Kon-gE-jGe"/>
                             <constraint firstItem="kbX-R1-Oya" firstAttribute="top" secondItem="j4E-95-fr9" secondAttribute="bottom" constant="25" id="Lyb-WD-BnO"/>
@@ -821,10 +821,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="276-9h-N3i">
-                                                    <rect key="frame" x="341" y="70" width="15" height="15"/>
+                                                    <rect key="frame" x="331" y="60" width="25" height="25"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="1lk-PM-1jB"/>
-                                                        <constraint firstAttribute="width" constant="15" id="qiy-Ik-ZYr"/>
+                                                        <constraint firstAttribute="height" constant="25" id="1lk-PM-1jB"/>
+                                                        <constraint firstAttribute="width" constant="25" id="qiy-Ik-ZYr"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.80136571229999998" green="1" blue="0.74618580310000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="add-friend"/>
@@ -1193,10 +1193,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ej3-cU-dNJ">
-                                                    <rect key="frame" x="341" y="70" width="15" height="15"/>
+                                                    <rect key="frame" x="336" y="65" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="iZW-6g-RQd"/>
-                                                        <constraint firstAttribute="height" constant="15" id="z5G-uW-22u"/>
+                                                        <constraint firstAttribute="width" constant="20" id="iZW-6g-RQd"/>
+                                                        <constraint firstAttribute="height" constant="20" id="z5G-uW-22u"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.80136571229999998" green="1" blue="0.74618580310000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="delete"/>
@@ -1462,7 +1462,7 @@
         <image name="bg2" width="675" height="1200"/>
         <image name="bg3" width="320" height="568"/>
         <image name="default-user" width="256" height="256"/>
-        <image name="delete" width="32" height="32"/>
+        <image name="delete" width="40" height="40"/>
         <image name="earthquake" width="25" height="25"/>
         <image name="feed" width="25" height="25"/>
         <image name="friends" width="25" height="25"/>
