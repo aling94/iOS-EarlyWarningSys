@@ -13,6 +13,7 @@ class EditPasswordVC: ProfileVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Edit Password"
     }
     
     override func setupForm() {

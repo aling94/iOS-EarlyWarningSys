@@ -16,6 +16,7 @@ class FriendsMapVC: GMSMarkerVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayFriends()
+        title = "Friend Locations"
     }
     
     func displayFriends() {

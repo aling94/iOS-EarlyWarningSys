@@ -14,6 +14,7 @@ class EQMapVC: GMSMarkerVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayEarthquakes()
+        title = "Earthquakes"
     }
 
     func displayEarthquakes() {

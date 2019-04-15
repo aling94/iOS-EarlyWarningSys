@@ -23,6 +23,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
         setupTable()
         setupForm()
         loadUserInfo()
+        title = "Edit Profile"
     }
     
     var spacer: SpaceCellRow {
