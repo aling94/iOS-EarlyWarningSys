@@ -460,7 +460,7 @@ open class FloatFieldRow<Cell: CellType>: FormatteableRow<Cell> where Cell: Base
     
     open override func customUpdateCell() {
         super.customUpdateCell()
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
         cell.layer.cornerRadius = 5.0
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 2

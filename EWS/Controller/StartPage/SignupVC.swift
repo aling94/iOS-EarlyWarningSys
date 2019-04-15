@@ -123,7 +123,7 @@ class SignupVC: FormVC {
         }.cellSetup { cell, row in
             row.maximumDate = Date()
             cell.height = { cellHeight }
-            cell.backgroundColor = .clear
+            cell.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
             cell.layer.borderColor = UIColor.white.cgColor
             cell.layer.cornerRadius = 5
             cell.layer.borderWidth = 2
