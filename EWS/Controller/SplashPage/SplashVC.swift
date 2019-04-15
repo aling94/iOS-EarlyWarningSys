@@ -33,7 +33,7 @@ class SplashVC: UIViewController {
     }
     
     func setupPageCtrl() {
-        pageControl.numberOfPages = splashImages.count - 1
+        pageControl.numberOfPages = splashImages.count
         pageControl.currentPage = 0
         pageControl.dotImage = UIImage(named: "pageControlUnselected")
         pageControl.currentDotImage = UIImage(named: "pageControlSelected")
@@ -44,9 +44,8 @@ class SplashVC: UIViewController {
 // MARK: - iCarouselDelegate
 extension SplashVC: iCarouselDelegate {
 
-    
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
-        pageControl.currentPage = min(carouselView.currentItemIndex, splashImages.count - 2)
+        pageControl.currentPage = min(carouselView.currentItemIndex, splashImages.count - 1)
         if carouselView.currentItemIndex == splashImages.count - 1 {
             pageControl.isHidden = true
         }
