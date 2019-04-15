@@ -399,18 +399,27 @@
                                 <rect key="frame" x="212" y="332" width="182" height="165"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmA-Ej-Ivk">
-                                        <rect key="frame" x="15" y="10" width="152" height="0.0"/>
+                                        <rect key="frame" x="15" y="41.666666666666686" width="152" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's weather:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE6-hg-SYq">
+                                        <rect key="frame" x="15" y="10.000000000000002" width="152" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.30027290239726029" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="KmA-Ej-Ivk" firstAttribute="top" secondItem="uE6-hg-SYq" secondAttribute="bottom" constant="10" id="AjA-3g-8s9"/>
+                                    <constraint firstItem="uE6-hg-SYq" firstAttribute="leading" secondItem="oFl-me-lsU" secondAttribute="leading" constant="15" id="BNw-Vt-mTv"/>
                                     <constraint firstItem="KmA-Ej-Ivk" firstAttribute="leading" secondItem="oFl-me-lsU" secondAttribute="leading" constant="15" id="C9a-zs-YCJ"/>
                                     <constraint firstAttribute="trailing" secondItem="KmA-Ej-Ivk" secondAttribute="trailing" constant="15" id="PCL-bi-39w"/>
+                                    <constraint firstAttribute="trailing" secondItem="uE6-hg-SYq" secondAttribute="trailing" constant="15" id="aFi-ne-arR"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KmA-Ej-Ivk" secondAttribute="bottom" constant="15" id="fJ4-2L-bzM"/>
-                                    <constraint firstItem="KmA-Ej-Ivk" firstAttribute="top" secondItem="oFl-me-lsU" secondAttribute="top" constant="10" id="nZt-Y1-Tv1"/>
+                                    <constraint firstItem="uE6-hg-SYq" firstAttribute="top" secondItem="oFl-me-lsU" secondAttribute="top" constant="10" id="ooQ-vc-0a7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -486,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZd-Hf-Nvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-559" y="2336"/>
+            <point key="canvasLocation" x="-559.4202898550725" y="2335.5978260869565"/>
         </scene>
         <!--MapVC-->
         <scene sceneID="PZz-fv-ZGt">

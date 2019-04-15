@@ -65,7 +65,7 @@ class HomeVC: BaseVC {
         highLabel.text = "\(data.high!) °F"
         lowLabel.text = "\(data.low!) °F"
         let summ = (data.currently?.summary)!
-        summaryLabel.text = "Today expect...\n\n\(summ)"
+        summaryLabel.text = summ
     }
     
     func setupUserData() {
