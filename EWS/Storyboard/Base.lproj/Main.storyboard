@@ -1236,7 +1236,7 @@
                                     <constraint firstAttribute="height" constant="30" id="H0x-Wa-2pS"/>
                                     <constraint firstAttribute="width" constant="30" id="x0w-aT-kHJ"/>
                                 </constraints>
-                                <color key="tintColor" red="0.27116137832863602" green="0.82120479060913709" blue="0.44801639692782586" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="refresh"/>
                                 <connections>
                                     <action selector="refreshBtn:" destination="c37-On-m2J" eventType="touchUpInside" id="QwY-hg-HaY"/>
@@ -1248,7 +1248,7 @@
                                     <constraint firstAttribute="height" constant="30" id="TxK-xI-e60"/>
                                     <constraint firstAttribute="width" constant="30" id="aOT-oy-bTl"/>
                                 </constraints>
-                                <color key="tintColor" red="0.032268685970000002" green="0.62543953240000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="map"/>
                                 <connections>
                                     <segue destination="mKd-kh-doW" kind="show" id="qC9-Hk-yrm"/>
