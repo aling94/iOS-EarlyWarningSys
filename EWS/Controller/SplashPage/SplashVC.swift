@@ -8,7 +8,6 @@
 
 import UIKit
 import iCarousel
-import VGContent
 import TAPageControl
 
 class SplashVC: UIViewController {
@@ -42,12 +41,15 @@ class SplashVC: UIViewController {
 
 }
 
-// MARK: - VGCarouselContentDelegate &iCarouselDelegate
+// MARK: - iCarouselDelegate
 extension SplashVC: iCarouselDelegate {
 
     
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         pageControl.currentPage = min(carouselView.currentItemIndex, splashImages.count - 2)
+        if carouselView.currentItemIndex == splashImages.count - 1 {
+            pageControl.isHidden = true
+        }
     }
 
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
