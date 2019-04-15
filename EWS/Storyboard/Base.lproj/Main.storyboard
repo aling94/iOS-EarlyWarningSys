@@ -1418,7 +1418,7 @@
         <!--SplashVC-->
         <scene sceneID="cMn-GH-jAE">
             <objects>
-                <viewController storyboardIdentifier="EWSSplashVC" id="weM-nR-7MK" customClass="SplashVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Splash" id="weM-nR-7MK" customClass="SplashVC" customModule="EWS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V1h-RM-UIZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

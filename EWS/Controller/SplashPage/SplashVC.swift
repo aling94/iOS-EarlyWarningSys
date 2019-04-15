@@ -17,7 +17,7 @@ class SplashVC: UIViewController {
     @IBOutlet weak var pageControl: TAPageControl!
     
     var carousel : SplashCarousel!
-    let splashImages = ["Splash1", "Splash2", "Splash3", "Splash4", "Splash5", ""]
+    let splashImages = ["Splash1", "Splash2", "Splash3", "Splash4", "Splash5", "Splash6"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,12 @@ class SplashVC: UIViewController {
     
     func setupSplashContent() {
         carousel = SplashCarousel(view: carouselView)
-        carousel.delegate = self
         carousel.setItems(splashImages)
+        carouselView.delegate = self
     }
     
     func setupPageCtrl() {
-        pageControl.numberOfPages = splashImages.count
+        pageControl.numberOfPages = splashImages.count - 1
         pageControl.currentPage = 0
         pageControl.dotImage = UIImage(named: "pageControlUnselected")
         pageControl.currentDotImage = UIImage(named: "pageControlSelected")
@@ -42,20 +42,18 @@ class SplashVC: UIViewController {
 
 }
 
-// MARK: - VGCarouselContentDelegate
-extension SplashVC: VGCarouselContentDelegate {
+// MARK: - VGCarouselContentDelegate &iCarouselDelegate
+extension SplashVC: iCarouselDelegate {
+
     
-    func content(_ content: VGURLContent!, didChangeCurrentItem item: Any!) {
-        pageControl.currentPage = carouselView.currentItemIndex
-        playSelectedVideo()
+    func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
+        pageControl.currentPage = min(carouselView.currentItemIndex, splashImages.count - 2)
     }
-    
-    func playSelectedVideo() {
-        if let screen = carousel.selectedItem as? String {
-            if screen.isEmpty{
-                let vc = getVC(identifier: "LoginNav")
-                UIApplication.shared.keyWindow?.rootViewController = vc
-            }
+
+    func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
+        if carouselView.currentItemIndex == splashImages.count - 1 {
+            let vc = getVC(identifier: "LoginNav")
+            UIApplication.shared.keyWindow?.rootViewController = vc
         }
     }
 }
