@@ -1207,8 +1207,16 @@
                                                         <constraint firstAttribute="width" constant="20" id="iZW-6g-RQd"/>
                                                         <constraint firstAttribute="height" constant="20" id="z5G-uW-22u"/>
                                                     </constraints>
-                                                    <color key="tintColor" red="0.80136571229999998" green="1" blue="0.74618580310000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="delete"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4o-q9-79r">
+                                                    <rect key="frame" x="296" y="62.666666666666657" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="DaT-DY-ygq"/>
+                                                        <constraint firstAttribute="width" constant="25" id="LV7-VU-eyq"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="chat"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -1220,7 +1228,9 @@
                                             <constraint firstItem="b16-V8-bFU" firstAttribute="centerY" secondItem="bQg-ec-lVk" secondAttribute="centerY" id="f8d-Ud-T07"/>
                                             <constraint firstItem="ZXF-72-ebW" firstAttribute="leading" secondItem="b16-V8-bFU" secondAttribute="trailing" constant="25" id="jeH-6D-m3n"/>
                                             <constraint firstItem="b16-V8-bFU" firstAttribute="leading" secondItem="bQg-ec-lVk" secondAttribute="leading" constant="15" id="m4h-2A-lbN"/>
+                                            <constraint firstItem="y4o-q9-79r" firstAttribute="centerY" secondItem="Ej3-cU-dNJ" secondAttribute="centerY" id="rWY-VP-1FQ"/>
                                             <constraint firstAttribute="trailing" secondItem="Ej3-cU-dNJ" secondAttribute="trailing" constant="15" id="zCQ-HG-WdH"/>
+                                            <constraint firstItem="Ej3-cU-dNJ" firstAttribute="leading" secondItem="y4o-q9-79r" secondAttribute="trailing" constant="15" id="zGk-03-FYp"/>
                                         </constraints>
                                         <size key="customSize" width="371" height="100"/>
                                         <userDefinedRuntimeAttributes>
@@ -1229,6 +1239,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="chatBtn" destination="y4o-q9-79r" id="YcV-jF-IdE"/>
                                             <outlet property="deleteFriendBtn" destination="Ej3-cU-dNJ" id="WGi-hC-CIW"/>
                                             <outlet property="nameLabel" destination="ZXF-72-ebW" id="HhO-Oy-Yqn"/>
                                             <outlet property="userImage" destination="b16-V8-bFU" id="iLm-nz-tsg"/>
@@ -1293,7 +1304,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hst-lv-bzz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333" y="2336"/>
+            <point key="canvasLocation" x="331.8840579710145" y="2334.7826086956525"/>
         </scene>
         <!--NavCtrl-Friend-->
         <scene sceneID="Exj-bv-ESE">
@@ -1470,6 +1481,7 @@
         <image name="add-friend" width="25" height="25"/>
         <image name="bg2" width="675" height="1200"/>
         <image name="bg3" width="320" height="568"/>
+        <image name="chat" width="50" height="50"/>
         <image name="default-user" width="256" height="256"/>
         <image name="delete" width="40" height="40"/>
         <image name="earthquake" width="25" height="25"/>
