@@ -23,7 +23,8 @@ class GMSMarkerVC: UIViewController {
     func setupMap() {
         map.mapType = .hybrid
         map.delegate = self
-        guard let myLoc = app.currentLocation?.coordinate else { return }
+        let loc = app.currentLocation?.coordinate ?? FirebaseManager.shared.currentUserInfo?.coords
+        guard let myLoc = loc else { return }
         let marker = GMSMarker()
         marker.position = myLoc
         marker.title = "Me"
@@ -43,18 +44,17 @@ class GMSMarkerVC: UIViewController {
 extension GMSMarkerVC : GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
+    
         if let marker = selectedMarker {
             marker.iconView?.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
             marker.iconView?.cornerRadius = marker.iconView!.frame.height / 2
-        }
-        
-        if let imageView = marker.iconView as? UIImageView{
+            map.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: map.minZoom)
+            selectedMarker = nil
+        } else if let imageView = marker.iconView as? UIImageView{
             selectedMarker = marker
             imageView.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
             imageView.cornerRadius = imageView.frame.height / 2
-            self.map.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: 13)
-            
+            map.camera = GMSCameraPosition.camera(withTarget: marker.position, zoom: 13)
         }
         return true
     }
