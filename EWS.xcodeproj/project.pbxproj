@@ -12,6 +12,7 @@
 		E10E36382263847900129B47 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36342263847900129B47 /* SplashVC.swift */; };
 		E10E36392263847900129B47 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36352263847900129B47 /* SplashView.swift */; };
 		E1309D5A2265505B002DC2C8 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D592265505B002DC2C8 /* ChatInfo.swift */; };
+		E1309D5C22657EF3002DC2C8 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D5B22657EF3002DC2C8 /* ChatVC.swift */; };
 		E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1354F44225D083C00ED365E /* GoogleService-Info.plist */; };
 		E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F46225D0D9800ED365E /* CustomValidations.swift */; };
 		E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F49225D2DB700ED365E /* FirebaseManager.swift */; };
@@ -61,6 +62,7 @@
 		E10E36342263847900129B47 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		E10E36352263847900129B47 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1309D592265505B002DC2C8 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
+		E1309D5B22657EF3002DC2C8 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		E1354F44225D083C00ED365E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1354F46225D0D9800ED365E /* CustomValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValidations.swift; sourceTree = "<group>"; };
 		E1354F49225D2DB700ED365E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				E1DAC5C2225FD5F30076853F /* FriendsVC.swift */,
 				E1DAC5C72260374C0076853F /* FriendsMapVC.swift */,
+				E1309D5B22657EF3002DC2C8 /* ChatVC.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 			files = (
 				E1D971F7225E5D3F0052AD32 /* EQMapVC.swift in Sources */,
 				E1D971FB225E81A70052AD32 /* ProfileVC.swift in Sources */,
+				E1309D5C22657EF3002DC2C8 /* ChatVC.swift in Sources */,
 				E1D1E383226130E100AF8B24 /* PostsVC.swift in Sources */,
 				E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */,
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
