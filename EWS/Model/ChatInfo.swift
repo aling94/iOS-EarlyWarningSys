@@ -18,4 +18,12 @@ struct ChatInfo {
         receiverID = info["receiverID"] as! String
         time = info["time"] as! TimeInterval
     }
+    
+    static func <(left: ChatInfo, right: ChatInfo) -> Bool {
+        return left.time < right.time
+    }
+    
+    static func >(left: ChatInfo, right: ChatInfo) -> Bool {
+        return left.time > right.time
+    }
 }

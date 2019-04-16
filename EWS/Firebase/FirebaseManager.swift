@@ -215,6 +215,38 @@ extension FirebaseManager {
             getPostDPG.notify(queue: .main) { completion(postList) }
         }
     }
+    
+    // MARK: - Chat
+    func chatKey(uid: String, friendID: String) -> String {
+        return uid < friendID ? "\(uid)\(friendID)" : "\(friendID)\(uid)"
+    }
+    
+    func sendText(friendID: String, msg: String, errorHandler: @escaping ErrorHandler) {
+        let time = Date().timeIntervalSince1970
+        let uid = (currentUser?.uid)!
+        let key = chatKey(uid: uid, friendID: friendID)
+        let msgKey = "\(Int(time))"
+        let info: [String : Any] = [
+            "friendID": friendID,
+            "message": msg,
+            "time": time
+        ]
+        
+        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { errorHandler($0) }
+        
+    }
+    
+    func getConversation(friendID: String, completion: @escaping ([ChatInfo]?) -> Void) {
+        let uid = (currentUser?.uid)!
+        let key = chatKey(uid: uid, friendID: friendID)
+        var chatList: [ChatInfo] = []
+        dbRef.child("Conversations").child(key).observeSingleEvent(of: .value) { (snapshot) in
+            if let msgList = snapshot.value as? [String : Any] {
+                let chatList = msgList.map({ ChatInfo(info: $1 as! [String : Any]) })
+                completion(chatList)
+            } else { completion(nil) }
+        }
+    }
 }
 
 
