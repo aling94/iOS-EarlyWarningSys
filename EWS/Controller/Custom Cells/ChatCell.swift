@@ -10,6 +10,9 @@ import UIKit
 
 class ChatCell: UITableViewCell {
 
+    @IBOutlet weak var friendText: UILabel!
+    @IBOutlet weak var senderText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
