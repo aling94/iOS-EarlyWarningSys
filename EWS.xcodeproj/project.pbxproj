@@ -13,6 +13,7 @@
 		E10E36392263847900129B47 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36352263847900129B47 /* SplashView.swift */; };
 		E1309D5A2265505B002DC2C8 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D592265505B002DC2C8 /* ChatInfo.swift */; };
 		E1309D5C22657EF3002DC2C8 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D5B22657EF3002DC2C8 /* ChatVC.swift */; };
+		E1309D5E22659248002DC2C8 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D5D22659248002DC2C8 /* ChatCell.swift */; };
 		E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1354F44225D083C00ED365E /* GoogleService-Info.plist */; };
 		E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F46225D0D9800ED365E /* CustomValidations.swift */; };
 		E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F49225D2DB700ED365E /* FirebaseManager.swift */; };
@@ -63,6 +64,7 @@
 		E10E36352263847900129B47 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		E1309D592265505B002DC2C8 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
 		E1309D5B22657EF3002DC2C8 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		E1309D5D22659248002DC2C8 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		E1354F44225D083C00ED365E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1354F46225D0D9800ED365E /* CustomValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomValidations.swift; sourceTree = "<group>"; };
 		E1354F49225D2DB700ED365E /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				E1354F5C225D847500ED365E /* WeatherCell.swift */,
 				E1354F60225DAE0000ED365E /* UserCell.swift */,
 				E195943E2261A9B10061F101 /* PostCell.swift */,
+				E1309D5D22659248002DC2C8 /* ChatCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				E1354F59225D75F400ED365E /* HomeVC.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1354F50225D421F00ED365E /* UserInfo.swift in Sources */,
+				E1309D5E22659248002DC2C8 /* ChatCell.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */,
 				E10E36392263847900129B47 /* SplashView.swift in Sources */,
