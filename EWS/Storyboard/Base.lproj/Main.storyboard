@@ -1289,7 +1289,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="czW-0z-rW7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="czW-0z-rW7">
                                 <rect key="frame" x="0.0" y="170" width="414" height="490"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1297,31 +1297,45 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="161"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wu0-In-ep4" id="5Nx-l1-rMU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="160.66666666666666"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SES-18-eML" userLabel="ContentWrapper">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="151"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Ad-OGQ" userLabel="ReceiverLabel">
-                                                            <rect key="frame" x="20" y="20" width="0.0" height="35"/>
+                                                            <rect key="frame" x="20" y="20" width="270" height="121"/>
                                                             <color key="backgroundColor" white="0.75658176369863017" alpha="0.67623608732876717" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="270" id="MWx-ax-7u2"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="wka-0r-KXE"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-qD-YNa" userLabel="SenderLabel">
-                                                            <rect key="frame" x="20" y="20" width="374" height="35"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="0.59725492294520544" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="124" y="20" width="270" height="121"/>
+                                                            <color key="backgroundColor" red="0.45702849350761177" green="0.68608316006989944" blue="1" alpha="0.59725492294520544" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="270" id="G3K-10-05n"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="0lk-qD-YNa" firstAttribute="top" secondItem="ohH-Ad-OGQ" secondAttribute="top" id="0WA-5R-PFO"/>
                                                         <constraint firstItem="ohH-Ad-OGQ" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="SES-18-eML" secondAttribute="trailing" constant="-20" id="721-0D-e51"/>
@@ -1330,7 +1344,7 @@
                                                         <constraint firstItem="0lk-qD-YNa" firstAttribute="bottom" secondItem="ohH-Ad-OGQ" secondAttribute="bottom" id="Com-8x-J5N"/>
                                                         <constraint firstItem="ohH-Ad-OGQ" firstAttribute="leading" secondItem="SES-18-eML" secondAttribute="leading" constant="20" id="Vrh-Iz-PGv"/>
                                                         <constraint firstItem="ohH-Ad-OGQ" firstAttribute="top" secondItem="SES-18-eML" secondAttribute="top" constant="20" id="cJt-2A-stT"/>
-                                                        <constraint firstItem="0lk-qD-YNa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="SES-18-eML" secondAttribute="leading" constant="20" id="uoL-b0-lM4"/>
+                                                        <constraint firstItem="0lk-qD-YNa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SES-18-eML" secondAttribute="leading" constant="20" id="uoL-b0-lM4"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1339,6 +1353,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="SES-18-eML" secondAttribute="trailing" id="AFX-Ne-K7h"/>
                                                 <constraint firstItem="SES-18-eML" firstAttribute="top" secondItem="5Nx-l1-rMU" secondAttribute="top" id="Tq1-TS-3eK"/>
                                                 <constraint firstItem="SES-18-eML" firstAttribute="leading" secondItem="5Nx-l1-rMU" secondAttribute="leading" id="Ysb-MN-VlW"/>
+                                                <constraint firstAttribute="bottom" secondItem="SES-18-eML" secondAttribute="bottom" constant="10" id="aGr-bn-EJ4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1348,6 +1363,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4no-Mk-SgV" id="SHS-6G-DWi"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7C-JL-stK" userLabel="Friend Name">
                                 <rect key="frame" x="125" y="95" width="0.0" height="0.0"/>
