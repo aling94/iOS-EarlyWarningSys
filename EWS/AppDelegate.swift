@@ -88,6 +88,12 @@ extension AppDelegate: CLLocationManagerDelegate {
             guard let place = placemarks?.last?.locality else { return }
             DispatchQueue.main.async { self.locationName = place }
             print("\n--- Your Location: \(place) ---\n")
+            let info: [String : Any] = [
+                "latitude": loc.coordinate.latitude,
+                "longitude": loc.coordinate.longitude,
+                "location": place
+            ]
+            FirebaseManager.shared.updateCurrentUserInfo(info)
         }
         
     }
