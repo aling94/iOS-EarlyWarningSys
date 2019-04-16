@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ChatVC: UIViewController {
 
@@ -18,6 +19,7 @@ class ChatVC: UIViewController {
     let sender = (FirebaseManager.shared.currentUser?.uid)!
     var friend: UserInfo!
     var chatList: [ChatInfo] = []
+    private lazy var notificationRef = Database.database().reference().child("notificationRequests")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,7 @@ class ChatVC: UIViewController {
     @IBAction func sendText(_ sender: Any) {
         guard !msgText.text.isEmpty else { return }
         FirebaseManager.shared.sendText(friendID: friend.uid, msg: msgText.text) { (error) in
+            guard error == nil else { return }
             let chatInfo = ChatInfo(msg: self.msgText.text, receiver: self.friend.uid)
             DispatchQueue.main.async {
                 self.addRow(chatInfo)

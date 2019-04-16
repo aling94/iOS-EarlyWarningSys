@@ -23,6 +23,19 @@ final class UserInfo {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
+    init(_ uid: String) {
+        self.uid = uid
+        email =  ""
+        phone = ""
+        fname =  ""
+        dob = ""
+        lname = ""
+        gender = "MALE"
+        location = ""
+        latitude = 0
+        longitude = 0
+    }
+    
     init(_ uid: String, info: [String: Any]) {
         fname = info["fname"] as! String
         lname = info["lname"] as! String

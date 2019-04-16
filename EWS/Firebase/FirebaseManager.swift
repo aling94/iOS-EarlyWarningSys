@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseMessaging
 
 class FirebaseManager {
     static let shared = FirebaseManager()
@@ -17,6 +18,7 @@ class FirebaseManager {
     
     let dbRef = Database.database().reference()
     let stRef = Storage.storage().reference()
+    private lazy var notificationRef = Database.database().reference().child("notificationRequests")
     
     var currentUser: User? {
         return Auth.auth().currentUser
@@ -30,6 +32,9 @@ extension FirebaseManager {
     
     func loginUser(email: String, passw: String, errorHandler: ErrorHandler? = nil) {
         Auth.auth().signIn(withEmail: email, password: passw) { (result, error) in
+            if let uid = result?.user.uid {
+                Messaging.messaging().subscribe(toTopic: uid)
+            }
             errorHandler?(error)
         }
     }
@@ -232,12 +237,16 @@ extension FirebaseManager {
             "time": String(time)
         ]
         
-        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { error, ref in
-            if let error = error {
-                print(error.localizedDescription)
-            } else { errorHandler(error) }
+//        // send push notification to norificationRequest field in firebase that is observed by node.js server which will observe the change and then route the message to our receiver
+        let notificationKey = notificationRef.childByAutoId().key
+        let notification = ["message": msg, "receiverId": friendID, "senderId": uid]
+
+        let notificationUpdate = [notificationKey: notification]
+        notificationRef.updateChildValues(notificationUpdate)
+        
+        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { error, _ in
+            errorHandler(error)
         }
-//        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { errorHandler($0) }
         
     }
     

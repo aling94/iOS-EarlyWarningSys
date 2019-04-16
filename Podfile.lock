@@ -28,6 +28,9 @@ PODS:
   - Firebase/Database (5.19.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (= 5.1.1)
+  - Firebase/Messaging (5.19.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (= 3.4.0)
   - Firebase/Storage (5.19.0):
     - Firebase/CoreOnly
     - FirebaseStorage (= 3.1.1)
@@ -40,6 +43,7 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.2.0)
   - FirebaseAuth (5.4.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
@@ -57,6 +61,14 @@ PODS:
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseMessaging (3.4.0):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 5.2)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/Reachability (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+    - Protobuf (~> 3.1)
   - FirebaseStorage (3.1.1):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
@@ -116,6 +128,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - ObjectMapper (3.4.2)
+  - Protobuf (3.7.0)
   - SVProgressHUD (2.2.5)
   - TAPageControl (0.2.0)
   - TWMessageBarManager (1.8.1)
@@ -134,6 +147,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - GoogleMaps
   - GooglePlacePicker
@@ -157,11 +171,13 @@ SPEC REPOS:
     - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleMaps
@@ -175,6 +191,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - ObjectMapper
+    - Protobuf
     - SVProgressHUD
     - TAPageControl
     - TWMessageBarManager
@@ -202,11 +219,13 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseAuth: cbb892a66baed025efc179372598941252acf853
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
   FirebaseDatabase: 2c15b0ea6f2c6eb5e57413f9d6340f1e50b81ae3
   FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
+  FirebaseMessaging: 2d53d08d752fbe63ce0820428d70be5ab87c11fb
   FirebaseStorage: 6162ef4322502b818d9de0ec552f5226d283de43
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleMaps: fd5c9fa58871781b9fb94d4936f19c69fe60ce32
@@ -220,6 +239,7 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TAPageControl: fd11d779bbb5c2464ca2f55dde9e288213ea8a9b
   TWMessageBarManager: fd84e7948ba7968a2b5d9454859135761214ec56
@@ -227,6 +247,6 @@ SPEC CHECKSUMS:
   VGContent: ffdf303df508ae195da98e9a7878d60b9166aa7d
   VGInfiniteControl: ebe8f4903e4cb9eea9c8fef01e9d2a01cec02e66
 
-PODFILE CHECKSUM: a590667a225f82f899ea6d11b6c8821786c4e218
+PODFILE CHECKSUM: c39b1cc22077b31f3650d1cc69f527ab9bb8964b
 
 COCOAPODS: 1.6.1
