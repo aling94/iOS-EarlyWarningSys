@@ -123,6 +123,16 @@ extension LoginVC: GIDSignInDelegate, GIDSignInUIDelegate {
         
         Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
             print(result)
+            let info = UserInfo.userDict(authInfo: result!)
+            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info) { error in
+                if let error = error {
+                    return
+                }
+                DispatchQueue.main.async {
+                    let vc = self.getVC(identifier: "Tabs")
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }
         }
     }
     
@@ -138,13 +148,24 @@ extension LoginVC: FBSDKLoginButtonDelegate {
             print(error.localizedDescription)
             return
         }
-        
-        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+        guard let token = FBSDKAccessToken.current() else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
+            let info = UserInfo.userDict(authInfo: result!)
+            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info) { error in
+                if let error = error {
+                    return
+                }
+                DispatchQueue.main.async {
+                    let vc = self.getVC(identifier: "Tabs")
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }
+            
         }
     }
     

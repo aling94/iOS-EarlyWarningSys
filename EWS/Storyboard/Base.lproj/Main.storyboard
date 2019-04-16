@@ -101,7 +101,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginToGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9uP-yT-Prn"/>
+                                    <action selector="loginToGoogle:" destination="BYZ-38-t0r" eventType="valueChanged" id="Z0H-tN-gLm"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQH-dx-YFR">

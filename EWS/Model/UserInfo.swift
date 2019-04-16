@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseAuth
 
 final class UserInfo {
     var fname, lname, email, dob, phone, gender : String
@@ -33,6 +34,36 @@ final class UserInfo {
         latitude = info["latitude"] as! Double
         longitude = info["longitude"] as! Double
         self.uid = uid
+    }
+    
+    init(authInfo: AuthDataResult) {
+        let user = authInfo.user
+        email = user.email ?? ""
+        phone = user.phoneNumber ?? ""
+        uid = user.uid
+        fname = user.displayName ?? ""
+        dob = "Jan 01, 1970"
+        lname = ""
+        gender = "MALE"
+        location = ""
+        latitude = 0
+        longitude = 0
+    }
+    
+    static func userDict(authInfo: AuthDataResult) -> [String : Any] {
+        let user = authInfo.user
+        return [
+            "uid": user.uid,
+            "email": user.email ?? "",
+            "phone": user.phoneNumber ?? "",
+            "fname": user.displayName ?? "",
+            "lname": "",
+            "dob": "Jan 01, 1970",
+            "gender": "MALE",
+            "location": "",
+            "latitude": 0,
+            "longitude": 0
+        ]
     }
     
     static func <(left: UserInfo, right: UserInfo) -> Bool {
