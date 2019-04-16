@@ -226,20 +226,24 @@ extension FirebaseManager {
         let uid = (currentUser?.uid)!
         let key = chatKey(uid: uid, friendID: friendID)
         let msgKey = "\(Int(time))"
-        let info: [String : Any] = [
-            "friendID": friendID,
+        let info = [
+            "receiverID": friendID,
             "message": msg,
-            "time": time
+            "time": String(time)
         ]
         
-        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { errorHandler($0) }
+        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { error, ref in
+            if let error = error {
+                print(error.localizedDescription)
+            } else { errorHandler(error) }
+        }
+//        dbRef.child("Conversations").child(key).child(msgKey).setValue(info) { errorHandler($0) }
         
     }
     
     func getConversation(friendID: String, completion: @escaping ([ChatInfo]?) -> Void) {
         let uid = (currentUser?.uid)!
         let key = chatKey(uid: uid, friendID: friendID)
-        var chatList: [ChatInfo] = []
         dbRef.child("Conversations").child(key).observeSingleEvent(of: .value) { (snapshot) in
             if let msgList = snapshot.value as? [String : Any] {
                 let chatList = msgList.map({ ChatInfo(info: $1 as! [String : Any]) })

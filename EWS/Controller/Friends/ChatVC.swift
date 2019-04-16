@@ -28,7 +28,11 @@ class ChatVC: UIViewController {
             self.chatList = chatLog?.sorted(by: <) ?? []
             DispatchQueue.main.async {
                 self.table.reloadData()
-                self.table.scrollToRow(at: IndexPath(row: self.chatList.count - 1, section: 0), at: .bottom, animated: true)
+                let lastRow = self.chatList.count - 1
+                if lastRow > 0 {
+//                    self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
+                }
+                
             }
         }
     }
@@ -45,7 +49,10 @@ class ChatVC: UIViewController {
             DispatchQueue.main.async {
                 self.table.reloadData()
                 self.msgText.text = ""
-                self.table.scrollToRow(at: IndexPath(row: self.chatList.count - 1, section: 0), at: .bottom, animated: true)
+                let lastRow = self.chatList.count - 1
+                if lastRow > 0 {
+//                    self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
+                }
             }
         }
     }
@@ -59,7 +66,9 @@ extension ChatVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ChatCell
-        
+        let chatInfo = chatList[indexPath.row]
+        let wasSent = chatInfo.receiverID != sender
+        cell.setup(wasSent: wasSent, message: chatInfo.message)
         return cell
     }
     

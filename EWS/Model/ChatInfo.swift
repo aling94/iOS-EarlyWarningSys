@@ -22,7 +22,7 @@ struct ChatInfo {
     init(info: [String : Any]) {
         message = info["message"] as! String
         receiverID = info["receiverID"] as! String
-        time = info["time"] as! TimeInterval
+        time = TimeInterval(info["time"] as! String)!
     }
     
     static func <(left: ChatInfo, right: ChatInfo) -> Bool {
