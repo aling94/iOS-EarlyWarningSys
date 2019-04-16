@@ -1,5 +1,5 @@
 //
-//  Conversation.swift
+//  ChatInfo.swift
 //  EWS
 //
 //  Created by Alvin Ling on 4/15/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Conversation {
+struct ChatInfo {
     let message: String
     let receiverID: String
     let time: TimeInterval
