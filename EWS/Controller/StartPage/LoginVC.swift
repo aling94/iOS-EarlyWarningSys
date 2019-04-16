@@ -17,6 +17,7 @@ import FBSDKLoginKit
 class LoginVC: FormVC {
 
     @IBOutlet weak var googleSigninBtn: GIDSignInButton!
+    @IBOutlet weak var fbSigninBtn: FBSDKLoginButton!
     
     var email, passw: String!
     
@@ -26,6 +27,10 @@ class LoginVC: FormVC {
         title = "LOGIN"
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        fbSigninBtn.delegate = self
+        if FBSDKAccessToken.current() != nil {
+            
+        }
     }
 
     func setupForm() {
@@ -124,4 +129,28 @@ extension LoginVC: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         
     }
+}
+
+extension LoginVC: FBSDKLoginButtonDelegate {
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
+    
 }
