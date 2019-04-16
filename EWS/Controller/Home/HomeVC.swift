@@ -15,6 +15,7 @@ class HomeVC: BaseVC {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var locNameLabel: UILabel!
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -77,7 +78,9 @@ class HomeVC: BaseVC {
                 self.fetchWeatherData()
             }
             DispatchQueue.main.async {
-                if let pic = userInfo?.image { self.userImage.image = pic }
+                if let pic = userInfo?.image {
+                    self.userImage.image = pic
+                }
             }
         }        
     }

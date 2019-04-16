@@ -514,6 +514,12 @@
                                     <action selector="searchPlaces:" destination="wMO-pz-kkv" eventType="touchUpInside" id="I8V-Hg-gBh"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYS-kL-GTV" userLabel="Location Name">
+                                <rect key="frame" x="20" y="295" width="374" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -530,11 +536,14 @@
                             <constraint firstItem="KK0-po-whm" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="20" id="Fer-sp-98U"/>
                             <constraint firstItem="DN4-rh-DTy" firstAttribute="trailing" secondItem="DBI-rd-Qla" secondAttribute="trailing" id="Kon-gE-jGe"/>
                             <constraint firstItem="kbX-R1-Oya" firstAttribute="top" secondItem="j4E-95-fr9" secondAttribute="bottom" constant="25" id="Lyb-WD-BnO"/>
+                            <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="LYS-kL-GTV" secondAttribute="trailing" constant="20" id="OKj-Nf-hdq"/>
                             <constraint firstItem="j4E-95-fr9" firstAttribute="centerX" secondItem="pE8-rn-JXA" secondAttribute="centerX" id="Qyd-oQ-28t"/>
+                            <constraint firstItem="mML-Wi-A3K" firstAttribute="top" secondItem="LYS-kL-GTV" secondAttribute="bottom" constant="10" id="SpL-UA-d9t"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="oFl-me-lsU" secondAttribute="trailing" constant="20" id="VfJ-Wh-MfR"/>
                             <constraint firstAttribute="bottom" secondItem="DN4-rh-DTy" secondAttribute="bottom" id="Xpd-TX-1ZI"/>
                             <constraint firstItem="kbX-R1-Oya" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="25" id="YXe-HR-qG7"/>
                             <constraint firstItem="oFl-me-lsU" firstAttribute="bottom" secondItem="mML-Wi-A3K" secondAttribute="bottom" id="ZrF-xc-PXd"/>
+                            <constraint firstItem="LYS-kL-GTV" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="20" id="fTP-Bn-UHT"/>
                             <constraint firstItem="KK0-po-whm" firstAttribute="top" secondItem="mML-Wi-A3K" secondAttribute="bottom" constant="10" id="kho-dK-YdY"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="bottom" secondItem="KK0-po-whm" secondAttribute="bottom" constant="20" id="mHp-sv-gqD"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="kbX-R1-Oya" secondAttribute="trailing" constant="25" id="mir-eF-1rX"/>
@@ -550,6 +559,7 @@
                         <outlet property="dateLabel" destination="rlZ-lA-LcC" id="h7W-ox-6sz"/>
                         <outlet property="emailLabel" destination="kbX-R1-Oya" id="fLT-69-Jen"/>
                         <outlet property="highLabel" destination="avS-op-DSh" id="uZ8-ze-OTo"/>
+                        <outlet property="locNameLabel" destination="LYS-kL-GTV" id="x4X-Yh-EHy"/>
                         <outlet property="lowLabel" destination="5VK-QD-aWc" id="V90-vv-RWJ"/>
                         <outlet property="summaryLabel" destination="KmA-Ej-Ivk" id="BSg-5y-AHU"/>
                         <outlet property="userImage" destination="j4E-95-fr9" id="Sfr-LK-y9P"/>
