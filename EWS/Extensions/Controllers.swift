@@ -8,6 +8,8 @@
 
 import UIKit
 import Eureka
+import GoogleSignIn
+import FBSDKLoginKit
 
 extension UIViewController {
     
@@ -92,6 +94,8 @@ extension UIViewController {
     }
     
     @IBAction func jumpToLogin() {
+        GIDSignIn.sharedInstance().signOut()
+        FBSDKLoginManager().logOut()
         FirebaseManager.shared.signoutUser()
         let vc = storyboard?.instantiateInitialViewController()
         app.window?.rootViewController = vc
