@@ -30,7 +30,7 @@ class ChatVC: UIViewController {
                 self.table.reloadData()
                 let lastRow = self.chatList.count - 1
                 if lastRow > 0 {
-//                    self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
+                    self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
                 }
                 
             }
@@ -45,20 +45,26 @@ class ChatVC: UIViewController {
         guard !msgText.text.isEmpty else { return }
         FirebaseManager.shared.sendText(friendID: friend.uid, msg: msgText.text) { (error) in
             let chatInfo = ChatInfo(msg: self.msgText.text, receiver: self.friend.uid)
-            self.chatList.append(chatInfo)
             DispatchQueue.main.async {
-                self.table.reloadData()
+                self.addRow(chatInfo)
                 self.msgText.text = ""
-                let lastRow = self.chatList.count - 1
-                if lastRow > 0 {
-//                    self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
-                }
             }
         }
     }
 }
 
 extension ChatVC: UITableViewDataSource {
+    
+    func addRow(_ info: ChatInfo) {
+        chatList.append(info)
+        let lastRow = self.chatList.count - 1
+        table.beginUpdates()
+        table.insertRows(at: [IndexPath(row: lastRow, section: 0)], with: .right)
+        table.endUpdates()
+        if lastRow > 0 {
+            self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatList.count
@@ -71,6 +77,4 @@ extension ChatVC: UITableViewDataSource {
         cell.setup(wasSent: wasSent, message: chatInfo.message)
         return cell
     }
-    
-    
 }
