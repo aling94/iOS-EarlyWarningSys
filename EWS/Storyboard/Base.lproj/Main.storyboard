@@ -1303,9 +1303,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SES-18-eML" userLabel="ContentWrapper">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="151"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Ad-OGQ" userLabel="ReceiverLabel">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Ad-OGQ" userLabel="ReceiverLabel" customClass="Label" customModule="EWS" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="20" width="270" height="121"/>
-                                                            <color key="backgroundColor" white="0.75658176369863017" alpha="0.67623608732876717" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" white="0.75658176369863017" alpha="0.80211900684931503" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="270" id="MWx-ax-7u2"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="wka-0r-KXE"/>
@@ -1319,9 +1319,9 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-qD-YNa" userLabel="SenderLabel">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-qD-YNa" userLabel="SenderLabel" customClass="Label" customModule="EWS" customModuleProvider="target">
                                                             <rect key="frame" x="124" y="20" width="270" height="121"/>
-                                                            <color key="backgroundColor" red="0.45702849350761177" green="0.68608316006989944" blue="1" alpha="0.59725492294520544" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="backgroundColor" red="0.45702849350761177" green="0.68608316006989944" blue="1" alpha="0.80391160102739723" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="270" id="G3K-10-05n"/>
                                                             </constraints>
