@@ -121,7 +121,10 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             (form.rowBy(tag: "phone") as! PhoneFloatLabelRow).value = userInfo.phone
             (form.rowBy(tag: "gender") as! SegmentedRow<String>).value = userInfo.gender
             let dateRow = form.rowBy(tag: "dob") as! DateRow
-            dateRow.value = dateRow.dateFormatter?.date(from: userInfo.dob)
+            if let date = dateRow.dateFormatter?.date(from: userInfo.dob) {
+                dateRow.value = date
+            }
+            
             
             DispatchQueue.main.async {
                 if let pic = userInfo.image { self.userImage.setImage(pic, for: .normal) }

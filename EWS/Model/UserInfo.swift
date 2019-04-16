@@ -42,7 +42,7 @@ final class UserInfo {
         phone = user.phoneNumber ?? ""
         uid = user.uid
         fname = user.displayName ?? ""
-        dob = "Jan 01, 1970"
+        dob = ""
         lname = ""
         gender = "MALE"
         location = ""
@@ -58,7 +58,7 @@ final class UserInfo {
             "phone": user.phoneNumber ?? "",
             "fname": user.displayName ?? "",
             "lname": "",
-            "dob": "Jan 01, 1970",
+            "dob": "",
             "gender": "MALE",
             "location": "",
             "latitude": 0,
