@@ -3,10 +3,20 @@ PODS:
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Eureka (4.3.1)
   - Fabric (1.9.0)
+  - FBSDKCoreKit (4.42.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.42.0):
+    - FBSDKCoreKit
   - Firebase/Auth (5.19.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.1)
@@ -120,6 +130,7 @@ DEPENDENCIES:
   - Crashlytics (~> 3.12.0)
   - Eureka
   - Fabric (~> 1.9.0)
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -138,9 +149,12 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - Bolts
     - Crashlytics
     - Eureka
     - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -180,9 +194,12 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Eureka: 28ea296f06710f6745266b71f17862048941a32d
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
+  FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
   Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAuth: cbb892a66baed025efc179372598941252acf853
@@ -210,6 +227,6 @@ SPEC CHECKSUMS:
   VGContent: ffdf303df508ae195da98e9a7878d60b9166aa7d
   VGInfiniteControl: ebe8f4903e4cb9eea9c8fef01e9d2a01cec02e66
 
-PODFILE CHECKSUM: e89dded2e67c9c7fff97f7caeff0153a9395a507
+PODFILE CHECKSUM: a590667a225f82f899ea6d11b6c8821786c4e218
 
 COCOAPODS: 1.6.1

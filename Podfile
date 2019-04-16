@@ -19,6 +19,8 @@ target 'EWS' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleSignIn'
+  # Facebook
+  pod 'FBSDKLoginKit'
   # Firebase
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.9.0'

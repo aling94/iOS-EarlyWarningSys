@@ -11,15 +11,21 @@ import Eureka
 import FirebaseAuth
 import SVProgressHUD
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginVC: FormVC {
 
+    @IBOutlet weak var googleSigninBtn: GIDSignInButton!
+    
     var email, passw: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupForm()
         title = "LOGIN"
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.uiDelegate = self
     }
 
     func setupForm() {
@@ -92,9 +98,14 @@ class LoginVC: FormVC {
             FirebaseManager.shared.resetPassword(email: email, errorHandler: self.alertError)
         }
     }
+    
+    @IBAction func loginToGoogle(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
 }
 
-extension LoginVC: GIDSignInDelegate {
+extension LoginVC: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let error = error {
             

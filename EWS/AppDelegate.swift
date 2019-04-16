@@ -12,6 +12,7 @@ import CoreLocation
 import GoogleMaps
 import GooglePlaces
 import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestLocation()
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        
+        FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
         checkAlreadyLoggedIn()
         return true
     }
@@ -43,9 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
         -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:])
+            let sourceApp = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String
+            let gidHandled = GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApp, annotation: [:])
+            let fbHandled = FBSDKApplicationDelegate.sharedInstance()?.application(application, open: url, sourceApplication: sourceApp, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+            
+            return gidHandled || fbHandled!
     }
 }
 
