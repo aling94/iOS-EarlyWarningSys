@@ -18,6 +18,7 @@ target 'EWS' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
+  pod 'GoogleSignIn'
   # Firebase
   pod 'Firebase/Core'
   pod 'Fabric', '~> 1.9.0'
