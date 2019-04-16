@@ -16,13 +16,21 @@ class ChatVC: UIViewController {
     @IBOutlet weak var friendName: UILabel!
     
     let sender = (FirebaseManager.shared.currentUser?.uid)!
-    var friend: UserInfo?
+    var friend: UserInfo!
     var chatList: [ChatInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendName.text = friend?.name
-        friendPic.image = friend?.image ?? UIImage(named: "default-user")
+        table.tableFooterView = UIView()
+        friendName.text = friend.name
+        friendPic.image = friend.image ?? UIImage(named: "default-user")
+        FirebaseManager.shared.getConversation(friendID: friend.uid) { (chatLog) in
+            self.chatList = chatLog?.sorted(by: <) ?? []
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.table.scrollToRow(at: IndexPath(row: self.chatList.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        }
     }
     
     @IBAction func closeChat(_ sender: Any) {
@@ -30,6 +38,16 @@ class ChatVC: UIViewController {
     }
     
     @IBAction func sendText(_ sender: Any) {
+        guard !msgText.text.isEmpty else { return }
+        FirebaseManager.shared.sendText(friendID: friend.uid, msg: msgText.text) { (error) in
+            let chatInfo = ChatInfo(msg: self.msgText.text, receiver: self.friend.uid)
+            self.chatList.append(chatInfo)
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.msgText.text = ""
+                self.table.scrollToRow(at: IndexPath(row: self.chatList.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        }
     }
 }
 

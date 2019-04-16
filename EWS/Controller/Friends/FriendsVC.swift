@@ -27,6 +27,8 @@ class FriendsVC: UsersVC {
         cell.nameLabel.text = user.name
         cell.deleteFriendBtn.tag = indexPath.item
         cell.deleteFriendBtn.addTarget(self, action: #selector(deleteFriend), for: .touchUpInside)
+        cell.chatBtn.tag = indexPath.item
+        cell.chatBtn.addTarget(self, action: #selector(showChat), for: .touchUpInside)
     }
     
     @objc func deleteFriend(sender: UIButton) {
@@ -43,6 +45,12 @@ class FriendsVC: UsersVC {
         }
     }
     
+    @objc func showChat(sender: UIButton) {
+        let friend = userList[sender.tag]
+        let vc = getVC(identifier: "ChatVC") as! ChatVC
+        vc.friend = friend
+        present(vc, animated: true)
+    }
     
     
     @IBAction private func refreshBtn(_ sender: Any) {

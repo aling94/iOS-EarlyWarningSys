@@ -17,11 +17,15 @@ class ChatCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setup(wasSent: Bool, message: String) {
+        senderText.isHidden = !wasSent
+        friendText.isHidden = wasSent
+        if wasSent {
+            senderText.text = message
+        } else {
+            friendText.text = message
+        }
     }
 
 }

@@ -13,6 +13,12 @@ struct ChatInfo {
     let receiverID: String
     let time: TimeInterval
     
+    init(msg: String, receiver: String, time: TimeInterval = Date().timeIntervalSince1970) {
+        message = msg
+        receiverID = receiver
+        self.time = time
+    }
+    
     init(info: [String : Any]) {
         message = info["message"] as! String
         receiverID = info["receiverID"] as! String
