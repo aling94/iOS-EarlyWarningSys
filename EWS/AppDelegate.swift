@@ -24,17 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var currentLocation: CLLocation?
     var locationName: String?
     
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         setupCoreLocation()
         GMSServices.provideAPIKey(GoogleAPIKeys.maps)
         GMSPlacesClient.provideAPIKey(GoogleAPIKeys.places)
-        return true
-    }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
         setupNotifications()
@@ -71,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        
         print(error.localizedDescription)
     }
     
@@ -83,8 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        
-        print(remoteMessage.appData)
+            print(remoteMessage.appData)
     }
     
     // The callback to handle data message received via FCM for devices running iOS 10 or above.
@@ -137,7 +129,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func navToChat(with userInfo: [String: Any]) {
         // Getting user info
         print(userInfo)
-        let chatStoryboard = UIStoryboard(name: "Chat", bundle: Bundle.main)
+        let chatStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let senderId = userInfo["gcm.notification.sender"] as? String,
             let targetVC = chatStoryboard.instantiateViewController(withIdentifier: "ChatVC") as? ChatVC,
             let root = window?.rootViewController as? UITabBarController,
@@ -157,7 +149,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }
             
             targetVC.friend = receiver
-            chatNav.pushViewController(targetVC, animated: true)
+            chatNav.present(targetVC, animated: true)
             root.selectedIndex = 2
         }
     }
