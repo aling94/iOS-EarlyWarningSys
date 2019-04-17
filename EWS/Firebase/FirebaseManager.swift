@@ -237,7 +237,8 @@ extension FirebaseManager {
             "time": String(time)
         ]
         
-//        // send push notification to norificationRequest field in firebase that is observed by node.js server which will observe the change and then route the message to our receiver
+        // send push notification to norificationRequest field in firebase that is
+        // observed by node.js server which will observe the change and then route the message to our receiver
         let notificationKey = notificationRef.childByAutoId().key
         let notification = ["message": msg, "receiverId": friendID, "senderId": uid]
 

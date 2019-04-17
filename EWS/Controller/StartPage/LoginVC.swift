@@ -112,22 +112,16 @@ class LoginVC: FormVC {
 
 extension LoginVC: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            
-            return
-        }
+        guard error == nil else { return }
         
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
+        guard let auth = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
-            print(result)
             let info = UserInfo.userDict(authInfo: result!)
             FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info) { error in
-                if let error = error {
-                    return
-                }
+                guard error == nil else { return }
+                
                 DispatchQueue.main.async {
                     let vc = self.getVC(identifier: "Tabs")
                     self.present(vc!, animated: true, completion: nil)
