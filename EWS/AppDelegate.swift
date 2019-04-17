@@ -26,39 +26,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        FirebaseApp.configure()
+        setupCoreLocation()
         GMSServices.provideAPIKey(GoogleAPIKeys.maps)
         GMSPlacesClient.provideAPIKey(GoogleAPIKeys.places)
-        setupCoreLocation()
-        requestLocation()
-        FirebaseApp.configure()
+        return true
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
         setupNotifications()
         checkAlreadyLoggedIn()
-        
         return true
     }
     
-    func setupNotifications() {
-        
-        let setting = UNUserNotificationCenter.current()
-        setting.requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
-            
-            if granted{
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-                
-            }else{
-                
-            }
-            
-            Messaging.messaging().delegate = self
-            Messaging.messaging().isAutoInitEnabled = true
-            Messaging.messaging().shouldEstablishDirectChannel = true
-        }
-        setting.delegate = self
-    }
     
     func checkAlreadyLoggedIn() {
         if let _ = FirebaseManager.shared.currentUser {
@@ -85,9 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // a2aabcb19fa9788f3ae22f029771df26358a20d2cfb856943b3a3f1949c375da
         print(token)
         Messaging.messaging().apnsToken = deviceToken
-        
-        
     }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
         print(error.localizedDescription)
@@ -122,11 +104,29 @@ extension AppDelegate: MessagingDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func setupNotifications() {
+        let setting = UNUserNotificationCenter.current()
+        setting.delegate = self
+        setting.requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
+            
+            if granted{
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                
+            }else{
+                
+            }
+            
+            Messaging.messaging().delegate = self
+            Messaging.messaging().isAutoInitEnabled = true
+            Messaging.messaging().shouldEstablishDirectChannel = true
+        }
+    }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        // NOTE: handle tap notification when in background
-        // if we have notification means the user is alreayd logged in,
-        // we just need to
         if let userInfo = response.notification.request.content.userInfo as? [String : Any] {
             navToChat(with: userInfo)
         }
@@ -173,6 +173,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         clManager = CLLocationManager()
         clManager.delegate = self
         clManager.desiredAccuracy = kCLLocationAccuracyBest
+        requestLocation()
     }
     
     func requestLocation() {
