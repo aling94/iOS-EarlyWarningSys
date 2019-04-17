@@ -69,7 +69,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        print(userInfo)
+        
+        
+        guard let userInfo = userInfo as? [String : Any],
+            let senderID = userInfo["gcm.notification.sender"] as? String,
+            let aps = userInfo["aps"] as? [String : Any],
+            let alert = aps["alert"] as? [String : Any],
+            let message = alert["body"] as? String else { return }
+        print("from", senderID)
+        print("msg:", message)
+        
+        if let root = window?.rootViewController as? UITabBarController,
+            root.selectedIndex == 2,
+            let chatNav = root.viewControllers?[2] as? UINavigationController,
+            let currentVC = chatNav.visibleViewController as? ChatVC,
+            senderID == currentVC.friend?.uid {
+            let uid = FirebaseManager.shared.currentUser?.uid
+            let chatInfo = ChatInfo(msg: message, receiver: uid!)
+            currentVC.addRow(chatInfo)
+        }
+
+        
     }
 }
 
