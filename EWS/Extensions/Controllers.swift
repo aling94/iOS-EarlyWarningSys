@@ -111,6 +111,19 @@ extension FormViewController {
         }
     }
     
+    var infoDict: [String : Any] {
+        var info: [String : Any] = [:]
+        for (tag, val) in form.values() {
+            if let val = val as? String, !val.isEmpty {
+                info[tag] = val
+            }
+            else if let text = form.rowBy(tag: tag)?.baseCell.textLabel?.text, !text.isEmpty {
+                info[tag] = text
+            }
+        }
+        return info
+    }
+    
     func formToDict(tags: [String]) -> [String : Any] {
         var info: [String : Any] = [:]
         for tag in tags {

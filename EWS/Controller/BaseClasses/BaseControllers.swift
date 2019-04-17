@@ -20,10 +20,21 @@ class BaseVC: UIViewController {
 
 class FormVC: FormViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Table config
+        tableView.isScrollEnabled = false
+        tableView.tableFooterView = UIView()
+        tableView.separatorColor = .clear
+        setupForm()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         SVProgressHUD.dismiss()
     }
+    
+    func setupForm() {}
 }
 
 class NavController: UINavigationController {

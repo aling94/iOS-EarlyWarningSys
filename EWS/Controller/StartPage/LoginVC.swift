@@ -23,7 +23,6 @@ class LoginVC: FormVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupForm()
         title = "LOGIN"
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
@@ -33,10 +32,7 @@ class LoginVC: FormVC {
         }
     }
 
-    func setupForm() {
-        // Table config
-        tableView.isScrollEnabled = false
-        tableView.tableFooterView = UIView()
+    override func setupForm() {
         
         // Form config
         let cellHeight: CGFloat = 50

@@ -21,7 +21,6 @@ class SignupVC: FormVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupForm()
         title = "SIGN UP"
     }
     
@@ -29,12 +28,7 @@ class SignupVC: FormVC {
         return spacer(gapSize: 10)
     }
     
-    func setupForm() {
-        // Table config
-        tableView.isScrollEnabled = false
-        tableView.tableFooterView = UIView()
-        tableView.separatorColor = .clear
-        
+    override func setupForm() {
         // Form config
         let cellHeight: CGFloat = 48
         
@@ -42,7 +36,7 @@ class SignupVC: FormVC {
         form
         +++ Section()
         // Email field
-        <<< EmailFloatLabelRow {
+        <<< EmailFloatLabelRow("email") {
             $0.title = "EMAIL"
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
@@ -69,7 +63,7 @@ class SignupVC: FormVC {
         
         <<< spacer
         // Confirm Password field
-        <<< PasswordFloatLabelRow { row in
+        <<< PasswordFloatLabelRow("cpass") { row in
             row.title = "CONFIRM PASSWORD"
             row.cell.height = { cellHeight }
             row.add(rule: RuleRequired(msg: "Please confirm your password."))
@@ -86,7 +80,7 @@ class SignupVC: FormVC {
         }
         <<< spacer
             
-        <<< TextFloatLabelRow() {
+        <<< TextFloatLabelRow("fname") {
             $0.title = "FIRST NAME"
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "First name required."))
@@ -96,7 +90,7 @@ class SignupVC: FormVC {
         
         <<< spacer
         
-        <<< TextFloatLabelRow() {
+        <<< TextFloatLabelRow("lname") {
             $0.title = "LAST NAME"
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "First name required."))
@@ -106,7 +100,7 @@ class SignupVC: FormVC {
             
         <<< spacer
         // Phone field
-        <<< PhoneFloatLabelRow() {
+        <<< PhoneFloatLabelRow("phone") {
             $0.title = "PHONE NO."
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "Phone number required."))
@@ -117,7 +111,7 @@ class SignupVC: FormVC {
         
         <<< spacer
         // DOB field
-        <<< DateRow() {
+        <<< DateRow("dob") {
             $0.title = "DATE OF BIRTH"
             $0.add(rule: RuleRequired(msg: "Date of birth required."))
         }.cellSetup { cell, row in
@@ -144,7 +138,7 @@ class SignupVC: FormVC {
         }
         
  
-        <<< SegmentedRow<String> {
+        <<< SegmentedRow<String>("gender") {
             $0.options = ["MALE", "FEMALE"]
             $0.value = ($0.options?.first)!
             gender = $0.value

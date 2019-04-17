@@ -14,15 +14,11 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
 
     @IBOutlet private weak var userImage: UIButton!
     
-    var fields: [String] = []
     private var picChanged = false
     private var imagePickerDelegate: ImagePickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTable()
-        setupForm()
-        loadUserInfo()
         title = "Edit Profile"
     }
     
@@ -30,16 +26,9 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
         return spacer(gapSize: 10)
     }
 
-    func setupTable() {
-        tableView.isScrollEnabled = false
-        tableView.tableFooterView = UIView()
-        tableView.separatorColor = .clear
-    }
-    
-    func setupForm() {
+    override func setupForm() {
         
         // Form config
-        fields = ["fname", "lname", "phone", "dob", "gender"]
         let cellHeight: CGFloat = 48
         
         // Create form
@@ -110,6 +99,8 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
         .cellUpdate { cell, row in
             cell.textLabel?.textColor = .white
         }
+        
+        loadUserInfo()
     }
     
     func loadUserInfo() {
@@ -144,18 +135,11 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             return
         }
         SVProgressHUD.show()
-        let info = formToDict(tags: fields)
+        let info = infoDict
+        
         var errorsMsgs: [String] = []
         let dpg = DispatchGroup()
         dpg.enter()
-        FirebaseManager.shared.updateCurrentUserInfo(info) { error in
-            if let error = error {
-                DispatchQueue.global().async(flags: .barrier) {
-                    errorsMsgs.append(error.localizedDescription)
-                    dpg.leave()
-                }
-            } else { dpg.leave() }
-        }
         
         if picChanged {
             dpg.enter()
@@ -168,6 +152,14 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
                 } else { dpg.leave() }
             }
             picChanged = false
+        }
+        FirebaseManager.shared.updateCurrentUserInfo(info) { error in
+            if let error = error {
+                DispatchQueue.global().async(flags: .barrier) {
+                    errorsMsgs.append(error.localizedDescription)
+                    dpg.leave()
+                }
+            } else { dpg.leave() }
         }
         
         dpg.notify(queue: .main) {

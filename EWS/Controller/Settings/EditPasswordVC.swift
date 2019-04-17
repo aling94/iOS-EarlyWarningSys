@@ -18,7 +18,6 @@ class EditPasswordVC: ProfileVC {
     
     override func setupForm() {
         // Form config
-        fields = ["pass", "cpass"]
         let cellHeight: CGFloat = 48
         
         form
