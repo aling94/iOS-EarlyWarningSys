@@ -93,8 +93,10 @@ class LoginVC: FormVC {
     }
     
     func thirdPartyLogin(_ credential: AuthCredential) {
+        SVProgressHUD.show()
         Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
             guard let uid = result?.user.uid else {
+                SVProgressHUD.dismiss()
                 self.showAlert(title: "Oops", msg: (error?.localizedDescription)!)
                 FirebaseManager.shared.signoutUser()
                 return
