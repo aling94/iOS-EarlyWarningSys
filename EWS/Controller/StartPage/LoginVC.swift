@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import FirebaseAuth
+import FirebaseMessaging
 import SVProgressHUD
 import GoogleSignIn
 import FBSDKCoreKit
@@ -27,9 +28,6 @@ class LoginVC: FormVC {
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
         fbSigninBtn.delegate = self
-        if FBSDKAccessToken.current() != nil {
-            
-        }
     }
 
     override func setupForm() {
@@ -64,8 +62,8 @@ class LoginVC: FormVC {
             $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
             $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
         }
-        .cellUpdate { (cell, row) in
-            self.passw = cell.textField.text
+        .onChange { row in
+            self.passw = row.cell.textField.text
         }
         
     }
@@ -78,17 +76,7 @@ class LoginVC: FormVC {
             return
         }
         SVProgressHUD.show()
-        FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
-            if error == nil {
-                DispatchQueue.main.async {
-                    let vc = self.getVC(identifier: "Tabs")
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            } else {
-                self.alertError(error)
-                SVProgressHUD.dismiss()
-            }
-        }
+        FirebaseManager.shared.loginUser(email: email, passw: passw, errorHandler: loginHandler)
     }
     
     @IBAction func resetPass(_ sender: Any) {
@@ -104,31 +92,32 @@ class LoginVC: FormVC {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
+    func thirdPartyLogin(_ credential: AuthCredential) {
+        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
+            guard let uid = result?.user.uid else {
+                self.showAlert(title: "Oops", msg: (error?.localizedDescription)!)
+                FirebaseManager.shared.signoutUser()
+                return
+            }
+            Messaging.messaging().subscribe(toTopic: uid)
+            let info = UserInfo.userDict(authInfo: result!)
+            let handler = self.loginHandler
+            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info, errorHandler: handler)
+        }
+    }
 }
 
 extension LoginVC: GIDSignInDelegate, GIDSignInUIDelegate {
+    
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         guard error == nil else { return }
         
         guard let auth = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
-            let info = UserInfo.userDict(authInfo: result!)
-            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info) { error in
-                guard error == nil else { return }
-                
-                DispatchQueue.main.async {
-                    let vc = self.getVC(identifier: "Tabs")
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            }
-        }
+        thirdPartyLogin(credential)
     }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
-    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {}
 }
 
 extension LoginVC: FBSDKLoginButtonDelegate {
@@ -140,28 +129,10 @@ extension LoginVC: FBSDKLoginButtonDelegate {
         }
         guard let token = FBSDKAccessToken.current() else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
-        Auth.auth().signInAndRetrieveData(with: credential) { (result, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            let info = UserInfo.userDict(authInfo: result!)
-            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info) { error in
-                if let error = error {
-                    return
-                }
-                DispatchQueue.main.async {
-                    let vc = self.getVC(identifier: "Tabs")
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            }
-            
-        }
+        thirdPartyLogin(credential)
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
-    }
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {}
     
     
 }
