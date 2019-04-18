@@ -58,9 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let varAvgvalue = String(format: "%@", deviceToken as CVarArg)
         
-        let  token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
-        // a2aabcb19fa9788f3ae22f029771df26358a20d2cfb856943b3a3f1949c375da
-        print(token)
+//        let  token = varAvgvalue.trimmingCharacters(in: CharacterSet(charactersIn: "<>")).replacingOccurrences(of: " ", with: "")
         Messaging.messaging().apnsToken = deviceToken
     }
     
@@ -92,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-            print(remoteMessage.appData)
     }
     
     // The callback to handle data message received via FCM for devices running iOS 10 or above.
@@ -106,8 +103,6 @@ extension AppDelegate: MessagingDelegate {
     }
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         //Messaging.messaging().apnsToken = fcmToken
-        
-        print("token : \(fcmToken)")
     }
 }
 
@@ -140,8 +135,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func navToChat(with userInfo: [String: Any]) {
-        // Getting user info
-        print(userInfo)
         let chatStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let senderId = userInfo["gcm.notification.sender"] as? String,
             let targetVC = chatStoryboard.instantiateViewController(withIdentifier: "ChatVC") as? ChatVC,
