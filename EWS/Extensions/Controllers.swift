@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import GoogleSignIn
 import FBSDKLoginKit
+import SVProgressHUD
 
 extension UIViewController {
     
@@ -28,23 +29,8 @@ extension UIViewController {
         }
     }
     
-    func makeNavBarClear() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navbarTextColor = .white
-    }
-    
     func getVC(identifier: String) -> UIViewController? {
         return storyboard?.instantiateViewController(withIdentifier: identifier)
-    }
-    
-    func goToVC(_ vc: UIViewController) {
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func gotoVC(identifier: String) {
-        goToVC(getVC(identifier: identifier)!)
     }
     
     func showAlert(title: String, msg: String) {
@@ -93,12 +79,33 @@ extension UIViewController {
         return handler
     }
     
+    var loginHandler: ErrorHandler {
+        let handler: ErrorHandler = { error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    SVProgressHUD.dismiss()
+                    self.showAlert(title: "Oops!", msg: error.localizedDescription)
+                } else { self.goToHome() }
+            }
+        }
+        return handler
+    }
+    
     @IBAction func jumpToLogin() {
         GIDSignIn.sharedInstance().signOut()
         FBSDKLoginManager().logOut()
         FirebaseManager.shared.signoutUser()
         let vc = storyboard?.instantiateInitialViewController()
         app.window?.rootViewController = vc
+    }
+    
+    func goToHome() {
+        DispatchQueue.main.async {
+            let vc = self.getVC(identifier: "Tabs")
+            self.present(vc!, animated: true) {
+                UIApplication.shared.keyWindow?.rootViewController = vc
+            }
+        }
     }
 }
 
@@ -118,20 +125,6 @@ extension FormViewController {
                 info[tag] = val
             }
             else if let text = form.rowBy(tag: tag)?.baseCell.textLabel?.text, !text.isEmpty {
-                info[tag] = text
-            }
-        }
-        return info
-    }
-    
-    func formToDict(tags: [String]) -> [String : Any] {
-        var info: [String : Any] = [:]
-        for tag in tags {
-            let row = form.rowBy(tag: tag)
-            if let val = row?.baseValue as? String, !val.isEmpty {
-                info[tag] = val
-            }
-            else if let text = row?.baseCell.textLabel?.text {
                 info[tag] = text
             }
         }
