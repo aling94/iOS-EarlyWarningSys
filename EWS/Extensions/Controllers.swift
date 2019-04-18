@@ -103,9 +103,9 @@ extension UIViewController {
         DispatchQueue.main.async {
             let vc = self.getVC(identifier: "Tabs")
             app.window?.rootViewController = vc
-//            self.present(vc!, animated: true) {
-//                app.window?.rootViewController = vc
-//            }
+    //            self.present(vc!, animated: true) {
+    //                app.window?.rootViewController = vc
+    //            }
         }
     }
 }
