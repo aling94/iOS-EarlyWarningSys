@@ -72,8 +72,16 @@ extension FirebaseManager {
     
     // MARK: - Database/User
     
+    func userExists(completion: @escaping (Bool) -> Void) {
+        dbRef.child("User").child((currentUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
+            let isNew = snapshot.value! is NSNull
+            completion(!isNew)
+            
+        }
+    }
+    
     func updateUserInfo(uid: String, info: [String: Any], errorHandler: ErrorHandler? = nil) {
-        self.dbRef.child("User").child(uid).updateChildValues(info) { (error, _) in
+        dbRef.child("User").child(uid).updateChildValues(info) { (error, _) in
             errorHandler?(error)
         }
     }
@@ -131,14 +139,14 @@ extension FirebaseManager {
     func addFriend(_ friendID: String, errorHandler: @escaping ErrorHandler) {
         guard let uid = currentUser?.uid else { return }
         let info: [String : Any] = [friendID : true]
-        self.dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
+        dbRef.child("User").child(uid).child("friends").updateChildValues(info) { error, _ in
             errorHandler(error)
         }
     }
     
     func removeFriend(_ friendID: String, errorHandler: @escaping ErrorHandler) {
         guard let uid = currentUser?.uid else { return }
-        self.dbRef.child("User").child(uid).child("friends").child(friendID).removeValue() { error, _ in
+        dbRef.child("User").child(uid).child("friends").child(friendID).removeValue() { error, _ in
             errorHandler(error)
         }
         

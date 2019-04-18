@@ -100,9 +100,14 @@ class LoginVC: FormVC {
                 return
             }
             Messaging.messaging().subscribe(toTopic: uid)
-            let info = UserInfo.userDict(authInfo: result!)
-            let handler = self.loginHandler
-            FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info, errorHandler: handler)
+            FirebaseManager.shared.userExists { exists in
+                if exists { self.goToHome() }
+                else {
+                    let info = UserInfo.userDict(authInfo: result!)
+                    let handler = self.loginHandler
+                    FirebaseManager.shared.updateUserInfo(uid: info["uid"] as! String, info: info, errorHandler: handler)
+                }
+            }
         }
     }
 }

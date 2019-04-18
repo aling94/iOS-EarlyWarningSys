@@ -102,9 +102,10 @@ extension UIViewController {
     func goToHome() {
         DispatchQueue.main.async {
             let vc = self.getVC(identifier: "Tabs")
-            self.present(vc!, animated: true) {
-                UIApplication.shared.keyWindow?.rootViewController = vc
-            }
+            app.window?.rootViewController = vc
+//            self.present(vc!, animated: true) {
+//                app.window?.rootViewController = vc
+//            }
         }
     }
 }
