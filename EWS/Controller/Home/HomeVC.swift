@@ -78,6 +78,7 @@ class HomeVC: BaseVC {
                 self.fetchWeatherData()
             }
             DispatchQueue.main.async {
+                self.locNameLabel.text = userInfo?.location
                 if let pic = userInfo?.image {
                     self.userImage.image = pic
                 }
