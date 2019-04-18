@@ -76,8 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let aps = userInfo["aps"] as? [String : Any],
             let alert = aps["alert"] as? [String : Any],
             let message = alert["body"] as? String else { return }
-        print("from", senderID)
-        print("msg:", message)
         
         if let root = window?.rootViewController as? UITabBarController,
             root.selectedIndex == 2,
@@ -88,8 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let chatInfo = ChatInfo(msg: message, receiver: uid!)
             currentVC.addRow(chatInfo)
         }
-
-        
     }
 }
 
@@ -126,9 +122,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
-                
-            }else{
-                
             }
             
             Messaging.messaging().delegate = self
