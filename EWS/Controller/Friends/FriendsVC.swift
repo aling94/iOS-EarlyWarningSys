@@ -15,9 +15,11 @@ class FriendsVC: UsersVC {
     override func getUsers() {
         SVProgressHUD.show()
         FirebaseManager.shared.getFriends { (friends) in
-            if let friends = friends { self.userList = friends.sorted(by: <) }
-            else { self.userList = [] }
-            SVProgressHUD.dismiss()
+            self.userList = friends?.sorted(by: <) ?? []
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                SVProgressHUD.dismiss()
+            }
         }
     }
 
@@ -38,8 +40,10 @@ class FriendsVC: UsersVC {
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Oops!", description: error.localizedDescription, type: .error)
             } else {
                 TWMessageBarManager.sharedInstance().showMessage(withTitle: "Success!", description: "You've lost a friend!", type: .success)
+                self.userList.remove(at: sender.tag)
                 DispatchQueue.main.async {
-                    self.getUsers()
+                    self.table.deleteRows(at: [IndexPath(row: sender.tag, section: 0)], with: .right)
+                    self.table.reloadData()
                 }
             }
         }

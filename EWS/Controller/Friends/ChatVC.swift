@@ -62,7 +62,7 @@ extension ChatVC: UITableViewDataSource {
         chatList.append(info)
         let lastRow = self.chatList.count - 1
         table.beginUpdates()
-        table.insertRows(at: [IndexPath(row: lastRow, section: 0)], with: .right)
+        table.insertRows(at: [IndexPath(row: lastRow, section: 0)], with: .bottom)
         table.endUpdates()
         if lastRow > 0 {
             self.table.scrollToRow(at: IndexPath(row: lastRow, section: 0), at: .bottom, animated: true)

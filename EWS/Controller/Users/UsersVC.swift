@@ -14,13 +14,7 @@ class UsersVC: BaseVC {
 
     @IBOutlet weak var table: UITableView!
     
-    var userList: [UserInfo] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.table?.reloadData()
-            }
-        }
-    }
+    var userList: [UserInfo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +30,10 @@ class UsersVC: BaseVC {
         SVProgressHUD.show()
         let uid = FirebaseManager.shared.currentUser?.uid
         FirebaseManager.shared.getUsers([uid!]) { (users) in
-            if let users = users { self.userList = users.sorted(by: <) }
+            if let users = users {
+                self.userList = users.sorted(by: <)
+                DispatchQueue.main.async { self.table?.reloadData() }
+            }
             DispatchQueue.main.async { SVProgressHUD.dismiss() }
         }
     }
