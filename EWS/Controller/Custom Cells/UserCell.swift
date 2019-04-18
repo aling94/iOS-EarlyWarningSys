@@ -8,11 +8,10 @@
 
 import UIKit
 
-class UserCell: UICollectionViewCell {
-    
-    @IBOutlet weak var userImage: UIImageView!
+class UserCell: UITableViewCell {
+    @IBOutlet weak var userImage: CircleImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var chatBtn: UIButton!
     @IBOutlet weak var addFriendBtn: UIButton!
     @IBOutlet weak var deleteFriendBtn: UIButton!
-    @IBOutlet weak var chatBtn: UIButton!
 }
