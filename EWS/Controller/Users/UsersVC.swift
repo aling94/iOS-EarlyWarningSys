@@ -12,13 +12,12 @@ import TWMessageBarManager
 
 class UsersVC: BaseVC {
 
-    @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var table: UITableView!
     
     var userList: [UserInfo] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.collection.reloadData()
+                self.table?.reloadData()
             }
         }
     }
@@ -62,27 +61,14 @@ class UsersVC: BaseVC {
     }
 }
 
-extension UsersVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension UsersVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserCell", for: indexPath) as! UserCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! UserCell
         setCell(cell, indexPath: indexPath)
         return cell
-    }
-}
-
-extension UsersVC: UISearchBarDelegate {
-    func setupSeachBar() {
-        if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.black
-            textfield.backgroundColor = UIColor.white
-        }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
     }
 }

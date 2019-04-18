@@ -20,7 +20,7 @@ class FriendsVC: UsersVC {
             SVProgressHUD.dismiss()
         }
     }
-    
+
     override func setCell(_ cell: UserCell, indexPath: IndexPath) {
         let user = userList[indexPath.item]
         cell.userImage.image = user.image ?? UIImage(named: "default-user")
@@ -61,6 +61,4 @@ class FriendsVC: UsersVC {
         let vc = segue.destination as! FriendsMapVC
         vc.friendsList = userList
     }
-    
-    
 }
