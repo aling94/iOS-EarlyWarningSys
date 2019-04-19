@@ -12,20 +12,12 @@ class ChatCell: UITableViewCell {
 
     @IBOutlet weak var friendText: UILabel!
     @IBOutlet weak var senderText: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+
     func setup(wasSent: Bool, message: String) {
         senderText.isHidden = !wasSent
         friendText.isHidden = wasSent
-        if wasSent {
-            senderText.text = message
-        } else {
-            friendText.text = message
-        }
+        if wasSent { senderText.text = message }
+        else { friendText.text = message }
     }
 
 }
