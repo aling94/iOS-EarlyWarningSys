@@ -52,7 +52,6 @@
 		E1DAC5C622600A640076853F /* BaseControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C522600A640076853F /* BaseControllers.swift */; };
 		E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C72260374C0076853F /* FriendsMapVC.swift */; };
 		E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */; };
-		E1E6AF282262F082005AF9F9 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */; };
 		E1F66FF9226628BD00B52BD9 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F66FF8226628BD00B52BD9 /* Label.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +105,6 @@
 		E1DAC5C522600A640076853F /* BaseControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseControllers.swift; sourceTree = "<group>"; };
 		E1DAC5C72260374C0076853F /* FriendsMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsMapVC.swift; sourceTree = "<group>"; };
 		E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMarkerVC.swift; sourceTree = "<group>"; };
-		E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		E1F66FF8226628BD00B52BD9 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		E1F66FFA2266628500B52BD9 /* EWS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EWS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -376,7 +374,6 @@
 		E1E6AF262262F072005AF9F9 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				E1E6AF272262F082005AF9F9 /* ImagePickerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -630,7 +627,6 @@
 				E1551000225C3ECA003B554B /* CustomCells.swift in Sources */,
 				E1550FF0225C17BC003B554B /* Views.swift in Sources */,
 				E1DAC5C622600A640076853F /* BaseControllers.swift in Sources */,
-				E1E6AF282262F082005AF9F9 /* ImagePickerDelegate.swift in Sources */,
 				E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
