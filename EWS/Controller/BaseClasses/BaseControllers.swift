@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import SVProgressHUD
+import GooglePlaces
 
 class BaseVC: UIViewController {
 
@@ -46,5 +47,55 @@ class NavController: UINavigationController {
         navigationBar.isTranslucent = true
         navigationBar.tintColor = .white
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+    }
+}
+
+class ImagePicker: UIImagePickerController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var selectImageAction: ((UIImage?) -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let selected = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true) {
+            self.selectImageAction?(selected)
+        }
+    }
+}
+
+class PlacesController: GMSAutocompleteViewController, GMSAutocompleteViewControllerDelegate {
+    
+    var selectPlaceAction: ((GMSPlace) -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate = self
+        placeFields = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.coordinate.rawValue))!
+        let filter = GMSAutocompleteFilter()
+        filter.type = .noFilter
+        autocompleteFilter = filter
+    }
+    
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        selectPlaceAction?(place)
+        viewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        viewController.dismiss(animated: true, completion: nil)
     }
 }
