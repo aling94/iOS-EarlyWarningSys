@@ -102,7 +102,13 @@ class HomeVC: BaseVC {
     }
     
     @IBAction func searchPlaces(_ sender: Any) {
-        displayPlacesController()
+        let placesPicker = PlacesController()
+        placesPicker.selectPlaceAction = { [unowned self] place in
+            self.myLocation = place.coordinate
+            self.locNameLabel.text = place.name
+            self.fetchWeatherData()
+        }
+        present(placesPicker, animated: true)
     }
 }
 
@@ -123,38 +129,5 @@ extension HomeVC: UICollectionViewDataSource {
         cell.highLabel.text = "\(data.high!) °F"
         cell.lowLabel.text = "\(data.low!) °F"
         cell.dateLabel.text = data.day
-    }
-}
-
-extension HomeVC: GMSAutocompleteViewControllerDelegate {
-    
-    func displayPlacesController() {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.coordinate.rawValue))!
-        autocompleteController.placeFields = fields
-        
-        let filter = GMSAutocompleteFilter()
-        filter.type = .noFilter
-        autocompleteController.autocompleteFilter = filter
-        
-        present(autocompleteController, animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        myLocation = place.coordinate
-        locNameLabel.text = place.name
-        fetchWeatherData()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print("Error: ", error.localizedDescription)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
     }
 }
