@@ -24,6 +24,8 @@ class HomeVC: BaseVC {
     @IBOutlet weak var summaryLabel: UILabel!
     
     var myLocation: CLLocationCoordinate2D?
+    var loaded = false
+    
     
     var weatherData: WeatherResponse? {
         didSet {
@@ -37,16 +39,18 @@ class HomeVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let loc = app.currentLocation?.coordinate {
+            myLocation = loc
+            locNameLabel.text = app.locationName
+        }
+        setupUserData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        if let loc = app.currentLocation?.coordinate {
-            myLocation = loc
-            fetchWeatherData()
-        }
-        setupUserData()
+        if loaded { setupUserData() }
+        else { loaded = true }
     }
     
     func fetchWeatherData() {
@@ -71,14 +75,15 @@ class HomeVC: BaseVC {
     
     func setupUserData() {
         guard let currentUser = FirebaseManager.shared.currentUser else { return }
+        SVProgressHUD.show()
         emailLabel.text = currentUser.email
         FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
             if let  loc = userInfo?.coords, self.myLocation == nil {
                 self.myLocation = loc
                 self.fetchWeatherData()
-            }
-            DispatchQueue.main.async {
                 self.locNameLabel.text = userInfo?.location
+            } else { SVProgressHUD.dismiss() }
+            DispatchQueue.main.async {
                 if let pic = userInfo?.image {
                     self.userImage.image = pic
                 }
@@ -130,6 +135,7 @@ extension HomeVC: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         myLocation = place.coordinate
+        locNameLabel.text = place.name
         fetchWeatherData()
         dismiss(animated: true, completion: nil)
     }
