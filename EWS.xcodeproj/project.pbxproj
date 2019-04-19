@@ -11,6 +11,8 @@
 		E10E36372263847900129B47 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10E36332263847900129B47 /* SplashView.xib */; };
 		E10E36382263847900129B47 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36342263847900129B47 /* SplashVC.swift */; };
 		E10E36392263847900129B47 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10E36352263847900129B47 /* SplashView.swift */; };
+		E122B73C226A1FC200E05D51 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122B73B226A1FC200E05D51 /* ImagePicker.swift */; };
+		E122B73E226A1FE300E05D51 /* PlacePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E122B73D226A1FE300E05D51 /* PlacePicker.swift */; };
 		E1309D5A2265505B002DC2C8 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D592265505B002DC2C8 /* ChatInfo.swift */; };
 		E1309D5C22657EF3002DC2C8 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D5B22657EF3002DC2C8 /* ChatVC.swift */; };
 		E1309D5E22659248002DC2C8 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1309D5D22659248002DC2C8 /* ChatCell.swift */; };
@@ -62,6 +64,8 @@
 		E10E36332263847900129B47 /* SplashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 		E10E36342263847900129B47 /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		E10E36352263847900129B47 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		E122B73B226A1FC200E05D51 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E122B73D226A1FE300E05D51 /* PlacePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacePicker.swift; sourceTree = "<group>"; };
 		E1309D592265505B002DC2C8 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
 		E1309D5B22657EF3002DC2C8 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		E1309D5D22659248002DC2C8 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 		E1E6AF262262F072005AF9F9 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				E122B73B226A1FC200E05D51 /* ImagePicker.swift */,
+				E122B73D226A1FE300E05D51 /* PlacePicker.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				E1354F59225D75F400ED365E /* HomeVC.swift in Sources */,
 				E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */,
 				E1354F50225D421F00ED365E /* UserInfo.swift in Sources */,
+				E122B73E226A1FE300E05D51 /* PlacePicker.swift in Sources */,
 				E1309D5E22659248002DC2C8 /* ChatCell.swift in Sources */,
 				E1550FDD225C0962003B554B /* LoginVC.swift in Sources */,
 				E1354F5D225D847500ED365E /* WeatherCell.swift in Sources */,
@@ -632,6 +639,7 @@
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
 				E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */,
 				E194B6E2226950F30003D882 /* SpaceCellRow.swift in Sources */,
+				E122B73C226A1FC200E05D51 /* ImagePicker.swift in Sources */,
 				E1F66FF9226628BD00B52BD9 /* Label.swift in Sources */,
 				E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */,
 			);
