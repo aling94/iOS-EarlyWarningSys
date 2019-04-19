@@ -102,7 +102,7 @@ class HomeVC: BaseVC {
     }
     
     @IBAction func searchPlaces(_ sender: Any) {
-        let placesPicker = PlacesController()
+        let placesPicker = GMSPlacePicker()
         placesPicker.selectPlaceAction = { [unowned self] place in
             self.myLocation = place.coordinate
             self.locNameLabel.text = place.name
