@@ -88,7 +88,10 @@ extension FirebaseManager {
     
     func updateCurrentUserInfo(_ info: [String: Any], errorHandler: ErrorHandler? = nil) {
         guard let uid = currentUser?.uid else { return }
-        updateUserInfo(uid: uid, info: info, errorHandler: errorHandler)
+        updateUserInfo(uid: uid, info: info) { error in
+            self.currentUserInfo?.update(with: info)
+            errorHandler?(error)
+        }
     }
     
     func getUserInfo(_ uid: String, completion: @escaping (UserInfo?) -> Void) {
@@ -295,7 +298,10 @@ extension FirebaseManager {
     
     func saveUserImage(_ image: UIImage,  errorHander: ErrorHandler? = nil) {
         guard let user = currentUser else { return }
-        saveImage(image, "UserImage", user.uid, errorHander: errorHander)
+        saveImage(image, "UserImage", user.uid) { error in
+            self.currentUserInfo?.image = image
+            errorHander?(error)
+        }
     }
     
     func getUserImage(_ uid: String, completion: @escaping ImageHandler) {
