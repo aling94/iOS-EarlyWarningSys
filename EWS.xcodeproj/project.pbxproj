@@ -26,7 +26,6 @@
 		E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F5E225DAA3000ED365E /* UsersVC.swift */; };
 		E1354F61225DAE0000ED365E /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1354F60225DAE0000ED365E /* UserCell.swift */; };
 		E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141B4A52262430C009F8FDA /* AddPostVC.swift */; };
-		E1518094225ED41300EC040F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518093225ED41300EC040F /* Keys.swift */; };
 		E1518099225EE84800EC040F /* RoundViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1518098225EE84800EC040F /* RoundViews.swift */; };
 		E1550FDB225C0962003B554B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDA225C0962003B554B /* AppDelegate.swift */; };
 		E1550FDD225C0962003B554B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FDC225C0962003B554B /* LoginVC.swift */; };
@@ -38,9 +37,10 @@
 		E1550FF4225C1FC0003B554B /* Controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FF3225C1FC0003B554B /* Controllers.swift */; };
 		E1551000225C3ECA003B554B /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFE225C3ECA003B554B /* CustomCells.swift */; };
 		E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */; };
-		E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */; };
-		E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */; };
-		E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155100A225C5B1F003B554B /* SpaceCellRow.swift */; };
+		E194B6DB22694B3D0003D882 /* SpaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B6D922694B3D0003D882 /* SpaceCell.swift */; };
+		E194B6DC22694B3D0003D882 /* SpaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E194B6DA22694B3D0003D882 /* SpaceCell.xib */; };
+		E194B6E2226950F30003D882 /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B6E1226950F30003D882 /* SpaceCellRow.swift */; };
+		E194B6E7226952290003D882 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B6E6226952290003D882 /* Keys.swift */; };
 		E195943F2261A9B10061F101 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195943E2261A9B10061F101 /* PostCell.swift */; };
 		E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */; };
 		E1D1E381226101CF00AF8B24 /* PostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D1E380226101CF00AF8B24 /* PostInfo.swift */; };
@@ -78,7 +78,6 @@
 		E1354F5E225DAA3000ED365E /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		E1354F60225DAE0000ED365E /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		E141B4A52262430C009F8FDA /* AddPostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVC.swift; sourceTree = "<group>"; };
-		E1518093225ED41300EC040F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		E1518098225EE84800EC040F /* RoundViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundViews.swift; sourceTree = "<group>"; };
 		E1550FD7225C0962003B554B /* EWS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1550FDA225C0962003B554B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,9 +91,10 @@
 		E1550FF3225C1FC0003B554B /* Controllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controllers.swift; sourceTree = "<group>"; };
 		E1550FFE225C3ECA003B554B /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
-		E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceTableViewCell.swift; sourceTree = "<group>"; };
-		E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpaceTableViewCell.xib; sourceTree = "<group>"; };
-		E155100A225C5B1F003B554B /* SpaceCellRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
+		E194B6D922694B3D0003D882 /* SpaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCell.swift; sourceTree = "<group>"; };
+		E194B6DA22694B3D0003D882 /* SpaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceCell.xib; sourceTree = "<group>"; };
+		E194B6E1226950F30003D882 /* SpaceCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
+		E194B6E6226952290003D882 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		E195943E2261A9B10061F101 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		E1D1E37E2260F11100AF8B24 /* EditPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPasswordVC.swift; sourceTree = "<group>"; };
 		E1D1E380226101CF00AF8B24 /* PostInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfo.swift; sourceTree = "<group>"; };
@@ -251,14 +251,6 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
-		E1518092225ED3F600EC040F /* MyKeys */ = {
-			isa = PBXGroup;
-			children = (
-				E1518093225ED41300EC040F /* Keys.swift */,
-			);
-			path = MyKeys;
-			sourceTree = "<group>";
-		};
 		E1518097225EE7FE00EC040F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +292,7 @@
 				E1550FFD225C3E49003B554B /* EurekaAddons */,
 				E1354F48225D2D5B00ED365E /* Firebase */,
 				E1354F53225D48EC00ED365E /* API */,
-				E1518092225ED3F600EC040F /* MyKeys */,
+				E194B6E5226952120003D882 /* MyKeys */,
 				E1550FE1225C0963003B554B /* Assets.xcassets */,
 				E1550FE6225C0963003B554B /* Info.plist */,
 				E1354F44225D083C00ED365E /* GoogleService-Info.plist */,
@@ -346,7 +338,7 @@
 		E1550FFD225C3E49003B554B /* EurekaAddons */ = {
 			isa = PBXGroup;
 			children = (
-				E1551007225C5B0E003B554B /* SpaceRows */,
+				E194B6D822694AB20003D882 /* SpaceRows */,
 				E1550FFE225C3ECA003B554B /* CustomCells.swift */,
 				E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */,
 				E1354F46225D0D9800ED365E /* CustomValidations.swift */,
@@ -354,14 +346,22 @@
 			path = EurekaAddons;
 			sourceTree = "<group>";
 		};
-		E1551007225C5B0E003B554B /* SpaceRows */ = {
+		E194B6D822694AB20003D882 /* SpaceRows */ = {
 			isa = PBXGroup;
 			children = (
-				E155100A225C5B1F003B554B /* SpaceCellRow.swift */,
-				E1551008225C5B1F003B554B /* SpaceTableViewCell.swift */,
-				E1551009225C5B1F003B554B /* SpaceTableViewCell.xib */,
+				E194B6D922694B3D0003D882 /* SpaceCell.swift */,
+				E194B6DA22694B3D0003D882 /* SpaceCell.xib */,
+				E194B6E1226950F30003D882 /* SpaceCellRow.swift */,
 			);
 			path = SpaceRows;
+			sourceTree = "<group>";
+		};
+		E194B6E5226952120003D882 /* MyKeys */ = {
+			isa = PBXGroup;
+			children = (
+				E194B6E6226952290003D882 /* Keys.swift */,
+			);
+			path = MyKeys;
 			sourceTree = "<group>";
 		};
 		E1DAC5C422600A520076853F /* BaseClasses */ = {
@@ -453,10 +453,10 @@
 			files = (
 				E1550FE5225C0963003B554B /* LaunchScreen.storyboard in Resources */,
 				E10E36372263847900129B47 /* SplashView.xib in Resources */,
+				E194B6DC22694B3D0003D882 /* SpaceCell.xib in Resources */,
 				E1550FE2225C0963003B554B /* Assets.xcassets in Resources */,
 				E1354F45225D083C00ED365E /* GoogleService-Info.plist in Resources */,
 				E1550FE0225C0962003B554B /* Main.storyboard in Resources */,
-				E155100C225C5B1F003B554B /* SpaceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,15 +604,14 @@
 				E1D1E383226130E100AF8B24 /* PostsVC.swift in Sources */,
 				E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */,
 				E1550FF2225C1EAA003B554B /* SignupVC.swift in Sources */,
-				E1518094225ED41300EC040F /* Keys.swift in Sources */,
-				E155100B225C5B1F003B554B /* SpaceTableViewCell.swift in Sources */,
 				E1354F47225D0D9800ED365E /* CustomValidations.swift in Sources */,
 				E1354F57225D494600ED365E /* Weather.swift in Sources */,
 				E1354F4A225D2DB700ED365E /* FirebaseManager.swift in Sources */,
+				E194B6DB22694B3D0003D882 /* SpaceCell.swift in Sources */,
 				E1D1E381226101CF00AF8B24 /* PostInfo.swift in Sources */,
 				E1354F61225DAE0000ED365E /* UserCell.swift in Sources */,
-				E155100D225C5B1F003B554B /* SpaceCellRow.swift in Sources */,
 				E1354F4D225D339800ED365E /* ClosureAliases.swift in Sources */,
+				E194B6E7226952290003D882 /* Keys.swift in Sources */,
 				E1354F55225D48FF00ED365E /* APIHandler.swift in Sources */,
 				E195943F2261A9B10061F101 /* PostCell.swift in Sources */,
 				E1DAC5C82260374C0076853F /* FriendsMapVC.swift in Sources */,
@@ -636,6 +635,7 @@
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
 				E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */,
+				E194B6E2226950F30003D882 /* SpaceCellRow.swift in Sources */,
 				E1F66FF9226628BD00B52BD9 /* Label.swift in Sources */,
 				E1DAC5C3225FD5F30076853F /* FriendsVC.swift in Sources */,
 			);
