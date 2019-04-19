@@ -15,7 +15,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
     @IBOutlet private weak var userImage: UIButton!
     
     private var picChanged = false
-    private var imagePickerDelegate: ImagePickerDelegate?
+    private var fieldsChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
         }
+        .onChange { _ in self.fieldsChanged = true }
         <<< spacer
         
         <<< TextFloatLabelRow("lname") {
@@ -47,6 +48,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
         }
+        .onChange { _ in self.fieldsChanged = true }
         <<< spacer
             
         // Phone field
@@ -55,6 +57,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired())
         }
+        .onChange { _ in self.fieldsChanged = true }
         <<< spacer
             
         // DOB field
@@ -77,6 +80,7 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             if let date = row.value {
                 row.cell.textLabel?.text = row.dateFormatter?.string(from: date)
             }
+            self.fieldsChanged = true
         }
         .cellUpdate { (cell, row) in
             cell.textLabel?.textColor = .white
@@ -96,40 +100,53 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             $0.cell.backgroundColor = .clear
             $0.add(rule: RuleRequired())
         }
+        .onChange { _ in self.fieldsChanged = true }
         .cellUpdate { cell, row in
             cell.textLabel?.textColor = .white
         }
         
         loadUserInfo()
+        fieldsChanged = false
     }
     
     func loadUserInfo() {
+        if let currentInfo = FirebaseManager.shared.currentUserInfo {
+            setUserInfo(currentInfo)
+            return
+        }
+        
         FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
             guard let userInfo = userInfo else { return }
-            let form = self.form
-            (form.rowBy(tag: "fname") as! TextFloatLabelRow).value = userInfo.fname
-            (form.rowBy(tag: "lname") as! TextFloatLabelRow).value = userInfo.lname
-            (form.rowBy(tag: "phone") as! PhoneFloatLabelRow).value = userInfo.phone
-            (form.rowBy(tag: "gender") as! SegmentedRow<String>).value = userInfo.gender
-            let dateRow = form.rowBy(tag: "dob") as! DateRow
-            if let date = dateRow.dateFormatter?.date(from: userInfo.dob) {
-                dateRow.value = date
-            }
-            
-            
-            DispatchQueue.main.async {
-                if let pic = userInfo.image { self.userImage.setImage(pic, for: .normal) }
-                form.rows.forEach( {$0.reload()} )
-            }
+            self.setUserInfo(userInfo)
         }
     }
     
+    private func setUserInfo(_ userInfo: UserInfo) {
+        let form = self.form
+        (form.rowBy(tag: "fname") as! TextFloatLabelRow).value = userInfo.fname
+        (form.rowBy(tag: "lname") as! TextFloatLabelRow).value = userInfo.lname
+        (form.rowBy(tag: "phone") as! PhoneFloatLabelRow).value = userInfo.phone
+        (form.rowBy(tag: "gender") as! SegmentedRow<String>).value = userInfo.gender
+        let dateRow = form.rowBy(tag: "dob") as! DateRow
+        if let dob = userInfo.dob, let date = dateRow.dateFormatter?.date(from: dob) {
+            dateRow.value = date
+        }
+        
+        DispatchQueue.main.async {
+            if let pic = userInfo.image { self.userImage.setImage(pic, for: .normal) }
+            form.rows.forEach( {$0.reload()} )
+        }
+    }
+    
+    
     @IBAction func resetFields(_ sender: Any) {
-        // TODO use stored current user info instead
+        picChanged = false
+        fieldsChanged = false
         loadUserInfo()
     }
     
     @IBAction func saveInfo(_ sender: Any) {
+        guard picChanged || fieldsChanged else { return }
         guard form.validate().isEmpty else {
             showAlert(title: "Oops", msg: "Some inputs are invalid.")
             return
@@ -173,14 +190,11 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
     }
     
     @IBAction private func changePic(_ sender: Any) {
-        imagePickerDelegate = ImagePickerDelegate()
-        imagePickerDelegate?.selectImageAction = { [unowned self] img in self.changeUserImage(img) }
-        
-        let imgPicker = UIImagePickerController()
+        SVProgressHUD.show()
+        let imgPicker = ImagePicker()
+        imgPicker.selectImageAction = { [unowned self] img in self.changeUserImage(img) }
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
-        imgPicker.delegate = imagePickerDelegate
-        SVProgressHUD.show()
         self.present(imgPicker, animated:true)
     }
     
