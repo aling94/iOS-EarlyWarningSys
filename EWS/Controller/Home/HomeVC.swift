@@ -26,7 +26,6 @@ class HomeVC: BaseVC {
     var myLocation: CLLocationCoordinate2D?
     var loaded = false
     
-    
     var weatherData: WeatherResponse? {
         didSet {
             DispatchQueue.main.async {
@@ -42,6 +41,7 @@ class HomeVC: BaseVC {
         if let loc = app.currentLocation?.coordinate {
             myLocation = loc
             locNameLabel.text = app.locationName
+            fetchWeatherData()
         }
         setupUserData()
     }
@@ -75,9 +75,10 @@ class HomeVC: BaseVC {
     
     func setupUserData() {
         guard let currentUser = FirebaseManager.shared.currentUser else { return }
-        SVProgressHUD.show()
+        
         emailLabel.text = currentUser.email
-        FirebaseManager.shared.getCurrentUserInfo { (userInfo) in
+        // Define function to set data
+        let setData: (UserInfo?) -> Void = { userInfo in
             if let  loc = userInfo?.coords, self.myLocation == nil {
                 self.myLocation = loc
                 self.fetchWeatherData()
@@ -88,7 +89,16 @@ class HomeVC: BaseVC {
                     self.userImage.image = pic
                 }
             }
-        }        
+        }
+        
+        // Check if current user is already saved
+        if let userInfo = FirebaseManager.shared.currentUserInfo {
+            setData(userInfo)
+            return
+        }
+        // Else fetch it
+        SVProgressHUD.show()
+        FirebaseManager.shared.getCurrentUserInfo(completion: setData)
     }
     
     @IBAction func searchPlaces(_ sender: Any) {
