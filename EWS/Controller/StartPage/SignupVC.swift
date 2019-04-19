@@ -14,10 +14,6 @@ import FirebaseDatabase
 import SVProgressHUD
 
 class SignupVC: FormVC {
-
-    
-    var email, passw, cpassw: String!
-    var fname, lname, phone, dob, gender: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +41,6 @@ class SignupVC: FormVC {
             if !row.isValid {
                 cell.floatLabelTextField.titleTextColour = UIColor.red
             }
-            self.email = cell.textField.text
         }
         
         <<< spacer
@@ -57,8 +52,6 @@ class SignupVC: FormVC {
             $0.add(rule: RuleRequired(msg: "Password required!"))
             $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
             $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
-        }.cellUpdate { (cell, row) in
-            self.passw = cell.textField.text
         }
         
         <<< spacer
@@ -74,9 +67,6 @@ class SignupVC: FormVC {
                 }
                 return nil
             }))
-            
-        }.cellUpdate { (cell, row) in
-            self.cpassw = cell.textField.text
         }
         <<< spacer
             
@@ -84,8 +74,6 @@ class SignupVC: FormVC {
             $0.title = "FIRST NAME"
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "First name required."))
-        }.cellUpdate { cell, row in
-            self.fname = cell.textField.text
         }
         
         <<< spacer
@@ -94,8 +82,6 @@ class SignupVC: FormVC {
             $0.title = "LAST NAME"
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "First name required."))
-        }.cellUpdate { cell, row in
-            self.lname = cell.textField.text
         }
             
         <<< spacer
@@ -105,8 +91,6 @@ class SignupVC: FormVC {
             $0.cell.height = { cellHeight }
             $0.add(rule: RuleRequired(msg: "Phone number required."))
             $0.add(rule: RuleRegExp(regExpr: "^\\d{10}$", allowsEmpty: false, msg: "Not a valid phone number."))
-        }.cellUpdate { cell, row in
-            self.phone = cell.textField.text
         }
         
         <<< spacer
@@ -127,13 +111,11 @@ class SignupVC: FormVC {
         }.onChange { row in
             if let date = row.value {
                 row.cell.textLabel?.text = row.dateFormatter?.string(from: date)
-                self.dob = row.cell.textLabel?.text
             }
         }.cellUpdate { (cell, row) in
             cell.textLabel?.textColor = .white
             if let date = row.value {
                 cell.textLabel?.text = row.dateFormatter?.string(from: date)
-                self.dob = row.cell.textLabel?.text
             }
         }
         
@@ -141,7 +123,6 @@ class SignupVC: FormVC {
         <<< SegmentedRow<String>("gender") {
             $0.options = ["MALE", "FEMALE"]
             $0.value = ($0.options?.first)!
-            gender = $0.value
             
             $0.cell.height = { cellHeight }
             $0.cell.segmentedControl.backgroundColor = .clear
@@ -152,8 +133,6 @@ class SignupVC: FormVC {
             $0.add(rule: RuleRequired())
         }.cellUpdate { cell, row in
             cell.textLabel?.textColor = .white
-        }.onChange { row in
-            self.gender = row.value
         }
     }
     
@@ -171,31 +150,25 @@ class SignupVC: FormVC {
         } else { registerToDB() }
     }
     
-    var fieldsAsDict: [String: Any] {
-        return [
-            "email": email!,
-            "fname": fname!,
-            "lname": lname!,
-            "phone": phone!,
-            "dob": dob!,
-            "gender": gender!,
-        ]
-    }
-    
     func registerToDB() {
         guard let coords = app.currentLocation?.coordinate, let locName = app.locationName else {
             showAlert(title: "Ooops", msg: "Error in retrieving location. Please restart or try again.")
             return
         }
-        var info = fieldsAsDict
+        var info = infoDict
         info["latitude"] = coords.latitude
         info["longitude"] = coords.longitude
         info["location"] = locName
         
+        let email = info["email"] as! String
+        let passw = info["pass"] as! String
+        info.removeValue(forKey: "pass")
+        info.removeValue(forKey: "cpass")
+        
         SVProgressHUD.show()
         FirebaseManager.shared.registerUser(email: email, passw: passw, info: info) { (result, error) in
             if let _ = result?.user {
-                self.loginUser()
+                self.loginUser(email, passw)
             } else {
                 SVProgressHUD.dismiss()
                 self.alertError(error)
@@ -203,7 +176,7 @@ class SignupVC: FormVC {
         }
     }
     
-    func loginUser() {
+    func loginUser(_ email: String, _ passw: String) {
         FirebaseManager.shared.loginUser(email: email, passw: passw) { error in
             if error == nil {
                 DispatchQueue.main.async {
