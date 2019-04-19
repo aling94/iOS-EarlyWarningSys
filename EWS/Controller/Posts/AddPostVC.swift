@@ -16,8 +16,6 @@ class AddPostVC: BaseVC {
     @IBOutlet weak var commentBox: UITextView!
     @IBOutlet weak var pickImageBtn: UIButton!
     
-    var picChanged = false
-    var imagePickerDelegate: ImagePickerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +29,11 @@ class AddPostVC: BaseVC {
         guard let image = image else { return }
         postImage.image = image
         pickImageBtn.setTitle("", for: .normal)
-        picChanged = true
     }
     
     @IBAction func savePost(_ sender: Any) {
         
-        if let newPic = postImage.image, picChanged, !commentBox.text.isEmpty {
+        if let newPic = postImage.image, !commentBox.text.isEmpty {
             let text = commentBox.text.trimmingCharacters(in: .whitespacesAndNewlines)
             FirebaseManager.shared.addPost(img: newPic, postdesc: text) { error in
                 if let error = error { self.showAlert(title: "Oops", msg: error.localizedDescription) }
@@ -48,7 +45,7 @@ class AddPostVC: BaseVC {
             if commentBox.text.isEmpty {
                 errors.append("You've let the description box empty!")
             }
-            if !picChanged {
+            if postImage.image == nil {
                 errors.append("You haven't selected a photo to upload!")
             }
             showAlert(title: "Hey!", msg: errors.joined(separator: "\n\n"))
@@ -56,14 +53,11 @@ class AddPostVC: BaseVC {
     }
     
     @IBAction func uploadImage(_ sender: Any) {
-        imagePickerDelegate = ImagePickerDelegate()
-        imagePickerDelegate?.selectImageAction = { [unowned self] img in self.changePostImage(img) }
-        
-        let imgPicker = UIImagePickerController()
+        SVProgressHUD.show()
+        let imgPicker = ImagePicker()
+        imgPicker.selectImageAction = { [unowned self] img in self.changePostImage(img) }
         let hasCamera = UIImagePickerController.isSourceTypeAvailable(.camera)
         imgPicker.sourceType = hasCamera ? .camera : .photoLibrary
-        imgPicker.delegate = imagePickerDelegate
-        SVProgressHUD.show()
         self.present(imgPicker, animated:true)
     }
 }
