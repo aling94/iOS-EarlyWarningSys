@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class PostsVC: BaseVC {
 
+    @IBOutlet weak var notice: UILabel!
     @IBOutlet weak var table: UITableView!
     
     var posts: [PostInfo] = [] {
@@ -42,6 +43,7 @@ class PostsVC: BaseVC {
 extension PostsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        notice.isHidden = !posts.isEmpty
         return posts.count
     }
     

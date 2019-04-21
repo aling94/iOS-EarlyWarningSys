@@ -13,6 +13,7 @@ import TWMessageBarManager
 class UsersVC: BaseVC {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var notice: UILabel!
     
     var userList: [UserInfo] = []
     
@@ -60,6 +61,7 @@ class UsersVC: BaseVC {
 
 extension UsersVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        notice.isHidden = !userList.isEmpty
         return userList.count
     }
     
