@@ -15,7 +15,13 @@ class UsersVC: BaseVC {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var notice: UILabel!
     
-    var userList: [UserInfo] = []
+    var userList: [UserInfo] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.notice.isHidden = !self.userList.isEmpty
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,7 @@ class UsersVC: BaseVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navbarIsHidden = true
+        notice.isHidden = true
         getUsers()
     }
     
@@ -58,7 +65,6 @@ class UsersVC: BaseVC {
 
 extension UsersVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        notice.isHidden = !userList.isEmpty
         return userList.count
     }
     

@@ -13,14 +13,19 @@ import SVProgressHUD
 class HomeVC: BaseVC {
 
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var notice: UILabel!
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var locNameLabel: UILabel!
-    
     @IBOutlet weak var weatherContainer: WeatherInfoView!
     @IBOutlet weak var summaryContainer: WeatherInfoView!
     
-    var myLocation: CLLocationCoordinate2D?
+    var myLocation: CLLocationCoordinate2D? {
+        didSet {
+            notice?.text = myLocation == nil ? "Weather data unavailable without a location." : ""
+        }
+    }
     var loaded = false
     
     var weatherData: WeatherResponse? {
@@ -39,14 +44,9 @@ class HomeVC: BaseVC {
             myLocation = loc
             locNameLabel.text = app.locationName
             fetchWeatherData()
-        } else {
-            let msg = "Weather data may be unavailable or inaccurate without your location."
+        } else if !app.hasAllowedCoreLocation {
+            let msg = "Your location is needed to update weather data."
             self.showAlert(title: "Unable to find your location", msg: msg)
-            guard app.hasAllowedCoreLocation else {
-                showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
-                app.requestLocation()
-                return
-            }
         }
         setupUserData()
     }
@@ -87,6 +87,8 @@ class HomeVC: BaseVC {
                 self.fetchWeatherData()
                 self.locNameLabel.text = userInfo?.location
             } else { SVProgressHUD.dismiss() }
+            
+            self.notice?.text = self.myLocation == nil ? "Weather data unavailable without a location." : ""
             DispatchQueue.main.async {
                 if let pic = userInfo?.image {
                     self.userImage.image = pic

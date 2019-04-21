@@ -507,6 +507,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qag-MD-aUX" userLabel="Notice">
+                                <rect key="frame" x="20" y="333.5" width="335" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -522,12 +528,15 @@
                             <constraint firstItem="j4E-95-fr9" firstAttribute="top" secondItem="DBI-rd-Qla" secondAttribute="top" constant="50" id="EXz-h6-4KI"/>
                             <constraint firstItem="KK0-po-whm" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="20" id="Fer-sp-98U"/>
                             <constraint firstItem="DN4-rh-DTy" firstAttribute="trailing" secondItem="DBI-rd-Qla" secondAttribute="trailing" id="Kon-gE-jGe"/>
+                            <constraint firstAttribute="trailing" secondItem="qag-MD-aUX" secondAttribute="trailing" constant="20" id="Kq0-T5-VrP"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="LYS-kL-GTV" secondAttribute="trailing" constant="20" id="OKj-Nf-hdq"/>
+                            <constraint firstItem="qag-MD-aUX" firstAttribute="leading" secondItem="pE8-rn-JXA" secondAttribute="leading" constant="20" id="OWU-or-TT8"/>
                             <constraint firstItem="j4E-95-fr9" firstAttribute="centerX" secondItem="pE8-rn-JXA" secondAttribute="centerX" id="Qyd-oQ-28t"/>
                             <constraint firstItem="kbX-R1-Oya" firstAttribute="top" secondItem="j4E-95-fr9" secondAttribute="bottom" constant="10" id="SKa-bl-Hky"/>
                             <constraint firstItem="DBI-rd-Qla" firstAttribute="trailing" secondItem="oFl-me-lsU" secondAttribute="trailing" constant="20" id="VfJ-Wh-MfR"/>
                             <constraint firstAttribute="bottom" secondItem="DN4-rh-DTy" secondAttribute="bottom" id="Xpd-TX-1ZI"/>
                             <constraint firstItem="kbX-R1-Oya" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="25" id="YXe-HR-qG7"/>
+                            <constraint firstItem="qag-MD-aUX" firstAttribute="centerY" secondItem="pE8-rn-JXA" secondAttribute="centerY" id="YlR-zu-pmu"/>
                             <constraint firstItem="oFl-me-lsU" firstAttribute="bottom" secondItem="mML-Wi-A3K" secondAttribute="bottom" id="ZrF-xc-PXd"/>
                             <constraint firstItem="mML-Wi-A3K" firstAttribute="top" secondItem="LYS-kL-GTV" secondAttribute="bottom" constant="10" id="d7t-rZ-yxB"/>
                             <constraint firstItem="LYS-kL-GTV" firstAttribute="leading" secondItem="DBI-rd-Qla" secondAttribute="leading" constant="20" id="fTP-Bn-UHT"/>
@@ -545,6 +554,7 @@
                         <outlet property="collection" destination="KK0-po-whm" id="4RF-6G-pUa"/>
                         <outlet property="emailLabel" destination="kbX-R1-Oya" id="fLT-69-Jen"/>
                         <outlet property="locNameLabel" destination="LYS-kL-GTV" id="x4X-Yh-EHy"/>
+                        <outlet property="notice" destination="qag-MD-aUX" id="4VK-X4-B1M"/>
                         <outlet property="summaryContainer" destination="oFl-me-lsU" id="9Yd-4E-iGE"/>
                         <outlet property="userImage" destination="j4E-95-fr9" id="Sfr-LK-y9P"/>
                         <outlet property="weatherContainer" destination="mML-Wi-A3K" id="0jZ-xR-hf9"/>

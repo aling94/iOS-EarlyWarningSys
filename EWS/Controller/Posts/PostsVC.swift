@@ -18,6 +18,7 @@ class PostsVC: BaseVC {
         didSet {
             DispatchQueue.main.async {
                 self.table.reloadData()
+                self.notice.isHidden = !self.posts.isEmpty
                 SVProgressHUD.dismiss()
             }
         }
@@ -29,6 +30,7 @@ class PostsVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        notice.isHidden = true
         fetchPosts()
     }
     
@@ -43,7 +45,6 @@ class PostsVC: BaseVC {
 extension PostsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        notice.isHidden = !posts.isEmpty
         return posts.count
     }
     
