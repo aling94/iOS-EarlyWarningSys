@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseMessaging
+import FBSDKLoginKit
+import GoogleSignIn
 
 class FirebaseManager {
     static let shared = FirebaseManager()
@@ -53,6 +55,9 @@ extension FirebaseManager {
     
     func signoutUser() {
         try? Auth.auth().signOut()
+        GIDSignIn.sharedInstance().signOut()
+        FBSDKLoginManager().logOut()
+        currentUserInfo = nil
     }
     
     func resetPassword(email: String, errorHandler: ErrorHandler? = nil) {
