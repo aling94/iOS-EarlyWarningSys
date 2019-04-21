@@ -41,7 +41,7 @@ class HomeVC: BaseVC {
             fetchWeatherData()
         } else {
             let msg = "Weather data may be unavailable or inaccurate without your location."
-            self.showAlert(title: "Unable to find your location.", msg: msg)
+            self.showAlert(title: "Unable to find your location", msg: msg)
             guard app.hasAllowedCoreLocation else {
                 showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
                 app.requestLocation()
@@ -122,15 +122,9 @@ extension HomeVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
-        setCell(cell, indexPath: indexPath)
+        if let data = (weatherData?.daily?[indexPath.item]) {
+            cell.set(data)
+        }
         return cell
-    }
-    
-    func setCell(_ cell: WeatherCell, indexPath: IndexPath) {
-        let data = (weatherData?.daily?[indexPath.item])!
-        cell.icon.image = UIImage(named: data.icon!)
-        cell.highLabel.text = "\(data.high!) °F"
-        cell.lowLabel.text = "\(data.low!) °F"
-        cell.dateLabel.text = data.day
     }
 }
