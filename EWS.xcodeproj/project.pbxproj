@@ -40,6 +40,7 @@
 		E1551000225C3ECA003B554B /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFE225C3ECA003B554B /* CustomCells.swift */; };
 		E1551001225C3ECA003B554B /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */; };
 		E16BF482226D056100C26BC7 /* WeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BF481226D056100C26BC7 /* WeatherInfoView.swift */; };
+		E16BF484226D202400C26BC7 /* BaseForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16BF483226D202400C26BC7 /* BaseForm.swift */; };
 		E194B6DB22694B3D0003D882 /* SpaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B6D922694B3D0003D882 /* SpaceCell.swift */; };
 		E194B6DC22694B3D0003D882 /* SpaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E194B6DA22694B3D0003D882 /* SpaceCell.xib */; };
 		E194B6E2226950F30003D882 /* SpaceCellRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E194B6E1226950F30003D882 /* SpaceCellRow.swift */; };
@@ -96,6 +97,7 @@
 		E1550FFE225C3ECA003B554B /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
 		E1550FFF225C3ECA003B554B /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		E16BF481226D056100C26BC7 /* WeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfoView.swift; sourceTree = "<group>"; };
+		E16BF483226D202400C26BC7 /* BaseForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseForm.swift; sourceTree = "<group>"; };
 		E194B6D922694B3D0003D882 /* SpaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCell.swift; sourceTree = "<group>"; };
 		E194B6DA22694B3D0003D882 /* SpaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpaceCell.xib; sourceTree = "<group>"; };
 		E194B6E1226950F30003D882 /* SpaceCellRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceCellRow.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				E1DAC5C522600A640076853F /* BaseControllers.swift */,
+				E16BF483226D202400C26BC7 /* BaseForm.swift */,
 				E1DAC5C92260574B0076853F /* GMSMarkerVC.swift */,
 			);
 			path = BaseClasses;
@@ -640,6 +643,7 @@
 				E1DAC5C622600A640076853F /* BaseControllers.swift in Sources */,
 				E141B4A62262430C009F8FDA /* AddPostVC.swift in Sources */,
 				E1354F5F225DAA3000ED365E /* UsersVC.swift in Sources */,
+				E16BF484226D202400C26BC7 /* BaseForm.swift in Sources */,
 				E1DAC5CA2260574B0076853F /* GMSMarkerVC.swift in Sources */,
 				E1D1E37F2260F11100AF8B24 /* EditPasswordVC.swift in Sources */,
 				E194B6E2226950F30003D882 /* SpaceCellRow.swift in Sources */,
