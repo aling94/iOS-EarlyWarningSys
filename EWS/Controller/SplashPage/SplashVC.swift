@@ -12,11 +12,13 @@ import TAPageControl
 
 class SplashVC: UIViewController {
 
+    @IBOutlet weak var skipBtn: UIButton!
+    @IBOutlet weak var startBtn: UIButton!
     @IBOutlet weak var carouselView: iCarousel!
     @IBOutlet weak var pageControl: TAPageControl!
     
     var carousel : SplashCarousel!
-    let splashImages = ["Splash1", "Splash2", "Splash3", "Splash4", "Splash5", "Splash6"]
+    let splashImages = ["Splash1", "Splash2", "Splash3", "Splash4", "Splash5"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,23 +40,35 @@ class SplashVC: UIViewController {
         pageControl.dotImage = UIImage(named: "pageControlUnselected")
         pageControl.currentDotImage = UIImage(named: "pageControlSelected")
     }
-
+    
+    @IBAction func goToLogin(_ sender: Any) {
+        jumpToLogin()
+    }
+    
 }
 
 // MARK: - iCarouselDelegate
 extension SplashVC: iCarouselDelegate {
 
+    var onLastPage: Bool { return carouselView.currentItemIndex == splashImages.count - 1 }
+    
     func carouselCurrentItemIndexDidChange(_ carousel: iCarousel) {
         pageControl.currentPage = min(carouselView.currentItemIndex, splashImages.count - 1)
-        if carouselView.currentItemIndex == splashImages.count - 1 {
-            pageControl.isHidden = true
+        skipBtn.isHidden = onLastPage
+        if !onLastPage {
+            startBtn.isEnabled = false
+            startBtn.alpha = 0
         }
     }
 
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
-        if carouselView.currentItemIndex == splashImages.count - 1 {
-            let vc = getVC(identifier: "LoginNav")
-            UIApplication.shared.keyWindow?.rootViewController = vc
+        if onLastPage {
+            startBtn.isEnabled = true
+            UIView.animate(withDuration: 0.8) {
+                self.startBtn.alpha = 1
+                self.view.layoutIfNeeded()
+                
+            }
         }
     }
 }

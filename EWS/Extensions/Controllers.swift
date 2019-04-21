@@ -93,7 +93,7 @@ extension UIViewController {
     
     @IBAction func jumpToLogin() {
         FirebaseManager.shared.signoutUser()
-        let vc = storyboard?.instantiateInitialViewController()
+        let vc = getVC(identifier: "LoginNav")
         app.window?.rootViewController = vc
     }
     
