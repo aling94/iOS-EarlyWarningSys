@@ -17,6 +17,8 @@ class HomeVC: BaseVC {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var locNameLabel: UILabel!
     
+    @IBOutlet weak var weatherContainer: UIView!
+    @IBOutlet weak var summaryContainer: UIView!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var highLabel: UILabel!
@@ -42,6 +44,14 @@ class HomeVC: BaseVC {
             myLocation = loc
             locNameLabel.text = app.locationName
             fetchWeatherData()
+        } else {
+            let msg = "Unable to load weather data without your location."
+            self.showAlert(title: "Where are you?", msg: msg)
+            guard app.hasAllowedCoreLocation else {
+                showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
+                app.requestLocation()
+                return
+            }
         }
         setupUserData()
     }
@@ -64,7 +74,9 @@ class HomeVC: BaseVC {
     }
     
     func setWeatherInfo() {
-        let data = weatherData!
+        guard let data = weatherData else { return }
+        weatherContainer.isHidden = false
+        summaryContainer.isHidden = false
         if let iconName = data.currently?.icon { weatherIcon.image = UIImage(named: iconName) }
         dateLabel.text = "\(data.date!)"
         highLabel.text = "\(data.high!) °F"

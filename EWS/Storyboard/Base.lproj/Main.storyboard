@@ -371,7 +371,7 @@
                                     <outlet property="dataSource" destination="wMO-pz-kkv" id="0iN-4Q-RVo"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mML-Wi-A3K" userLabel="WeatherContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mML-Wi-A3K" userLabel="WeatherContainer">
                                 <rect key="frame" x="20" y="313" width="162.5" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avS-op-DSh">
@@ -436,7 +436,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-me-lsU" userLabel="WeatherContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-me-lsU" userLabel="WeatherContainer">
                                 <rect key="frame" x="192.5" y="313" width="162.5" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmA-Ej-Ivk">
@@ -539,8 +539,10 @@
                         <outlet property="highLabel" destination="avS-op-DSh" id="uZ8-ze-OTo"/>
                         <outlet property="locNameLabel" destination="LYS-kL-GTV" id="x4X-Yh-EHy"/>
                         <outlet property="lowLabel" destination="5VK-QD-aWc" id="V90-vv-RWJ"/>
+                        <outlet property="summaryContainer" destination="oFl-me-lsU" id="9Yd-4E-iGE"/>
                         <outlet property="summaryLabel" destination="KmA-Ej-Ivk" id="BSg-5y-AHU"/>
                         <outlet property="userImage" destination="j4E-95-fr9" id="Sfr-LK-y9P"/>
+                        <outlet property="weatherContainer" destination="mML-Wi-A3K" id="0jZ-xR-hf9"/>
                         <outlet property="weatherIcon" destination="9Qd-dh-j1a" id="PIz-TE-2tk"/>
                     </connections>
                 </viewController>

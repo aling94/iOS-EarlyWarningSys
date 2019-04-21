@@ -44,12 +44,6 @@ class SignupVC: FormVC {
     }
     
     @IBAction func submitBtn(_ sender: Any) {
-        guard app.hasAllowedCoreLocation else {
-            showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
-            app.requestLocation()
-            return
-        }
-        
         let errors = form.validate()
         if !errors.isEmpty {
             let msgs = errors.map( {$0.msg} )
@@ -58,19 +52,18 @@ class SignupVC: FormVC {
     }
     
     func registerToDB() {
-        guard let coords = app.currentLocation?.coordinate, let locName = app.locationName else {
-            showAlert(title: "Ooops", msg: "Error in retrieving location. Please restart or try again.")
-            return
-        }
         var info = infoDict
-        info["latitude"] = coords.latitude
-        info["longitude"] = coords.longitude
-        info["location"] = locName
+        
+        if let coords = app.currentLocation?.coordinate, let locName = app.locationName {
+            info["latitude"] = coords.latitude
+            info["longitude"] = coords.longitude
+            info["location"] = locName
+        }
         
         let email = info["email"] as! String
-        let passw = info["pass"] as! String
-        info.removeValue(forKey: "pass")
+        let passw = info.removeValue(forKey: "pass") as! String
         info.removeValue(forKey: "cpass")
+        
         
         SVProgressHUD.show()
         FirebaseManager.shared.registerUser(email: email, passw: passw, info: info) { (result, error) in
