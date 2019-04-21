@@ -40,8 +40,8 @@ class HomeVC: BaseVC {
             locNameLabel.text = app.locationName
             fetchWeatherData()
         } else {
-            let msg = "Unable to load weather data without your location."
-            self.showAlert(title: "Where are you?", msg: msg)
+            let msg = "Weather data may be unavailable or inaccurate without your location."
+            self.showAlert(title: "Unable to find your location.", msg: msg)
             guard app.hasAllowedCoreLocation else {
                 showAlert(title: "Ooops", msg: "This app requires access to your location. Please allow it.")
                 app.requestLocation()
