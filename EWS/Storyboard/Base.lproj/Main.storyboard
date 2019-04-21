@@ -371,7 +371,7 @@
                                     <outlet property="dataSource" destination="wMO-pz-kkv" id="0iN-4Q-RVo"/>
                                 </connections>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mML-Wi-A3K" userLabel="WeatherContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mML-Wi-A3K" userLabel="WeatherContainer" customClass="WeatherInfoView" customModule="EWS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="313" width="162.5" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avS-op-DSh">
@@ -435,8 +435,13 @@
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="highLabel" destination="avS-op-DSh" id="QJn-Ww-I3d"/>
+                                    <outlet property="lowLabel" destination="5VK-QD-aWc" id="3b7-wT-sxG"/>
+                                    <outlet property="weatherIcon" destination="9Qd-dh-j1a" id="lOq-Gk-GjV"/>
+                                </connections>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-me-lsU" userLabel="WeatherContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-me-lsU" userLabel="WeatherContainer" customClass="WeatherInfoView" customModule="EWS" customModuleProvider="target">
                                 <rect key="frame" x="192.5" y="313" width="162.5" height="130"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmA-Ej-Ivk">
@@ -467,6 +472,10 @@
                                         <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dateLabel" destination="uE6-hg-SYq" id="b8N-AX-6WJ"/>
+                                    <outlet property="summaryLabel" destination="KmA-Ej-Ivk" id="6oL-b6-3j2"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyT-dN-lXd" userLabel="ShowEQs">
                                 <rect key="frame" x="290" y="40" width="25" height="25"/>
@@ -534,16 +543,11 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collection" destination="KK0-po-whm" id="4RF-6G-pUa"/>
-                        <outlet property="dateLabel" destination="uE6-hg-SYq" id="aQx-bg-JD0"/>
                         <outlet property="emailLabel" destination="kbX-R1-Oya" id="fLT-69-Jen"/>
-                        <outlet property="highLabel" destination="avS-op-DSh" id="uZ8-ze-OTo"/>
                         <outlet property="locNameLabel" destination="LYS-kL-GTV" id="x4X-Yh-EHy"/>
-                        <outlet property="lowLabel" destination="5VK-QD-aWc" id="V90-vv-RWJ"/>
                         <outlet property="summaryContainer" destination="oFl-me-lsU" id="9Yd-4E-iGE"/>
-                        <outlet property="summaryLabel" destination="KmA-Ej-Ivk" id="BSg-5y-AHU"/>
                         <outlet property="userImage" destination="j4E-95-fr9" id="Sfr-LK-y9P"/>
                         <outlet property="weatherContainer" destination="mML-Wi-A3K" id="0jZ-xR-hf9"/>
-                        <outlet property="weatherIcon" destination="9Qd-dh-j1a" id="PIz-TE-2tk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZd-Hf-Nvu" userLabel="First Responder" sceneMemberID="firstResponder"/>

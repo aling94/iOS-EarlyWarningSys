@@ -17,13 +17,8 @@ class HomeVC: BaseVC {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var locNameLabel: UILabel!
     
-    @IBOutlet weak var weatherContainer: UIView!
-    @IBOutlet weak var summaryContainer: UIView!
-    @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var highLabel: UILabel!
-    @IBOutlet weak var lowLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var weatherContainer: WeatherInfoView!
+    @IBOutlet weak var summaryContainer: WeatherInfoView!
     
     var myLocation: CLLocationCoordinate2D?
     var loaded = false
@@ -77,12 +72,8 @@ class HomeVC: BaseVC {
         guard let data = weatherData else { return }
         weatherContainer.isHidden = false
         summaryContainer.isHidden = false
-        if let iconName = data.currently?.icon { weatherIcon.image = UIImage(named: iconName) }
-        dateLabel.text = "\(data.date!)"
-        highLabel.text = "\(data.high!) °F"
-        lowLabel.text = "\(data.low!) °F"
-        let summ = (data.currently?.summary)!
-        summaryLabel.text = summ
+        weatherContainer.set(data: data)
+        summaryContainer.set(data: data)
     }
     
     func setupUserData() {
