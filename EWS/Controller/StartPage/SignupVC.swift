@@ -25,115 +25,22 @@ class SignupVC: FormVC {
     }
     
     override func setupForm() {
-        // Form config
-        let cellHeight: CGFloat = 48
-        
-        // Create form
         form
         +++ Section()
-        // Email field
-        <<< EmailFloatLabelRow("email") {
-            $0.title = "EMAIL"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleEmail())
-        }.cellUpdate { cell, row in
-            if !row.isValid {
-                cell.floatLabelTextField.titleTextColour = UIColor.red
-            }
-        }
-        
+        <<< email()
         <<< spacer
-        // Password field
-        <<< PasswordFloatLabelRow("pass") {
-            $0.title = "PASSWORD"
-            $0.cell.height = { cellHeight }
-            
-            $0.add(rule: RuleRequired(msg: "Password required!"))
-            $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
-            $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
-        }
-        
+        <<< password()
         <<< spacer
-        // Confirm Password field
-        <<< PasswordFloatLabelRow("cpass") { row in
-            row.title = "CONFIRM PASSWORD"
-            row.cell.height = { cellHeight }
-            row.add(rule: RuleRequired(msg: "Please confirm your password."))
-            
-            row.add(rule: RuleClosure(closure: { _ in
-                if let pass = (self.form.rowBy(tag: "pass") as? PasswordFloatLabelRow)?.value, pass != row.value {
-                    return ValidationError(msg: "Passwords do not match!")
-                }
-                return nil
-            }))
-        }
+        <<< confirmPass()
         <<< spacer
-            
-        <<< TextFloatLabelRow("fname") {
-            $0.title = "FIRST NAME"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired(msg: "First name required."))
-        }
-        
+        <<< name("fname", "FIRST NAME", "First name required.")
         <<< spacer
-        
-        <<< TextFloatLabelRow("lname") {
-            $0.title = "LAST NAME"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired(msg: "First name required."))
-        }
-            
+        <<< name("lname", "LAST NAME", "Last name required.")
         <<< spacer
-        // Phone field
-        <<< PhoneFloatLabelRow("phone") {
-            $0.title = "PHONE NO."
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired(msg: "Phone number required."))
-            $0.add(rule: RuleRegExp(regExpr: "^\\d{10}$", allowsEmpty: false, msg: "Not a valid phone number."))
-        }
-        
+        <<< phone()
         <<< spacer
-        // DOB field
-        <<< DateRow("dob") {
-            $0.title = "DATE OF BIRTH"
-            $0.add(rule: RuleRequired(msg: "Date of birth required."))
-        }.cellSetup { cell, row in
-            row.maximumDate = Date()
-            cell.height = { cellHeight }
-            cell.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-            cell.layer.borderColor = UIColor.white.cgColor
-            cell.layer.cornerRadius = 5
-            cell.layer.borderWidth = 2
-            cell.layer.masksToBounds = true
-            cell.textLabel?.textColor = .white
-            cell.detailTextLabel?.isHidden = true
-        }.onChange { row in
-            if let date = row.value {
-                row.cell.textLabel?.text = row.dateFormatter?.string(from: date)
-            }
-        }.cellUpdate { (cell, row) in
-            cell.textLabel?.textColor = .white
-            if let date = row.value {
-                cell.textLabel?.text = row.dateFormatter?.string(from: date)
-            }
-        }
-        
- 
-        <<< SegmentedRow<String>("gender") {
-            $0.options = ["MALE", "FEMALE"]
-            $0.value = ($0.options?.first)!
-            
-            $0.cell.height = { cellHeight }
-            $0.cell.segmentedControl.backgroundColor = .clear
-            $0.cell.layer.masksToBounds = true
-            $0.cell.segmentedControl.tintColor = .white
-            $0.cell.textLabel?.textColor = .white
-            $0.cell.backgroundColor = .clear
-            $0.add(rule: RuleRequired())
-        }.cellUpdate { cell, row in
-            cell.textLabel?.textColor = .white
-        }
+        <<< birthdate()
+        <<< gender()
     }
     
     @IBAction func submitBtn(_ sender: Any) {

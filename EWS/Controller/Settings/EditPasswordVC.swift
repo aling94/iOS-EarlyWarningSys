@@ -17,30 +17,11 @@ class EditPasswordVC: ProfileVC {
     }
     
     override func setupForm() {
-        // Form config
-        let cellHeight: CGFloat = 48
-        
         form
         +++ Section()
-        // Password field
-        <<< PasswordFloatLabelRow("pass") {
-            $0.title = "PASSWORD"
-            $0.cell.height = { cellHeight }
-            
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
-        }
-        
+        <<< password()
         <<< spacer
-        // Confirm Password field
-        <<< PasswordFloatLabelRow("cpass") {
-            $0.title = "CONFIRM PASSWORD"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-            $0.add(rule: RuleMinLength(minLength: 6))
-            $0.add(rule: RuleMaxLength(maxLength: 30))
-        }
+        <<< confirmPass()
     }
     
     override func loadUserInfo() {

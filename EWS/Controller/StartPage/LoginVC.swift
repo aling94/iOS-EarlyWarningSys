@@ -31,41 +31,11 @@ class LoginVC: FormVC {
     }
 
     override func setupForm() {
-        
-        // Form config
-        let cellHeight: CGFloat = 50
-        
-        // Create form
         form
         +++ Section()
-        // Email field
-        <<< EmailFloatLabelRow {
-            $0.title = "EMAIL"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired(msg: "Email required!"))
-            $0.add(rule: RuleEmail())
-        }
-        .cellUpdate { cell, row in
-            if !row.isValid {
-                cell.floatLabelTextField.titleTextColour = UIColor.red
-            }
-            self.email = cell.textField.text
-        }
-            
+        <<< email(height: 50)
         <<< spacer(gapSize: 15)
-            
-        // Password field
-        <<< PasswordFloatLabelRow {
-            $0.title = "PASSWORD"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired(msg: "Password required!"))
-            $0.add(rule: RuleMinLength(minLength: 6, msg: "Password must be at least 6 characters."))
-            $0.add(rule: RuleMaxLength(maxLength: 30, msg: "Password cannot be longer than 30 characters."))
-        }
-        .onChange { row in
-            self.passw = row.cell.textField.text
-        }
-        
+        <<< password(height: 50)
     }
 
     @IBAction func loginBtn(_ sender: Any) {
@@ -75,8 +45,9 @@ class LoginVC: FormVC {
             showAlert(title: "Oops", msg: msgs.joined(separator: "\n\n"))
             return
         }
+        guard let vals = form.values() as? [String : String] else { return }
         SVProgressHUD.show()
-        FirebaseManager.shared.loginUser(email: email, passw: passw, errorHandler: loginHandler)
+        FirebaseManager.shared.loginUser(email: vals["email"]!, passw: vals["pass"]!, errorHandler: loginHandler)
     }
     
     @IBAction func resetPass(_ sender: Any) {

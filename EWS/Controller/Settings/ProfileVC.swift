@@ -15,7 +15,6 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
     @IBOutlet private weak var userImage: UIButton!
     
     private var picChanged = false
-    private var fieldsChanged = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,83 +26,16 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
     }
 
     override func setupForm() {
-        
-        // Form config
-        let cellHeight: CGFloat = 48
-        
-        // Create form
         form
         +++ Section()
-        
-        <<< TextFloatLabelRow("fname") {
-            $0.title = "FIRST NAME"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-        }
-        .onChange { _ in self.fieldsChanged = true }
+        <<< name("fname", "FIRST NAME", "First name required.")
         <<< spacer
-        
-        <<< TextFloatLabelRow("lname") {
-            $0.title = "LAST NAME"
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-        }
-        .onChange { _ in self.fieldsChanged = true }
+        <<< name("lname", "LAST NAME", "Last name required.")
         <<< spacer
-            
-        // Phone field
-        <<< PhoneFloatLabelRow("phone") {
-            $0.title = "PHONE NO."
-            $0.cell.height = { cellHeight }
-            $0.add(rule: RuleRequired())
-        }
-        .onChange { _ in self.fieldsChanged = true }
+        <<< phone()
         <<< spacer
-            
-        // DOB field
-        <<< DateRow("dob") {
-            $0.title = "DATE OF BIRTH"
-            $0.add(rule: RuleRequired())
-        }
-        .cellSetup { cell, row in
-            row.maximumDate = Date()
-            cell.height = { cellHeight }
-            cell.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-            cell.layer.borderColor = UIColor.white.cgColor
-            cell.layer.cornerRadius = 5
-            cell.layer.borderWidth = 2
-            cell.layer.masksToBounds = true
-            cell.textLabel?.textColor = .white
-            cell.detailTextLabel?.isHidden = true
-        }
-        .onChange { row in
-            if let date = row.value {
-                row.cell.textLabel?.text = row.dateFormatter?.string(from: date)
-            }
-            self.fieldsChanged = true
-        }
-        .cellUpdate { (cell, row) in
-            cell.textLabel?.textColor = .white
-            if let date = row.value {
-                cell.textLabel?.text = row.dateFormatter?.string(from: date)
-            }
-        }
-        
-        <<< SegmentedRow<String>("gender") {
-            $0.options = ["MALE", "FEMALE"]
-            $0.value = "MALE"
-            $0.cell.height = { cellHeight }
-            $0.cell.segmentedControl.backgroundColor = .clear
-            $0.cell.segmentedControl.tintColor = .white
-            $0.cell.layer.masksToBounds = true
-            $0.cell.textLabel?.textColor = .white
-            $0.cell.backgroundColor = .clear
-            $0.add(rule: RuleRequired())
-        }
-        .onChange { _ in self.fieldsChanged = true }
-        .cellUpdate { cell, row in
-            cell.textLabel?.textColor = .white
-        }
+        <<< birthdate()
+        <<< gender()
         
         loadUserInfo()
         fieldsChanged = false
