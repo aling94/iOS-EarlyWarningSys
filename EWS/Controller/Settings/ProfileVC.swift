@@ -38,7 +38,6 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
         <<< gender()
         
         loadUserInfo()
-        fieldsChanged = false
     }
     
     func loadUserInfo() {
@@ -67,42 +66,31 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
         DispatchQueue.main.async {
             if let pic = userInfo.image { self.userImage.setImage(pic, for: .normal) }
             form.rows.forEach( {$0.reload()} )
+            self.fieldsChanged = false
+            self.picChanged = false
         }
     }
     
     
     @IBAction func resetFields(_ sender: Any) {
-        picChanged = false
-        fieldsChanged = false
         loadUserInfo()
     }
     
     @IBAction func saveInfo(_ sender: Any) {
         guard picChanged || fieldsChanged else { return }
-        guard form.validate().isEmpty else {
-            showAlert(title: "Oops", msg: "Some inputs are invalid.")
+        let errors = form.validate()
+        guard errors.isEmpty else {
+            let msgs = errors.map( {$0.msg} )
+            showAlert(title: "Oops", msg: msgs.joined(separator: "\n\n"))
             return
         }
+        
         SVProgressHUD.show()
         let info = infoDict
         
         var errorsMsgs: [String] = []
         let dpg = DispatchGroup()
-        dpg.enter()
-        
-        if picChanged {
-            dpg.enter()
-            FirebaseManager.shared.saveUserImage(userImage.currentImage!) { error in
-                if let error = error {
-                    DispatchQueue.global().async(flags: .barrier) {
-                        errorsMsgs.append(error.localizedDescription)
-                        dpg.leave()
-                    }
-                } else { dpg.leave() }
-            }
-            picChanged = false
-        }
-        FirebaseManager.shared.updateCurrentUserInfo(info) { error in
+        let handler: (Error?) -> Void = { error in
             if let error = error {
                 DispatchQueue.global().async(flags: .barrier) {
                     errorsMsgs.append(error.localizedDescription)
@@ -111,10 +99,22 @@ class ProfileVC: FormVC, UINavigationControllerDelegate {
             } else { dpg.leave() }
         }
         
+        if picChanged {
+            dpg.enter()
+            FirebaseManager.shared.saveUserImage(userImage.currentImage!, errorHander: handler)
+        }
+        
+        if fieldsChanged {
+            dpg.enter()
+            FirebaseManager.shared.updateCurrentUserInfo(info, errorHandler: handler)
+        }
+        
         dpg.notify(queue: .main) {
             SVProgressHUD.dismiss()
             if errorsMsgs.isEmpty {
                 self.showAlert(title: "Success!", msg: "Your profile info has been updated!")
+                self.fieldsChanged = false
+                self.picChanged = false
             } else {
                 self.showAlert(title: "Oops!", msg: errorsMsgs.joined(separator: "\n\n"))
             }
