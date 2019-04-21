@@ -23,10 +23,7 @@ class FriendsVC: UsersVC {
         }
     }
 
-    override func setCell(_ cell: UserCell, indexPath: IndexPath) {
-        let user = userList[indexPath.item]
-        cell.userImage.image = user.image ?? UIImage(named: "default-user")
-        cell.nameLabel.text = user.name
+    override func setCellSelector(_ cell: UserCell, indexPath: IndexPath) {
         cell.deleteFriendBtn.tag = indexPath.item
         cell.deleteFriendBtn.addTarget(self, action: #selector(deleteFriend), for: .touchUpInside)
         cell.chatBtn.tag = indexPath.item

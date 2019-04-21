@@ -49,18 +49,10 @@ extension PostsVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! PostCell
-        setCell(cell, indexPath: indexPath)
+        cell.set(posts[indexPath.row])
         return cell
     }
-    
-    func setCell(_ cell: PostCell, indexPath: IndexPath) {
-        let post = posts[indexPath.row]
-        cell.nameLabel.text = post.user?.name
-        cell.commentText.text = post.description
-        cell.userImage.image = post.user?.image ?? UIImage(named: "default-user")
-        cell.postImage.image = post.image
-    }
-    
+
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }

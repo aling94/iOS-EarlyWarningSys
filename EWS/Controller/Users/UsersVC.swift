@@ -39,11 +39,8 @@ class UsersVC: BaseVC {
         }
     }
     
-    func setCell(_ cell: UserCell, indexPath: IndexPath) {
-        let user = userList[indexPath.item]
-        cell.userImage.image = user.image ?? UIImage(named: "default-user")
-        cell.nameLabel.text = user.name
-        cell.addFriendBtn.tag = indexPath.item
+    func setCellSelector(_ cell: UserCell, indexPath: IndexPath) {
+        cell.addFriendBtn.tag = indexPath.row
         cell.addFriendBtn.addTarget(self, action: #selector(addFriend), for: .touchUpInside)
     }
     
@@ -67,7 +64,8 @@ extension UsersVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! UserCell
-        setCell(cell, indexPath: indexPath)
+        cell.set(userList[indexPath.item])
+        setCellSelector(cell, indexPath: indexPath)
         return cell
     }
 }

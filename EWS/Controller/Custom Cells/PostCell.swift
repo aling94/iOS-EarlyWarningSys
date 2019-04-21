@@ -14,4 +14,11 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var commentText: UILabel!
     @IBOutlet weak var postImage: UIImageView!
+    
+    func set(_ data: PostInfo) {
+        nameLabel.text = data.user?.name
+        commentText.text = data.description
+        userImage.image = data.user?.image ?? UIImage(named: "default-user")
+        postImage.image = data.image
+    }
 }

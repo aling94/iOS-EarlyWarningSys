@@ -14,4 +14,9 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var chatBtn: UIButton!
     @IBOutlet weak var addFriendBtn: UIButton!
     @IBOutlet weak var deleteFriendBtn: UIButton!
+    
+    func set(_ data: UserInfo) {
+        userImage.image = data.image ?? UIImage(named: "default-user")
+        nameLabel.text = data.name
+    }
 }
