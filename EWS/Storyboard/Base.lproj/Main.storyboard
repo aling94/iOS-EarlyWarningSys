@@ -697,7 +697,7 @@
                         <viewLayoutGuide key="safeArea" id="0Da-Rq-Q6c"/>
                     </view>
                     <navigationItem key="navigationItem" id="rOe-Zd-wLN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xgm-ty-tLs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Xgm-ty-tLs">
                             <connections>
                                 <segue destination="nex-oq-V9J" kind="show" id="BWj-7i-2j6"/>
                             </connections>
@@ -785,7 +785,7 @@
                         <viewLayoutGuide key="safeArea" id="8l1-tu-J5d"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qb9-T8-9ZT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BCX-Ft-4zu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="BCX-Ft-4zu">
                             <connections>
                                 <action selector="savePost:" destination="nex-oq-V9J" id="9tv-Mf-dzJ"/>
                             </connections>
@@ -1159,7 +1159,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SES-18-eML" userLabel="ContentWrapper">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-Ad-OGQ" userLabel="ReceiverLabel" customClass="Label" customModule="EWS" customModuleProvider="target">
                                                             <rect key="frame" x="20" y="8" width="270" height="145"/>
@@ -1178,7 +1178,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lk-qD-YNa" userLabel="SenderLabel" customClass="Label" customModule="EWS" customModuleProvider="target">
-                                                            <rect key="frame" x="124" y="8" width="270" height="145"/>
+                                                            <rect key="frame" x="85" y="8" width="270" height="145"/>
                                                             <color key="backgroundColor" red="0.45702849350761177" green="0.68608316006989944" blue="1" alpha="0.80391160102739723" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="270" id="G3K-10-05n"/>
