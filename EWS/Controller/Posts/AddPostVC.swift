@@ -34,8 +34,10 @@ class AddPostVC: BaseVC {
     @IBAction func savePost(_ sender: Any) {
         
         if let newPic = postImage.image, !commentBox.text.isEmpty {
+            SVProgressHUD.show()
             let text = commentBox.text.trimmingCharacters(in: .whitespacesAndNewlines)
             FirebaseManager.shared.addPost(img: newPic, postdesc: text) { error in
+                SVProgressHUD.dismiss()
                 if let error = error { self.showAlert(title: "Oops", msg: error.localizedDescription) }
                 else { self.navigationController?.popViewController(animated: true) }
             }
