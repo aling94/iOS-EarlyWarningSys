@@ -46,7 +46,7 @@ class HomeVC: BaseVC {
             fetchWeatherData()
         } else if !app.hasAllowedCoreLocation {
             let msg = "Your location is needed to update weather data."
-            self.showAlert(title: "Unable to find your location", msg: msg)
+            showAlert(title: "Unable to find your location", msg: msg)
         }
         setupUserData()
     }
@@ -61,10 +61,10 @@ class HomeVC: BaseVC {
     func fetchWeatherData() {
         guard let loc = myLocation else { return }
         SVProgressHUD.show()
-        APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { (response) in
+        APIHandler.shared.fetchWeatherData(loc.latitude, loc.longitude) { [weak self] (response) in
             DispatchQueue.main.async { SVProgressHUD.dismiss() }
             guard let data = response else { return }
-            self.weatherData = data
+            self?.weatherData = data
         }
     }
     
@@ -81,17 +81,17 @@ class HomeVC: BaseVC {
         
         emailLabel.text = currentUser.email
         // Define function to set data
-        let setData: (UserInfo?) -> Void = { userInfo in
-            if let  loc = userInfo?.coords, self.myLocation == nil {
-                self.myLocation = loc
-                self.fetchWeatherData()
-                self.locNameLabel.text = userInfo?.location
+        let setData: (UserInfo?) -> Void = { [weak self] userInfo in
+            if let  loc = userInfo?.coords, self?.myLocation == nil {
+                self?.myLocation = loc
+                self?.fetchWeatherData()
+                self?.locNameLabel.text = userInfo?.location
             } else { SVProgressHUD.dismiss() }
             
-            self.notice?.text = self.myLocation == nil ? "Weather data unavailable without a location." : ""
+            self?.notice?.text = self?.myLocation == nil ? "Weather data unavailable without a location." : ""
             DispatchQueue.main.async {
                 if let pic = userInfo?.image {
-                    self.userImage.image = pic
+                    self?.userImage.image = pic
                 }
             }
         }
