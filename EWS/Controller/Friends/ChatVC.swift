@@ -15,6 +15,7 @@ class ChatVC: UIViewController {
     @IBOutlet weak var friendPic: CircleImageView!
     @IBOutlet weak var msgText: UITextView!
     @IBOutlet weak var friendName: UILabel!
+    @IBOutlet weak var textFieldBottom: NSLayoutConstraint!
     
     let sender = (FirebaseManager.shared.currentUser?.uid)!
     var friend: UserInfo!
@@ -23,6 +24,7 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        observeKeyboard()
         table.tableFooterView = UIView()
         friendName.text = friend.name
         friendPic.image = friend.image ?? UIImage(named: "default-user")
@@ -44,6 +46,7 @@ class ChatVC: UIViewController {
     }
     
     @IBAction func sendText(_ sender: Any) {
+        view.endEditing(true)
         guard !msgText.text.isEmpty else { return }
         FirebaseManager.shared.sendText(friendID: friend.uid, msg: msgText.text) { (error) in
             guard error == nil else { return }
@@ -51,6 +54,42 @@ class ChatVC: UIViewController {
             DispatchQueue.main.async {
                 self.addRow(chatInfo)
                 self.msgText.text = ""
+            }
+        }
+    }
+}
+
+//  MARK: - Observers
+extension ChatVC {
+    func observeKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    func removeKeyboardObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification : Notification) {
+        if let userInfo = notification.userInfo {
+            if let keySize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                textFieldBottom.constant = keySize.height
+                UIView.animate(withDuration: 0.25) {
+                    self.view.layoutIfNeeded()
+                }
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification : Notification) {
+        if let userInfo = notification.userInfo {
+            if let _ = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                textFieldBottom.constant = 0
+                UIView.animate(withDuration: 0.25) {
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
